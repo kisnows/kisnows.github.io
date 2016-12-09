@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>杂货店</title>
+  <title>抹桥杂货店</title>
   <subtitle>Seize the day.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>http://kisnows.com/</id>
   
   <author>
-    <name>桥抹余晖</name>
+    <name>抹桥</name>
     
   </author>
   
