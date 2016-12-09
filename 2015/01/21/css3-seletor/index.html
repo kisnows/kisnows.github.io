@@ -1,0 +1,939 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习笔记,CSS3," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杂货店" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="属性选择器
+E[att^=&amp;quot;val&amp;quot;]：选择att属性值以val开头的E元素。
+E[att$=&amp;quot;val&amp;quot;]：选择att属性值以val结尾的E元素。
+E[att*=&amp;quot;val&amp;quot;]：选择att属性值包含val的E元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css3选择器整理">
+<meta property="og:url" content="http://kisnows.com/2015/01/21/css3-seletor/index.html">
+<meta property="og:site_name" content="杂货店">
+<meta property="og:description" content="属性选择器
+E[att^=&amp;quot;val&amp;quot;]：选择att属性值以val开头的E元素。
+E[att$=&amp;quot;val&amp;quot;]：选择att属性值以val结尾的E元素。
+E[att*=&amp;quot;val&amp;quot;]：选择att属性值包含val的E元素。">
+<meta property="og:updated_time" content="2016-04-13T13:05:17.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css3选择器整理">
+<meta name="twitter:description" content="属性选择器
+E[att^=&amp;quot;val&amp;quot;]：选择att属性值以val开头的E元素。
+E[att$=&amp;quot;val&amp;quot;]：选择att属性值以val结尾的E元素。
+E[att*=&amp;quot;val&amp;quot;]：选择att属性值包含val的E元素。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kisnows.com/2015/01/21/css3-seletor/"/>
+
+
+
+
+
+  <title> css3选择器整理 | 杂货店 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-58453734-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?be602d9678e35053ae404d6230640d41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杂货店</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Seize the day.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/01/21/css3-seletor/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="桥抹余晖">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/imgs/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="杂货店">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="杂货店" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                css3选择器整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-21T20:16:33+08:00">
+                2015-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2015/01/21/css3-seletor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/21/css3-seletor/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/01/21/css3-seletor/" class="leancloud_visitors" data-flag-title="css3选择器整理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><ul>
+<li><code>E[att^=&quot;val&quot;]</code>：选择<code>att</code>属性值以<code>val</code><strong>开头</strong>的E元素。</li>
+<li><code>E[att$=&quot;val&quot;]</code>：选择<code>att</code>属性值以<code>val</code><strong>结尾</strong>的E元素。</li>
+<li><code>E[att*=&quot;val&quot;]</code>：选择<code>att</code>属性值<strong>包含</strong><code>val</code>的E元素。</li>
+</ul>
+<a id="more"></a>
+<h2 id="结构性伪类选择器"><a href="#结构性伪类选择器" class="headerlink" title="结构性伪类选择器"></a>结构性伪类选择器</h2><p><strong>:root:</strong> 根选择器，匹配元素所在文档的根元素。在<code>HTML</code>中，根元素始终为<code>&lt;html&gt;</code>。<br><strong>:not :</strong> 否定选择器，选择某元素以外的所有元素。下面的代码，最终会为<code>type=button</code>的元素设置红色的背景。</p>
+<pre><code>&lt;style&gt;
+    input:not([type=&quot;text&quot;]){background-color: red};
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;input type=&apos;text&apos;&gt;
+    &lt;input type=&apos;text&apos;&gt;
+    &lt;input type=&apos;button&apos;&gt;
+&lt;/body&gt;
+</code></pre><p><strong>:empty</strong>: 空选择器，选择内容为空的元素。空元素为里面什么都没有的元素，包括空格。<br><strong>:target</strong>: 目标选择器，匹配文档的url的某个标志符的目标元素。下面的代码可以给每个a添加点击事件，当点击a1时，id=’a1’元素的背景会变成红色，其他同理。</p>
+<pre><code>&lt;style&gt;
+    #a1:target{background-color: red}
+    #a2:target{background-color: blue}
+    #a3:target{background-color: yellow}
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;a href=&quot;#a1&quot;&gt;a1&lt;/a&gt;
+    &lt;a href=&quot;#a2&quot;&gt;a2&lt;/a&gt;
+    &lt;a href=&quot;#a3&quot;&gt;a3&lt;/a&gt;
+    &lt;div id=&quot;a1&quot;&gt;a1&lt;/div&gt;
+    &lt;div id=&quot;a2&quot;&gt;a2&lt;/div&gt;
+    &lt;div id=&quot;a3&quot;&gt;a3&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><p><strong>:first-child</strong>: 选择父元素的第一个子元素,<code>ul li:first-child</code>，选择ul下的第一个li元素。<br><strong>:last-child</strong>: 与上一个选择相反，选择最后一个子元素。<br><strong>nth-child(n)</strong>: 选择父元素下的一个或多个指定的子元素。其实n是一个参数，可以是一个数字，也可以是一个表达式。<br>选择ul下序号为偶数（即第二个和第四个，n从零算起）的li，并将其字体设置为黄色。</p>
+<pre><code>li:nth-child(2n){color:yellow;}
+&lt;ul&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p><strong>nth-last-child(n)</strong>: 和上一个选择器相反，从父元素的最后一个子元素开始算起，来选择指定的元素。<br><strong>first-of-type</strong>: 选择父元素下第一个指定tpye的元素，<code>div p:first-of-type</code>,选择一个div里的第一个p元素。<br><strong>nth-of-type(n)</strong>: 与<code>nth-child(n)</code>类似，选择父元素中指定type的指定位置的元素。<code>div p:nth-of-type(3)</code>,选择div下第3个p元素。<br><strong>last-of-type</strong>: 与<code>first-of-type</code>类似，不过选择是父元素下最后指定type的元素。<br><strong>nth-last-of-type(n)</strong>: 与<code>nth-of-type(n)</code>类似，不同的是从父元素的后面开始选择。<br><strong>only-child</strong>: <code>div p:only-child</code>当有多个div时，选择仅有一个元素的div下的p元素。<br>仅第一个ul下的li的颜色会变成橘色，其他li的不变。</p>
+<pre><code>li:only-child{color: orange}
+&lt;ul&gt;
+    &lt;li&gt;你好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+    &lt;li&gt;Hello World&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p><strong>only-of-type</strong>: 与上一个类似，不同之处为选择父级下只有一个指定type的元素的子元素。</p>
+<h2 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h2><p><strong>:enable</strong>: 表单中，有可用（“:enabled”）和不可用（“:disabled”）两种状态。此选择其选择可用状态的元素。<br><strong>:disbale</strong>: 与上一个选择器类似，选择不可用状态的元素。<br><strong>checked</strong>: 单选按钮和复选按钮都具有选中和未选中状态。此选择器选择选中状态下的按钮。<br><strong>selection</strong>: 伪元素是用来匹配突出显示的文本(即用鼠标选则文本时的文本)。浏览器默认情况下，用鼠标选择网页文本是以“蓝色背景，白色字体”显示。<code>::selection{color:black;}</code>,将选中的文本夜色变为黑色。<br><strong>read-only</strong>: 选择只读状态的元素。即设置了”readonly=’readonly’”,(在html5中为直接设置readonly的元素)。<br><strong>read-write</strong>: 与read-only相反，选择处于可读写状态的元素。<br><strong>before</strong>: 用来给元素前面插入内容。<br><strong>after</strong>: 给元素后面插入内容。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+            <a href="/tags/css3/" rel="tag"># CSS3</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/21/jQuery-plugin-elefixed/" rel="next" title="elefixed">
+                <i class="fa fa-chevron-left"></i> elefixed
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/25/rase-shadow/" rel="prev" title="翘边阴影制作方法">
+                翘边阴影制作方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/imgs/avatar.jpg"
+               alt="桥抹余晖" />
+          <p class="site-author-name" itemprop="name">桥抹余晖</p>
+          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性选择器"><span class="nav-number">1.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构性伪类选择器"><span class="nav-number">2.</span> <span class="nav-text">结构性伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他选择器"><span class="nav-number">3.</span> <span class="nav-text">其他选择器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">桥抹余晖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'kisnowsblog';
+      var disqus_identifier = '2015/01/21/css3-seletor/';
+
+      var disqus_title = "css3选择器整理";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,905 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,Express,开发环境," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杂货店" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="原文发布于我的博客
+为什么要搭这么一套框架公司 Pc 端以前遗留的项目，都是基于jekyll+ruby-sass这一套比较老的技术搭建的。不过 jekyll 的模版继承加上 sass 强大预处理能力，同时配合 Grunt 做任务管理，一切还是很得心应手的。
+然而随着项目规模的急剧增大，这一套东西的速度是在是太慢了，一至于后来一旦这个项目有需要求要改我就头疼，倒不是说头疼需求怎么改，而是你随便改一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境">
+<meta property="og:url" content="http://kisnows.com/2015/11/02/dev-environment-Express-Gulp-BrowserSync/index.html">
+<meta property="og:site_name" content="杂货店">
+<meta property="og:description" content="原文发布于我的博客
+为什么要搭这么一套框架公司 Pc 端以前遗留的项目，都是基于jekyll+ruby-sass这一套比较老的技术搭建的。不过 jekyll 的模版继承加上 sass 强大预处理能力，同时配合 Grunt 做任务管理，一切还是很得心应手的。
+然而随着项目规模的急剧增大，这一套东西的速度是在是太慢了，一至于后来一旦这个项目有需要求要改我就头疼，倒不是说头疼需求怎么改，而是你随便改一个">
+<meta property="og:image" content="http://kisnows.com/imgs/dev-environment/compile-time.png">
+<meta property="og:image" content="http://kisnows.com/imgs/dev-environment/structure.png">
+<meta property="og:updated_time" content="2016-04-27T14:33:17.457Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境">
+<meta name="twitter:description" content="原文发布于我的博客
+为什么要搭这么一套框架公司 Pc 端以前遗留的项目，都是基于jekyll+ruby-sass这一套比较老的技术搭建的。不过 jekyll 的模版继承加上 sass 强大预处理能力，同时配合 Grunt 做任务管理，一切还是很得心应手的。
+然而随着项目规模的急剧增大，这一套东西的速度是在是太慢了，一至于后来一旦这个项目有需要求要改我就头疼，倒不是说头疼需求怎么改，而是你随便改一个">
+<meta name="twitter:image" content="http://kisnows.com/imgs/dev-environment/compile-time.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kisnows.com/2015/11/02/dev-environment-Express-Gulp-BrowserSync/"/>
+
+
+
+
+
+  <title> 基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境 | 杂货店 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-58453734-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?be602d9678e35053ae404d6230640d41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杂货店</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Seize the day.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/11/02/dev-environment-Express-Gulp-BrowserSync/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="桥抹余晖">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/imgs/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="杂货店">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="杂货店" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-02T20:45:23+08:00">
+                2015-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/02/dev-environment-Express-Gulp-BrowserSync/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/" class="leancloud_visitors" data-flag-title="基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文发布于<a href="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/">我的博客</a></p>
+<h1 id="为什么要搭这么一套框架"><a href="#为什么要搭这么一套框架" class="headerlink" title="为什么要搭这么一套框架"></a>为什么要搭这么一套框架</h1><p>公司 Pc 端以前遗留的项目，都是基于jekyll+ruby-sass这一套比较老的技术搭建的。不过 jekyll 的模版继承加上 sass 强大预处理能力，同时配合 Grunt 做任务管理，一切还是很得心应手的。</p>
+<p>然而随着项目规模的急剧增大，这一套东西的速度是在是太慢了，一至于后来一旦这个项目有需要求要改我就头疼，倒不是说头疼需求怎么改，而是你随便改一个文件，从 jekyll 检测到改动到编译完 sass 到浏览器自动刷新，基本需要 40+ s，这完全不能接受。</p>
+<p>于是一直就打算新搭一套开发环境，刚好前段时间有个新项目，我就拿来操刀动手了，目前已经用它做了俩个项目下来，在原有基础上做了一些修改之后，已经完全可以替代原来那一套懂了。</p>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>得益于 node-sass 对 ruby-sass 在编译速度上的碾压以及被 jade 完爆的 jekyll。现在项目中从文件变动=&gt;编译完成=&gt;浏览器自动刷新，整个过程在 1s 左右，可以说速度提升了几十倍。<br>而且整个过程都是全自动的，无论你修改了 js,css 还是 html 文件，浏览器都会在重新编译完成后自动刷新。<br><img src="/imgs/dev-environment/compile-time.png" alt="编译时间"></p>
+<h2 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h2><p>这是项目开发时的文件结构：<br><a id="more"></a></p>
+<p><img src="/imgs/dev-environment/structure.png" alt="文件结构"></p>
+<p>其中 public,router,views 都是 express 默认的文件结构，这里就不做介绍了。<br>submodule 是我们不同项目中公用的代码库，这样可以少写很多公共代码。</p>
+<h1 id="技术细节"><a href="#技术细节" class="headerlink" title="技术细节"></a>技术细节</h1><p>整个项目的技术栈是 jade+node-sass+js，实现全自动开发。<br>首先在 views 下面，定义好 jade 模版文件，然后开始新加页面</p>
+<h2 id="关系依赖"><a href="#关系依赖" class="headerlink" title="关系依赖"></a>关系依赖</h2><p>这个环境，主要基于 Express,Gulp 以及一系列的Gulp插件搭建，这个是开发环境的依赖关系：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"dependencies"</span>: &#123;</div><div class="line">    <span class="string">"body-parser"</span>: <span class="string">"~1.13.2"</span>,</div><div class="line">    <span class="string">"cookie-parser"</span>: <span class="string">"~1.3.5"</span>,</div><div class="line">    <span class="string">"debug"</span>: <span class="string">"~2.2.0"</span>,</div><div class="line">    <span class="string">"express"</span>: <span class="string">"~4.13.1"</span>,</div><div class="line">    <span class="string">"jade"</span>: <span class="string">"~1.11.0"</span>,</div><div class="line">    <span class="string">"morgan"</span>: <span class="string">"~1.6.1"</span>,</div><div class="line">    <span class="string">"serve-favicon"</span>: <span class="string">"~2.3.0"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;</div><div class="line">    <span class="string">"browser-sync"</span>: <span class="string">"^2.9.1"</span>,</div><div class="line">    <span class="string">"del"</span>: <span class="string">"^2.0.2"</span>,</div><div class="line">    <span class="string">"gulp"</span>: <span class="string">"^3.9.0"</span>,</div><div class="line">    <span class="string">"gulp-autoprefixer"</span>: <span class="string">"^3.0.1"</span>,</div><div class="line">    <span class="string">"gulp-jade"</span>: <span class="string">"^1.1.0"</span>,</div><div class="line">    <span class="string">"gulp-nodemon"</span>: <span class="string">"^2.0.4"</span>,</div><div class="line">    <span class="string">"gulp-sass"</span>: <span class="string">"^2.0.4"</span>,</div><div class="line">    <span class="string">"gulp-sourcemaps"</span>: <span class="string">"^1.5.2"</span>,</div><div class="line">    <span class="string">"jade"</span>: <span class="string">"^1.11.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中，express 主要用来渲染 jade 模版引擎以及提供路由功能，同时起一个本地的服务器。有人说，渲染jade 模版，我直接用 gulp 也可以啊。是的，gulp 是可以直接渲染 jade 模版，但是有一个问题，就是如果你本地只修改了一个 jade 文件时候，gulp 也需要把所有的 jade 文件全部渲染一遍，这明显会浪费很多时间。</p>
+<p>所以我引入了 express，只会按需渲染 jade，节省了很多时间。同时一个高效的开发环境必须有浏览器自动刷新，但是 express 没有这个功能。所以我引入了 browser-sync，用它来代理 express 启动的本地服务，然后来监测本地文件的变动，来做到浏览器自动刷新。</p>
+<p>有同学可能会问了，如果我改了 express 相应的 js 文件怎么办，或者 jade 文件编译出错了怎么办。因为这些时候 express 服务器都会 crash 掉，需要重启。所以我引入了 nodemon，来做 express 服务器的自动重启功能。</p>
+<p>在这个环境下面，我在开发中所能碰到的所有 jade，scss，js 文件的改动都会被检测到并作出相应的动作，而且速度还非常快。让我可以花更多时间在业务代码的开发上，而不是不断重启服务和刷新浏览器。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>这个东西被我放到 Github上了，<a href="https://github.com/kisnows/Express-Gulp-BrowserSync" target="_blank" rel="external">地址在这。</a></p>
+<p>同时附上 gulpfile 全文，以供参考：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>);</div><div class="line"><span class="keyword">var</span> reload = browserSync.reload;</div><div class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</div><div class="line"><span class="keyword">var</span> prefix = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>);</div><div class="line"><span class="keyword">var</span> nodemon = <span class="built_in">require</span>(<span class="string">'gulp-nodemon'</span>);</div><div class="line"><span class="keyword">var</span> sourcemaps = <span class="built_in">require</span>(<span class="string">'gulp-sourcemaps'</span>);</div><div class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'gulp-jade'</span>);</div><div class="line"><span class="keyword">var</span> stylus = <span class="built_in">require</span>(<span class="string">'gulp-stylus'</span>);</div><div class="line"><span class="keyword">var</span> rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>);</div><div class="line"><span class="keyword">var</span> del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div><div class="line"></div><div class="line"><span class="comment">//dev task start</span></div><div class="line"><span class="comment">//DONE can not compile the sass or less file</span></div><div class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src([<span class="string">'./sass/personal.scss'</span>])</div><div class="line">    .pipe(sourcemaps.init())</div><div class="line">    .pipe(sass(&#123;errLogToConsole: <span class="literal">true</span>&#125;)</div><div class="line">      .on(<span class="string">'error'</span>, sass.logError))</div><div class="line">    .pipe(prefix(<span class="string">'last 2 versions'</span>, <span class="string">'&gt; 1%'</span>, <span class="string">'ie 8'</span>, <span class="string">'Android 2'</span>))</div><div class="line">    .pipe(sourcemaps.write())</div><div class="line">    .pipe(gulp.dest(<span class="string">'./public/css'</span>))</div><div class="line">    .pipe(reload(&#123;stream: <span class="literal">true</span>&#125;));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'browser-sync'</span>, [<span class="string">'nodemon'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  browserSync.init(<span class="literal">null</span>, &#123;</div><div class="line">    proxy: <span class="string">'http://localhost:3000'</span>,</div><div class="line">    files: [<span class="string">'public/**/*.*'</span>, <span class="string">'views/**/*.*'</span>, <span class="string">'submodule/**/*.*'</span>],</div><div class="line">    browser: <span class="string">'google chrome'</span>,</div><div class="line">    notify: <span class="literal">false</span>,</div><div class="line">    port: <span class="number">5000</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'movesub'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src([<span class="string">'./submodule/images/**/*.*'</span>], &#123;base: <span class="string">'./submodule'</span>&#125;)</div><div class="line">    .pipe(gulp.dest(<span class="string">'./public'</span>))</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'stylus'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'submodule/stylus/public.styl'</span>)</div><div class="line">    .pipe(stylus())</div><div class="line">    .pipe(rename(&#123;</div><div class="line">      extname: <span class="string">'.scss'</span></div><div class="line">    &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'submodule/stylus/'</span>))</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'nodemon'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</div><div class="line">  del([<span class="string">'./public/*.html'</span>]);</div><div class="line"></div><div class="line">  <span class="keyword">var</span> called = <span class="literal">false</span>;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> nodemon(&#123;</div><div class="line">    script: <span class="string">'bin/www'</span></div><div class="line">  &#125;).on(<span class="string">'start'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!called) &#123;</div><div class="line">      cb();</div><div class="line">      called = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//dev task end</span></div><div class="line"></div><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</div><div class="line">  del([<span class="string">'./dist/*'</span>], cb)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'copy'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src([</div><div class="line">    <span class="string">'public/css/**/*'</span>,</div><div class="line">    <span class="string">'public/images/**/*'</span>,</div><div class="line">    <span class="string">'public/js/**/*'</span>,</div><div class="line">    <span class="string">'public/pageScripts/**/*'</span></div><div class="line">  ], &#123;base: <span class="string">'./public'</span>&#125;)</div><div class="line">  .pipe(gulp.dest(<span class="string">'./dist'</span>))</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//build task start</span></div><div class="line"><span class="comment">//DONE add build task</span></div><div class="line">gulp.task(<span class="string">'jade'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src([<span class="string">'views/**/*.jade'</span>, <span class="string">'!views/layout/**/*.jade'</span>, <span class="string">'!views/includes/**/*.jade'</span>])</div><div class="line">    .pipe(jade(&#123;pretty: <span class="literal">true</span>&#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./dist'</span>));</div><div class="line">&#125;);</div><div class="line"><span class="comment">//build task end</span></div><div class="line"></div><div class="line">gulp.task(<span class="string">'dist'</span>, [<span class="string">'clean'</span>, <span class="string">'copy'</span>, <span class="string">'jade'</span>]);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'browser-sync'</span>, <span class="string">'sass'</span>, <span class="string">'movesub'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  gulp.watch([<span class="string">'sass/**/*.*'</span>, <span class="string">'.submodule/stylus/**/*.*'</span>], [<span class="string">'sass'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/express/" rel="tag"># Express</a>
+          
+            <a href="/tags/开发环境/" rel="tag"># 开发环境</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/19/first-contact-of-canvas/" rel="next" title="Canvas 基础">
+                <i class="fa fa-chevron-left"></i> Canvas 基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/26/react-v2ex/" rel="prev" title="react-v2ex">
+                react-v2ex <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/imgs/avatar.jpg"
+               alt="桥抹余晖" />
+          <p class="site-author-name" itemprop="name">桥抹余晖</p>
+          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要搭这么一套框架"><span class="nav-number">1.</span> <span class="nav-text">为什么要搭这么一套框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能"><span class="nav-number">1.1.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件结构"><span class="nav-number">1.2.</span> <span class="nav-text">文件结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技术细节"><span class="nav-number">2.</span> <span class="nav-text">技术细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关系依赖"><span class="nav-number">2.1.</span> <span class="nav-text">关系依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">桥抹余晖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'kisnowsblog';
+      var disqus_identifier = '2015/11/02/dev-environment-Express-Gulp-BrowserSync/';
+
+      var disqus_title = "基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
