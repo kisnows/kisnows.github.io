@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kisnows.com/"/>
-  <updated>2017-03-16T13:07:32.520Z</updated>
+  <updated>2017-03-17T14:07:35.840Z</updated>
   <id>http://kisnows.com/</id>
   
   <author>
@@ -14,6 +14,104 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个 React Form 组件的重构思路</title>
+    <link href="http://kisnows.com/2017/03/17/react-form-rework-thinking/"/>
+    <id>http://kisnows.com/2017/03/17/react-form-rework-thinking/</id>
+    <published>2017-03-17T13:31:31.000Z</published>
+    <updated>2017-03-17T14:07:35.840Z</updated>
+    
+    <content type="html">&lt;p&gt;最近对团队内部 React 组件库（&lt;a href=&quot;https://github.com/NE-LOAN-FED/NE-Component&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ne-rc&lt;/strong&gt;&lt;/a&gt;）中的 Form 组件进行了重构，记录一下思考的过程。&lt;/p&gt;
+&lt;p&gt;一些前置定义：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名词&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;表单&lt;/td&gt;
+&lt;td&gt;Form 组件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;子表单&lt;/td&gt;
+&lt;td&gt;嵌套在 Form 下面的类似 Input, Select 这样的子组件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;首先我们看一下，我们的对 Form 组件的需求是什么。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取当前变动表单的状态&lt;ul&gt;
+&lt;li&gt;校验所有必填表单是否填写完成&lt;/li&gt;
+&lt;li&gt;对外触发具体表单变化的方法 &lt;code&gt;formFieldChange&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;暴露对外提供整个表单状态的方法&lt;ul&gt;
+&lt;li&gt;提供整个表单最新状态的方法 $Form.data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;提交方法&lt;ul&gt;
+&lt;li&gt;校验表单是否通过校验&lt;/li&gt;
+&lt;li&gt;对外触发 &lt;code&gt;formSubmit&lt;/code&gt; 方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接着我们从重构前和重构后，看如何来解决这个问题。&lt;/p&gt;
+&lt;h1 id=&quot;Before&quot;&gt;&lt;a href=&quot;#Before&quot; class=&quot;headerlink&quot; title=&quot;Before&quot;&gt;&lt;/a&gt;&lt;strong&gt;Before&lt;/strong&gt;&lt;/h1&gt;&lt;h2 id=&quot;获取当前变动表单的状态&quot;&gt;&lt;a href=&quot;#获取当前变动表单的状态&quot; class=&quot;headerlink&quot; title=&quot;获取当前变动表单的状态&quot;&gt;&lt;/a&gt;获取当前变动表单的状态&lt;/h2&gt;&lt;h3 id=&quot;如何获取变动的子表单&quot;&gt;&lt;a href=&quot;#如何获取变动的子表单&quot; class=&quot;headerlink&quot; title=&quot;如何获取变动的子表单&quot;&gt;&lt;/a&gt;如何获取变动的子表单&lt;/h3&gt;&lt;p&gt;React 父子通信需要通过 prop 传递方法，对于 Form 下面的类似与 Input 之类的子表单的变化想要通知到父级，如果不借助第三方的事件传递方法，那么就只能通过由父级通过 props 向 Input 传递 &lt;code&gt;formFieldChange&lt;/code&gt;（假设就叫这个名字）方法，然后当子组件变化时去调用 &lt;code&gt;formFieldChange&lt;/code&gt; 来实现。&lt;/p&gt;
+&lt;p&gt;那么问题来了，什么时候去传递这个方法呢？&lt;/p&gt;
+&lt;p&gt;不能在具体页面里面使用的时候再去每条表单里面注册这个方法，那每个用到表单组件的时候就都需要给子表单进行这样的事件绑定，这样太累了。&lt;/p&gt;
+&lt;p&gt;所以一开始，我选择通过直接递归的遍历 Form 下面的 children，只要发现这个 children 是我想要的表单类型，那么就重新克隆一个带有 &lt;code&gt;formFieldChange&lt;/code&gt; 的组件来替换掉原来的组件。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  * 获取 form 下面每一个表单对象，注入属性，并收集起来&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  * @param children&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  * @returns &amp;#123;*&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  */&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getForms&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;children&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.Children.map(children, (el, i) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!el) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (el.type) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; Input:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Forms.push(el)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.cloneElement(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          el,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            key: i,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            formFieldChange,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            emptyInput&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; Select:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Forms.push(el)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.cloneElement(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          el,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            key: i,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            formFieldChange&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; CheckBox:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Forms.push(el)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.cloneElement(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          el,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            key: i,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            formFieldChange&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (el.props &amp;amp;&amp;amp; el.props.children &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; children = getForms(el.props.children)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.cloneElement(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            el,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              key: i,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              children&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; el&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这样，所有的特定子组件就都可以拿到被注册的方法。以 Input 为例，在 Input 的 &lt;code&gt;onChange&lt;/code&gt; 方法里面去调用从父级 props 传入的 &lt;code&gt;formFieldChange&lt;/code&gt; 就可以通知到 Form 组件了。&lt;/p&gt;
+&lt;h3 id=&quot;收集变动表单的数据。&quot;&gt;&lt;a href=&quot;#收集变动表单的数据。&quot; class=&quot;headerlink&quot; title=&quot;收集变动表单的数据。&quot;&gt;&lt;/a&gt;收集变动表单的数据。&lt;/h3&gt;&lt;p&gt;前一步完成后，这一步就比较简单了，Input 在调用 &lt;code&gt;formFieldChange&lt;/code&gt; 的时候把想要传递的数据作为参数传进去，在 Form 里面去对这个参数做处理，就可以拿到当前变动的表单状态数据了。&lt;/p&gt;
+&lt;h3 id=&quot;校验表单是否填写完成&quot;&gt;&lt;a href=&quot;#校验表单是否填写完成&quot; class=&quot;headerlink&quot; title=&quot;校验表单是否填写完成&quot;&gt;&lt;/a&gt;校验表单是否填写完成&lt;/h3&gt;&lt;p&gt;前面我们收集了每一条变动表单的数据。但是要判断当前 Form 下面的表单是否填写完成，那么首先需要知道我们有多少个需要填写的表单，然后在 &lt;code&gt;formFieldChange&lt;/code&gt; 的时候进行判断就可以了。如何来提前知道我们有多少需要填写的 Field 呢，之前我选择的是通过在使用 Form 的时候先初始化一个包含所有表单初始化状态的数据。&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Form&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;React&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;Component&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;(props) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(props)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.Forms = []&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.formState = &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;.assign(&amp;#123;&amp;#125;, &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      isComplete: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      isValidate: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      errorMsg: &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      data: &amp;#123;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;, &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.props.formState)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; propTypes = &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    onChange: PropTypes.func,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    onSubmit: PropTypes.func,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    formState: PropTypes.object&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;// 初始化一个类似这样的对象传递给 Form&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;formState: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  data: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    realName: &amp;#123;&amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    cityId: &amp;#123;&amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    email: &amp;#123;&amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    relativeName: &amp;#123;&amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    relativePhone: &amp;#123;&amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    companyName: &amp;#123;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;,&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样就很粗暴的解决了这个问题，但是这中间存在很多问题。&lt;/p&gt;
+&lt;p&gt;因为限定了特定的组件类型（Input，Select，CheckBox），导致不利于扩展，如果在开发过程遇到其他类型的比如自定义的子表单，那么 Form 就没法对这个自定义子表单进行数据收集，解决起来比较麻烦。&lt;/p&gt;
+&lt;p&gt;所以就在考虑另一个种实现方式， Form 只去收集一个特定条件下的组件，只要这个组件满足了这个条件，并实现了对应的接口，那么 Form 就都可以去收集处理。这样也就大大挺高了适用性。&lt;/p&gt;
+&lt;h2 id=&quot;暴露对外提供整个表单状态的方法&quot;&gt;&lt;a href=&quot;#暴露对外提供整个表单状态的方法&quot; class=&quot;headerlink&quot; title=&quot;暴露对外提供整个表单状态的方法&quot;&gt;&lt;/a&gt;暴露对外提供整个表单状态的方法&lt;/h2&gt;&lt;p&gt;通过在外监听每次 Form 触发的 &lt;code&gt;onChange&lt;/code&gt; 事件来获取整个 Form 的状态。&lt;/p&gt;
+&lt;h2 id=&quot;提交方法&quot;&gt;&lt;a href=&quot;#提交方法&quot; class=&quot;headerlink&quot; title=&quot;提交方法&quot;&gt;&lt;/a&gt;提交方法&lt;/h2&gt;&lt;h3 id=&quot;检验表单是否通过校验&quot;&gt;&lt;a href=&quot;#检验表单是否通过校验&quot; class=&quot;headerlink&quot; title=&quot;检验表单是否通过校验&quot;&gt;&lt;/a&gt;检验表单是否通过校验&lt;/h3&gt;&lt;p&gt;已经有了整个 Form 的数据对象，做校验并不是什么困难。通过校验的时候调用 &lt;code&gt;formSubmit&lt;/code&gt; 方法，没有通过校验的时候对外把错误信息添加到 Form 的 state 上去。&lt;/p&gt;
+&lt;h3 id=&quot;对外触发-formSubmit-方法&quot;&gt;&lt;a href=&quot;#对外触发-formSubmit-方法&quot; class=&quot;headerlink&quot; title=&quot;对外触发 formSubmit 方法&quot;&gt;&lt;/a&gt;对外触发 formSubmit 方法&lt;/h3&gt;&lt;p&gt;当表单通过校验的时候，对外触发 &lt;code&gt;formSubmit&lt;/code&gt; 方法，把要提交的数据作为 &lt;code&gt;formSubmit&lt;/code&gt; 的参数传递给外面。&lt;/p&gt;
+&lt;h1 id=&quot;After&quot;&gt;&lt;a href=&quot;#After&quot; class=&quot;headerlink&quot; title=&quot;After&quot;&gt;&lt;/a&gt;&lt;strong&gt;After&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;前面是之前写的 Form 组件的一些思路，在实际使用中也基本能满足业务需求。&lt;/p&gt;
+&lt;p&gt;但是整个 Form 的可拓展性比较差，无法很好的接入其他自定义的组件。所以萌生了重写的想法。&lt;/p&gt;
+&lt;p&gt;对于重写的这个 Form，我的想法是：首先一定要方便使用，不需要一大堆的起始工作；其次就是可拓展性要强，除了自己已经提供的内在 Input，Select 等能够接入 Form 外，对于其他的业务中的特殊需求需要接入 Form 的时候，只要这个组件实现了特定的接口就可以了很方便的接入，而不需要大量的去修改组件内部的代码。&lt;/p&gt;
+&lt;p&gt;重构主要集中在上面需求 1 里面的内容，也就是：&lt;strong&gt;获取当前变动表单的状态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;获取当前表单的状态分解下来有一下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取所有需要收集的子表单 &lt;code&gt;formFields&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;初始化 Form &lt;code&gt;state&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;表单下面子表单数量或类型发生变化时更新 1 里面创建的 &lt;code&gt;formFields&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;子表单内部状态发生变化时通知到父表单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;获取当前变动表单的状态-1&quot;&gt;&lt;a href=&quot;#获取当前变动表单的状态-1&quot; class=&quot;headerlink&quot; title=&quot;获取当前变动表单的状态&quot;&gt;&lt;/a&gt;获取当前变动表单的状态&lt;/h2&gt;&lt;h3 id=&quot;获取所有需要的子表单&quot;&gt;&lt;a href=&quot;#获取所有需要的子表单&quot; class=&quot;headerlink&quot; title=&quot;获取所有需要的子表单&quot;&gt;&lt;/a&gt;获取所有需要的子表单&lt;/h3&gt;&lt;p&gt;同样通过递归遍历 children 来获取需要收集的子表单，通过子表单的 type.name 命名规则是否符合我们的定义来决定是否要进行收集。&lt;br&gt;直接来看代码：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;collectFormField = (children) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; handleFieldChange = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.handleFieldChange&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 简单粗暴，在 Form 更新的时候直接清空上一次保存的 formFields，全量更新，&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 避免 formFields 内容或者数量发生变化时 this.formFields 数据不正确的问题&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; FormFields = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.formFields = []&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getChildList&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;children&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.Children.map(children, (el, i) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;// 只要 Name 以 _Field 开头，就认为是需要 From 管理的组件&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!el || el === &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; reg = &lt;span class=&quot;regexp&quot;&gt;/^_Field/&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; childName = el.type &amp;amp;&amp;amp; el.type.name&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (reg.test(childName)) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        FormFields.push(el)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.cloneElement(el, &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          key: i,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          handleFieldChange&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (el.props &amp;amp;&amp;amp; el.props.children) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; children = getChildList(el.props.children)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; React.cloneElement(el, &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            key: i,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            children&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;#125;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; el&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;只要组件的 class name 以 _Field 开头，就把它收集起来，并传入 &lt;code&gt;handleFieldChange&lt;/code&gt; 方法，这样当一个自定义组件接入的时候，只需要在外面包一层，并把 class 的命名为以 _Field 开头的格式就可以被 Form 收集管理了。&lt;/p&gt;
+&lt;p&gt;接入组件里面需要做的就是，在合适的时机调用 &lt;code&gt;handleFieldChange&lt;/code&gt; 方法，并把要传递的数据作为参数传递出来就可以了。&lt;/p&gt;
+&lt;p&gt;为什么一定要执迷不悟的使用遍历这种低效的方式去收集呢，其实都是为了组件上使用的方便。这样就不需要每次在引用的时候在对子表单做什么操作了。&lt;/p&gt;
+&lt;h3 id=&quot;初始化-Form-state&quot;&gt;&lt;a href=&quot;#初始化-Form-state&quot; class=&quot;headerlink&quot; title=&quot;初始化 Form state&quot;&gt;&lt;/a&gt;初始化 Form state&lt;/h3&gt;&lt;p&gt;上一步拿到了所有的子表单，然后通过调用 &lt;code&gt;initialFormDataStructure&lt;/code&gt; 拿来初始化 Form 的 &lt;code&gt;state.data&lt;/code&gt; 的结构，同时通知到外面 Form 发生了变化。&lt;/p&gt;
+&lt;h3 id=&quot;子表单数量或类型发生变化时&quot;&gt;&lt;a href=&quot;#子表单数量或类型发生变化时&quot; class=&quot;headerlink&quot; title=&quot;子表单数量或类型发生变化时&quot;&gt;&lt;/a&gt;子表单数量或类型发生变化时&lt;/h3&gt;&lt;p&gt;当 Form 下面子组件被添加或删除时，需要及时更新 Form Data 的结构。通过调用 &lt;code&gt;updateFormDataStructure&lt;/code&gt;&lt;br&gt;把新增的或者修改的子表单更新到最新，并通知到外面 Form 发生了变化。&lt;/p&gt;
+&lt;h3 id=&quot;子表单内部状态发生变化时&quot;&gt;&lt;a href=&quot;#子表单内部状态发生变化时&quot; class=&quot;headerlink&quot; title=&quot;子表单内部状态发生变化时&quot;&gt;&lt;/a&gt;子表单内部状态发生变化时&lt;/h3&gt;&lt;p&gt;在第一步收集子表单的时候就已经把 &lt;code&gt;handleFieldChange&lt;/code&gt; 注入到了子表单组件里面，所以子表单来决定调用的时机。当 &lt;code&gt;handleFieldChange&lt;/code&gt; 被调用的时候，首先对 Form &lt;code&gt;state&lt;/code&gt; 进行更新，然后外通知子表单发生了变化，同时通知外面 Form 发生了变化。&lt;/p&gt;
+&lt;p&gt;这样看起来整个流程就走通了，但实际上存在很多问题。&lt;/p&gt;
+&lt;p&gt;首先由于 &lt;code&gt;setState&lt;/code&gt; 是一个异步的过程，只有在 &lt;code&gt;render&lt;/code&gt; 后才能获取到最新的 &lt;code&gt;state&lt;/code&gt;. 这就导致，在一个生命周期循环内如果我多次调用了 &lt;code&gt;setState&lt;/code&gt; ，那么两次调用之间对 &lt;code&gt;state&lt;/code&gt; 的读取很可能是不准确的。（有关生命周期的详细内容可以看这篇文章：&lt;a href=&quot;https://www.w3ctech.com/topic/1596）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.w3ctech.com/topic/1596）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;所以我创建了一个临时变量 &lt;code&gt;currentState&lt;/code&gt; 来存放当前状态下最新的 &lt;code&gt;state&lt;/code&gt;，每次 &lt;code&gt;setState&lt;/code&gt; 的时候都对其进行更新。&lt;/p&gt;
+&lt;p&gt;另一个问题是当 Form 发生变化的时候，&lt;code&gt;updateFormDataStructure&lt;/code&gt; 调用的过于频繁。其实只有在子表单的数量或者类型发生变化时才需要更新 Form state 的结构。而直接去对比子表单的类型是否发生变化也是意见开销很大操作，所以选择另一种折中方式。通过给 Form 当前的状态打标，将 Form 可能处于的状态都标识出来：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; STATUS = &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  Init: &lt;span class=&quot;string&quot;&gt;&#39;Init&#39;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  Normal: &lt;span class=&quot;string&quot;&gt;&#39;Normal&#39;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  FieldChange: &lt;span class=&quot;string&quot;&gt;&#39;FieldChange&#39;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  UpdateFormDataStructure: &lt;span class=&quot;string&quot;&gt;&#39;UpdateFormDataStructure&#39;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  Submit: &lt;span class=&quot;string&quot;&gt;&#39;Submit&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样，只有在 Form 的 &lt;code&gt;STATUS&lt;/code&gt; 处于 &lt;code&gt;Normal&lt;/code&gt; 的时候才对其进行 &lt;code&gt;updateFormDataStructure&lt;/code&gt; 操作。这样就可以省去很多次渲染以及无效的对外触发的 &lt;code&gt;FormChange&lt;/code&gt; 事件。&lt;/p&gt;
+&lt;p&gt;提交和对外暴露 Form 状态的方法和之前基本一致，这样整个对 Form 的重构就算完成了，具体项目中使用体验还不错 O(∩_∩)O&lt;/p&gt;
+&lt;p&gt;Form 组件地址： &lt;a href=&quot;https://github.com/NE-LOAN-FED/NE-Component/tree/master/src/Form&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/NE-LOAN-FED/NE-Component/tree/master/src/Form&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最后，如果看文章的你有什么更好的想法，请告诉我😛。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近对团队内部 React 组件库（&lt;a href=&quot;https://github.com/NE-LOAN-FED/NE-Component&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ne-rc&lt;/strong&gt;&lt;/a&gt;）中的 Form
+    
+    </summary>
+    
+      <category term="技术" scheme="http://kisnows.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【翻译向】Webpack 1 到 2 升级指南</title>
@@ -1597,117 +1695,6 @@
     
       <category term="技术" scheme="http://kisnows.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>轻量级fullPage整屏滚动框架V1.3发布</title>
-    <link href="http://kisnows.com/2015/10/13/fullpage-js/"/>
-    <id>http://kisnows.com/2015/10/13/fullpage-js/</id>
-    <published>2015-10-13T12:23:40.000Z</published>
-    <updated>2016-04-13T13:06:22.762Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;项目初衷&quot;&gt;&lt;a href=&quot;#项目初衷&quot; class=&quot;headerlink&quot; title=&quot;项目初衷&quot;&gt;&lt;/a&gt;项目初衷&lt;/h1&gt;&lt;p&gt;前段时间接到一个新的项目，是一个整屏滚动的单页应用。&lt;/p&gt;
-&lt;p&gt;本来打算完全自己写的，但是由于项目时间吃紧，就用了&lt;a href=&quot;https://github.com/alvarotrigo/fullPage.js&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;fullpage&lt;/a&gt;这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。&lt;/p&gt;
-&lt;p&gt;但是它也有几个缺点，第一它必须依赖 &lt;code&gt;jQuery&lt;/code&gt;,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/kisnows/fullpage-light.js&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://kisnows.com/fullpage-light.js/&quot;&gt;一个简单的DEMO&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;changeList&quot;&gt;&lt;a href=&quot;#changeList&quot; class=&quot;headerlink&quot; title=&quot;changeList&quot;&gt;&lt;/a&gt;changeList&lt;/h1&gt;&lt;p&gt;V1.3.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;修复对firefox的支持&lt;/li&gt;
-&lt;li&gt;添加页面导航控制&lt;/li&gt;
-&lt;li&gt;解决一些bug&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;V1.1.0 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;添加自动播放 &lt;/li&gt;
-&lt;li&gt;添加循环播放&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;V1.0.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;支持移动端触摸控制&lt;/li&gt;
-&lt;li&gt;添加slide水平滑动&lt;/li&gt;
-&lt;li&gt;添加PC端键盘控制和鼠标滚轮控制&lt;/li&gt;
-&lt;li&gt;提供实用的API方便开发&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;一个轻巧的&lt;code&gt;fullpage&lt;/code&gt;框架，不依赖其他任何库，主要针对移动端设备（同时也支持桌面端），压缩后不到4kb。&lt;br&gt;轻松创建炫酷的单页滑动网站。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;兼容性&quot;&gt;&lt;a href=&quot;#兼容性&quot; class=&quot;headerlink&quot; title=&quot;兼容性&quot;&gt;&lt;/a&gt;兼容性&lt;/h1&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Android 4.1+&lt;/th&gt;
-&lt;th&gt;Safari 7.1+&lt;/th&gt;
-&lt;th&gt;IE Edge&lt;/th&gt;
-&lt;th&gt;Opera&lt;/th&gt;
-&lt;th&gt;Chrome&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;使用方法&quot;&gt;&lt;a href=&quot;#使用方法&quot; class=&quot;headerlink&quot; title=&quot;使用方法&quot;&gt;&lt;/a&gt;使用方法&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;引入 JavaScript 文件 &lt;code&gt;fullpage.js&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;引入 css 文件 &lt;code&gt;fullpage.css&lt;/code&gt;（如果你使用&lt;code&gt;less&lt;/code&gt;，则可以在less主文件中引入&lt;code&gt;fullpage.less&lt;/code&gt;）&lt;/li&gt;
-&lt;li&gt;按照下面格式书写&lt;code&gt;html&lt;/code&gt;代码（其中 id 为 &lt;code&gt;sectionContent&lt;/code&gt; 的为包裹层，你可以自定义修改其id）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;div id=&amp;quot;sectionContent&amp;quot; class=&amp;quot;fp-section-content&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;div class=&amp;quot;fp-section&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;lt;div class=&amp;quot;fp-slide-wrap&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              &amp;lt;div class=&amp;quot;fp-slide&amp;quot;&amp;gt;1&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              &amp;lt;div class=&amp;quot;fp-slide&amp;quot;&amp;gt;2&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              &amp;lt;div class=&amp;quot;fp-slide&amp;quot;&amp;gt;3&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              &amp;lt;div class=&amp;quot;fp-slide&amp;quot;&amp;gt;4&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;              &amp;lt;div class=&amp;quot;fp-slide&amp;quot;&amp;gt;5&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;div class=&amp;quot;fp-section&amp;quot;&amp;gt;2&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;div class=&amp;quot;fp-section&amp;quot;&amp;gt;3&amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;/div&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h1&gt;&lt;p&gt;简单使用，只要在页面加载完成后执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;fullpage.init(&amp;apos;#sectionContent&amp;apos;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果需要定制化，则需要如下方法：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;fullpage.init(&amp;apos;#sectionContent&amp;apos;,&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       threshold: 10,              //触发滚动事件的阈值，越小越灵敏&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       pageSpeed: 600,             //滚屏速度，单位为毫秒 ms&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       afterLoad: null,            //页面载入事件，具体查看下面的 afterLoad 函数&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       beforeLeave: null           //页面离开事件，具体查看下面的 beforeLeave 函数&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;##beforeLeave(leaveIndex,nowIndex)&lt;br&gt;离开当前页面时触发的事件，函数中 &lt;code&gt;this&lt;/code&gt; 指向当前页面的 &lt;code&gt;section&lt;/code&gt;,&lt;code&gt;leaveIndex&lt;/code&gt;为要离开页面的 &lt;code&gt;index&lt;/code&gt; ，&lt;code&gt;nowIndex&lt;/code&gt; 为要载入页面的 &lt;code&gt;Index&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;##afterLoad(afterIndex)&lt;br&gt;载入下一张页面后触发的事件，函数中 &lt;code&gt;this&lt;/code&gt; 指向将要载入页面的 &lt;code&gt;section&lt;/code&gt;, &lt;code&gt;afterIndex&lt;/code&gt; 为要载入页面的 &lt;code&gt;index&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;fullpage.init(&lt;span class=&quot;string&quot;&gt;&#39;#sectionContent&#39;&lt;/span&gt;, &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  beforeLeave: &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;leaveIndex, nowIndex&lt;/span&gt;) &lt;/span&gt;&amp;#123;        &lt;span class=&quot;comment&quot;&gt;//如果现在在第1个页面，向下滚动后&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (nowIndex === &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;) &amp;#123;                               &lt;span class=&quot;comment&quot;&gt;//leaveIndex = 1,nowIndex = 2&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;You will leave page 2&#39;&lt;/span&gt;)              &lt;span class=&quot;comment&quot;&gt;//这条语句会执行&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, leaveIndex, nowIndex)             &lt;span class=&quot;comment&quot;&gt;//这里的 this 指向将要离开的页面元素，即第一个页面&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  afterLoad: &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;afterIndex&lt;/span&gt;) &lt;/span&gt;&amp;#123;                    &lt;span class=&quot;comment&quot;&gt;//afterIndex = 2&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (afterIndex === &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;) &amp;#123;                             &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;You will go to page 2&#39;&lt;/span&gt;)              &lt;span class=&quot;comment&quot;&gt;//这条语句会执行&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, afterIndex)                       &lt;span class=&quot;comment&quot;&gt;//此处 this 指向当前载入的页面，即第二个页面&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h1 id=&quot;方法&quot;&gt;&lt;a href=&quot;#方法&quot; class=&quot;headerlink&quot; title=&quot;方法&quot;&gt;&lt;/a&gt;方法&lt;/h1&gt;&lt;p&gt;##init(el,options)&lt;br&gt;页面初始化，&lt;code&gt;el&lt;/code&gt;为最外包裹层选择器，&lt;code&gt;options&lt;/code&gt;是要定制的参数。具体同&lt;a href=&quot;#初始化&quot;&gt;初始化&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##moveTo(index,slideIndex)&lt;br&gt;滚动到指定页面,&lt;code&gt;index&lt;/code&gt; 为必选参数，&lt;code&gt;slideIndex&lt;/code&gt;为可选参数&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;fullpage.moveTo(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)      &lt;span class=&quot;comment&quot;&gt;//滚动到第一个页面&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fullpage.moveTo(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)    &lt;span class=&quot;comment&quot;&gt;//滚动到第三个页面的第二个slider&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;##moveToNext(callback)&lt;br&gt;垂直滚动到下一个页面,&lt;code&gt;callback&lt;/code&gt;为回掉函数，可选。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;fullpage.moveToNext();            &lt;span class=&quot;comment&quot;&gt;//滚动到下一个页面&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fullpage.moveToNext(callback)     &lt;span class=&quot;comment&quot;&gt;//滚动到下一个页面后，执行 callback&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fullpage.moveToNext(callback,params...)   &lt;span class=&quot;comment&quot;&gt;//滚动到下一个页面后，执行 callback,params为callback的参数，根据情况传入&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;a,b&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(a,b)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fullpage.moveToNext(foo,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)              &lt;span class=&quot;comment&quot;&gt;//滚动到下一个页面，并输出 1，2&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;moveToPre-callback&quot;&gt;&lt;a href=&quot;#moveToPre-callback&quot; class=&quot;headerlink&quot; title=&quot;moveToPre(callback)&quot;&gt;&lt;/a&gt;moveToPre(callback)&lt;/h2&gt;&lt;p&gt;垂直滚动到上一个页面，用法同 &lt;code&gt;moveToNext(callback)&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;slideToNext&quot;&gt;&lt;a href=&quot;#slideToNext&quot; class=&quot;headerlink&quot; title=&quot;slideToNext()&quot;&gt;&lt;/a&gt;slideToNext()&lt;/h2&gt;&lt;p&gt;水平滚动到下一个页面（页面向左滚动）&lt;/p&gt;
-&lt;h2 id=&quot;slideToPre&quot;&gt;&lt;a href=&quot;#slideToPre&quot; class=&quot;headerlink&quot; title=&quot;slideToPre()&quot;&gt;&lt;/a&gt;slideToPre()&lt;/h2&gt;&lt;p&gt;水平滚动到上一个页面（页面向右滚动）&lt;/p&gt;
-&lt;h1 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;del&gt;添加滚动到指定页面方法&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;页面滚动时，页面载入或离开时添加自定义事件&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;横屏滚动支持&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;添加鼠标滚轮控制&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;添加键盘控制&lt;/del&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;项目初衷&quot;&gt;&lt;a href=&quot;#项目初衷&quot; class=&quot;headerlink&quot; title=&quot;项目初衷&quot;&gt;&lt;/a&gt;项目初衷&lt;/h1&gt;&lt;p&gt;前段时间接到一个新的项目，是一个整屏滚动的单页应用。&lt;/p&gt;
-&lt;p&gt;本来打算完全自己写的，但是由于项目时间吃紧，就用了&lt;a href=&quot;https://github.com/alvarotrigo/fullPage.js&quot;&gt;fullpage&lt;/a&gt;这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。&lt;/p&gt;
-&lt;p&gt;但是它也有几个缺点，第一它必须依赖 &lt;code&gt;jQuery&lt;/code&gt;,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/kisnows/fullpage-light.js&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://kisnows.com/fullpage-light.js/&quot;&gt;一个简单的DEMO&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;changeList&quot;&gt;&lt;a href=&quot;#changeList&quot; class=&quot;headerlink&quot; title=&quot;changeList&quot;&gt;&lt;/a&gt;changeList&lt;/h1&gt;&lt;p&gt;V1.3.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;修复对firefox的支持&lt;/li&gt;
-&lt;li&gt;添加页面导航控制&lt;/li&gt;
-&lt;li&gt;解决一些bug&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;V1.1.0 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;添加自动播放 &lt;/li&gt;
-&lt;li&gt;添加循环播放&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;V1.0.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;支持移动端触摸控制&lt;/li&gt;
-&lt;li&gt;添加slide水平滑动&lt;/li&gt;
-&lt;li&gt;添加PC端键盘控制和鼠标滚轮控制&lt;/li&gt;
-&lt;li&gt;提供实用的API方便开发&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;一个轻巧的&lt;code&gt;fullpage&lt;/code&gt;框架，不依赖其他任何库，主要针对移动端设备（同时也支持桌面端），压缩后不到4kb。&lt;br&gt;轻松创建炫酷的单页滑动网站。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://kisnows.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="JavaScript" scheme="http://kisnows.com/tags/javascript/"/>
-    
-      <category term="project" scheme="http://kisnows.com/tags/project/"/>
     
   </entry>
   
