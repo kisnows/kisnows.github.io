@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kisnows.com/"/>
-  <updated>2017-03-17T14:11:27.696Z</updated>
+  <updated>2017-03-17T14:14:17.048Z</updated>
   <id>http://kisnows.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kisnows.com/2017/03/17/react-form-rework-thinking/"/>
     <id>http://kisnows.com/2017/03/17/react-form-rework-thinking/</id>
     <published>2017-03-17T13:31:31.000Z</published>
-    <updated>2017-03-17T14:11:27.696Z</updated>
+    <updated>2017-03-17T14:14:17.048Z</updated>
     
     <content type="html">&lt;p&gt;最近对团队内部 React 组件库（&lt;a href=&quot;https://github.com/NE-LOAN-FED/NE-Component&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ne-rc&lt;/strong&gt;&lt;/a&gt;）中的 Form 组件进行了重构，记录一下思考的过程。&lt;/p&gt;
 &lt;p&gt;一些前置定义：&lt;/p&gt;
@@ -150,6 +150,8 @@
     
       <category term="技术" scheme="http://kisnows.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
+    
+      <category term="react" scheme="http://kisnows.com/tags/react/"/>
     
   </entry>
   
