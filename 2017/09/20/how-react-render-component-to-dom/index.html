@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="当我们在开发 React 项目中，第一次调用 ReactDOM.render 的时候都发生了什么呢？今天就从源码角度来追踪一下这个问题（主要看流程， 而不纠结与细节）。 ReactDOMStackEntry首先我们可以从 ReactDOM 的入口文件 ReactDOMStackEntry.js 中找到 render 方法。可以看到，render 方法是 ReactMount 组件提供的。var R">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactDOM 是如何把组件渲染到 DOM 中的？">
+<meta property="og:url" content="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="当我们在开发 React 项目中，第一次调用 ReactDOM.render 的时候都发生了什么呢？今天就从源码角度来追踪一下这个问题（主要看流程， 而不纠结与细节）。 ReactDOMStackEntry首先我们可以从 ReactDOM 的入口文件 ReactDOMStackEntry.js 中找到 render 方法。可以看到，render 方法是 ReactMount 组件提供的。var R">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/ReactDOM.png">
+<meta property="og:updated_time" content="2017-10-14T07:27:47.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReactDOM 是如何把组件渲染到 DOM 中的？">
+<meta name="twitter:description" content="当我们在开发 React 项目中，第一次调用 ReactDOM.render 的时候都发生了什么呢？今天就从源码角度来追踪一下这个问题（主要看流程， 而不纠结与细节）。 ReactDOMStackEntry首先我们可以从 ReactDOM 的入口文件 ReactDOMStackEntry.js 中找到 render 方法。可以看到，render 方法是 ReactMount 组件提供的。var R">
+<meta name="twitter:image" content="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/ReactDOM.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/"/>
+
+
+
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5680248525294797",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <title>ReactDOM 是如何把组件渲染到 DOM 中的？ | 抹桥的博客</title>
+  
+
+
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
+</script>
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?be602d9678e35053ae404d6230640d41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ReactDOM 是如何把组件渲染到 DOM 中的？</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-20T19:28:39+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-10-14T15:27:47+08:00">
+                2017-10-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/20/how-react-render-component-to-dom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/20/how-react-render-component-to-dom/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/20/how-react-render-component-to-dom/" class="leancloud_visitors" data-flag-title="ReactDOM 是如何把组件渲染到 DOM 中的？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>当我们在开发 React 项目中，第一次调用 <code>ReactDOM.render</code> 的时候都发生了什么呢？<br>今天就从源码角度来追踪一下这个问题（主要看流程， 而不纠结与细节）。</p>
+<h2 id="ReactDOMStackEntry"><a href="#ReactDOMStackEntry" class="headerlink" title="ReactDOMStackEntry"></a>ReactDOMStackEntry</h2><p>首先我们可以从 ReactDOM 的入口文件 ReactDOMStackEntry.js 中找到 render 方法。可以看到，<code>render</code> 方法是 ReactMount 组件提供的。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactDOMStack = &#123;</div><div class="line">  <span class="attr">findDOMNode</span>: findDOMNode,</div><div class="line">  <span class="attr">render</span>: ReactMount.render,</div><div class="line">  <span class="attr">unmountComponentAtNode</span>: ReactMount.unmountComponentAtNode,</div><div class="line">  <span class="attr">version</span>: ReactVersion,</div><div class="line"></div><div class="line">  <span class="comment">/* eslint-disable camelcase */</span></div><div class="line">  unstable_batchedUpdates: ReactGenericBatching.batchedUpdates,</div><div class="line">  <span class="attr">unstable_renderSubtreeIntoContainer</span>: ReactMount.renderSubtreeIntoContainer,</div><div class="line">  <span class="comment">/* eslint-enable camelcase */</span></div><div class="line"></div><div class="line">  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: &#123;</div><div class="line">    <span class="comment">// For TapEventPlugin which is popular in open source</span></div><div class="line">    EventPluginHub: <span class="built_in">require</span>(<span class="string">'EventPluginHub'</span>),</div><div class="line">    <span class="comment">// Used by test-utils</span></div><div class="line">    EventPluginRegistry: <span class="built_in">require</span>(<span class="string">'EventPluginRegistry'</span>),</div><div class="line">    <span class="attr">EventPropagators</span>: <span class="built_in">require</span>(<span class="string">'EventPropagators'</span>),</div><div class="line">    <span class="attr">ReactControlledComponent</span>: <span class="built_in">require</span>(<span class="string">'ReactControlledComponent'</span>),</div><div class="line">    ReactDOMComponentTree,</div><div class="line">    <span class="attr">ReactDOMEventListener</span>: <span class="built_in">require</span>(<span class="string">'ReactDOMEventListener'</span>),</div><div class="line">    <span class="attr">ReactUpdates</span>: ReactUpdates,</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="ReactMount-render"><a href="#ReactMount-render" class="headerlink" title="ReactMount.render"></a>ReactMount.render</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params">nextElement, container, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> ReactMount._renderSubtreeIntoContainer(</div><div class="line">    <span class="literal">null</span>,</div><div class="line">    nextElement,</div><div class="line">    container,</div><div class="line">    callback,</div><div class="line">  );</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>又调到了 <code>_renderSubtreeIntoContainer</code> 方法, 这个方法核心内容如下：<br><a id="more"></a></p>
+<h2 id="ReactMount-renderSubtreeIntoContainer"><a href="#ReactMount-renderSubtreeIntoContainer" class="headerlink" title="ReactMount._renderSubtreeIntoContainer"></a>ReactMount._renderSubtreeIntoContainer</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">_renderSubtreeIntoContainer: <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></div><div class="line">    parentComponent,</div><div class="line">    nextElement,</div><div class="line">    container,</div><div class="line">    callback,</div><div class="line">  ) &#123;</div><div class="line">    callback = callback === <span class="literal">undefined</span> ? <span class="literal">null</span> : callback;</div><div class="line">    <span class="keyword">if</span> (!React.isValidElement(nextElement)) &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 创建下一个 wrapped 元素</span></div><div class="line">    <span class="keyword">var</span> nextWrappedElement = React.createElement(TopLevelWrapper, &#123;</div><div class="line">      <span class="attr">child</span>: nextElement,</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> nextContext = getContextForSubtree(parentComponent);</div><div class="line">    <span class="comment">// 拿到当前的顶层容器组件</span></div><div class="line">    <span class="keyword">var</span> prevComponent = getTopLevelWrapperInContainer(container);</div><div class="line">    <span class="comment">// 对于第一次 render 来说，prevComponent 为 null</span></div><div class="line">    <span class="keyword">if</span> (prevComponent) &#123;</div><div class="line">      <span class="keyword">var</span> prevWrappedElement = prevComponent._currentElement;</div><div class="line">      <span class="keyword">var</span> prevElement = prevWrappedElement.props.child;</div><div class="line">      <span class="keyword">if</span> (shouldUpdateReactComponent(prevElement, nextElement)) &#123;</div><div class="line">        <span class="keyword">var</span> publicInst = prevComponent._renderedComponent.getPublicInstance();</div><div class="line">        <span class="keyword">var</span> updatedCallback =</div><div class="line">          callback &amp;&amp;</div><div class="line">          <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            validateCallback(callback);</div><div class="line">            callback.call(publicInst);</div><div class="line">          &#125;;</div><div class="line">        ReactMount._updateRootComponent(</div><div class="line">          prevComponent,</div><div class="line">          nextWrappedElement,</div><div class="line">          nextContext,</div><div class="line">          container,</div><div class="line">          updatedCallback,</div><div class="line">        );</div><div class="line">        <span class="keyword">return</span> publicInst;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ReactMount.unmountComponentAtNode(container);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> reactRootElement = getReactRootElementInContainer(container);</div><div class="line">    <span class="keyword">var</span> containerHasReactMarkup =</div><div class="line">      reactRootElement &amp;&amp; !!internalGetID(reactRootElement);</div><div class="line">    <span class="keyword">var</span> containerHasNonRootReactChild = hasNonRootReactChild(container);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> shouldReuseMarkup =</div><div class="line">      containerHasReactMarkup &amp;&amp;</div><div class="line">      !prevComponent &amp;&amp;</div><div class="line">      !containerHasNonRootReactChild;</div><div class="line">    <span class="keyword">var</span> component = ReactMount._renderNewRootComponent(</div><div class="line">      nextWrappedElement,</div><div class="line">      container,</div><div class="line">      shouldReuseMarkup,</div><div class="line">      nextContext,</div><div class="line">      callback,</div><div class="line">    )._renderedComponent.getPublicInstance();</div><div class="line">    <span class="keyword">return</span> component;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<p>这里有几个方法，分别是：</p>
+<ul>
+<li><code>getTopLevelWrapperInContainer</code></li>
+<li><code>shouldUpdateReactComponent</code></li>
+<li><code>_renderNewRootComponent</code></li>
+</ul>
+<h3 id="getTopLevelWrapperInContainer"><a href="#getTopLevelWrapperInContainer" class="headerlink" title="getTopLevelWrapperInContainer"></a>getTopLevelWrapperInContainer</h3><p>这个方法用来拿到现有的顶层容器组件，相关代码如下。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTopLevelWrapperInContainer</span>(<span class="params">container</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> root = getHostRootInstanceInContainer(container);</div><div class="line">  <span class="keyword">return</span> root ? root._hostContainerInfo._topLevelWrapper : <span class="literal">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getHostRootInstanceInContainer</span>(<span class="params">container</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> rootEl = getReactRootElementInContainer(container);</div><div class="line">  <span class="keyword">var</span> prevHostInstance =</div><div class="line">    rootEl &amp;&amp; ReactDOMComponentTree.getInstanceFromNode(rootEl);</div><div class="line">  <span class="keyword">return</span> prevHostInstance &amp;&amp; !prevHostInstance._hostParent</div><div class="line">    ? prevHostInstance</div><div class="line">    : <span class="literal">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>调用了两个方法，<code>getReactRootElementInContainer</code> 和 <code>ReactDOMComponentTree.getInstanceFromNode</code>.</p>
+<p><strong>getReactRootElementInContainer</strong><br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getReactRootElementInContainer</span>(<span class="params">container</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!container) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (container.nodeType === DOCUMENT_NODE) &#123;</div><div class="line">    <span class="keyword">return</span> container.documentElement;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> container.firstChild;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>ReactDOMComponentTree</strong></p>
+<p>这个模块有三个方法，分别是：</p>
+<ul>
+<li><code>precacheChildNodes</code>  在 DOM 节点上存储相应的 React 实例</li>
+<li><code>getNodeFromInstance</code> 从一个实例上获取到对应的 DOM 节点</li>
+<li><code>getInstanceFromNode</code> 从一个 DOM 节点上获取到对应的实例</li>
+</ul>
+<h3 id="shouldUpdateReactComponent"><a href="#shouldUpdateReactComponent" class="headerlink" title="shouldUpdateReactComponent"></a>shouldUpdateReactComponent</h3><p>判断是否需要更新组件。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shouldUpdateReactComponent</span>(<span class="params">prevElement, nextElement</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> prevEmpty = prevElement === <span class="literal">null</span> || prevElement === <span class="literal">false</span>;</div><div class="line">  <span class="keyword">var</span> nextEmpty = nextElement === <span class="literal">null</span> || nextElement === <span class="literal">false</span>;</div><div class="line">  <span class="keyword">if</span> (prevEmpty || nextEmpty) &#123;</div><div class="line">    <span class="keyword">return</span> prevEmpty === nextEmpty;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> prevType = <span class="keyword">typeof</span> prevElement;</div><div class="line">  <span class="keyword">var</span> nextType = <span class="keyword">typeof</span> nextElement;</div><div class="line">  <span class="keyword">if</span> (prevType === <span class="string">'string'</span> || prevType === <span class="string">'number'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> nextType === <span class="string">'string'</span> || nextType === <span class="string">'number'</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      nextType === <span class="string">'object'</span> &amp;&amp;</div><div class="line">      prevElement.type === nextElement.type &amp;&amp;</div><div class="line">      prevElement.key === nextElement.key</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到逻辑是这样的：</p>
+<ul>
+<li>前后两次元素都为 <code>null</code> 返回 <code>true</code></li>
+<li>如果是 <code>textComponent</code>，那么直接更新</li>
+<li>否则当为 DOM 元素或者 React 元素时，且 type 和 key 都相同时返回 <code>true</code>, 执行 update</li>
+</ul>
+<h2 id="ReactMount-renderNewRootComponent"><a href="#ReactMount-renderNewRootComponent" class="headerlink" title="ReactMount._renderNewRootComponent"></a>ReactMount._renderNewRootComponent</h2><p>这个方法是 <code>_renderSubtreeIntoContainer</code> 的核心，用来把一个新的组件挂载到 DOM 中。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">_renderNewRootComponent: <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></div><div class="line">  nextElement,</div><div class="line">  container,</div><div class="line">  shouldReuseMarkup,</div><div class="line">  context,</div><div class="line">  callback,</div><div class="line">) &#123;</div><div class="line">  <span class="comment">// 通过 instantiateReactComponent 拿到 React Component 组件实例</span></div><div class="line">  <span class="keyword">var</span> componentInstance = instantiateReactComponent(nextElement, <span class="literal">false</span>);</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (callback) &#123;</div><div class="line">    componentInstance._pendingCallbacks = [</div><div class="line">      <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        validateCallback(callback);</div><div class="line">        callback.call(</div><div class="line">          componentInstance._renderedComponent.getPublicInstance(),</div><div class="line">        );</div><div class="line">      &#125;,</div><div class="line">    ];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// The initial render is synchronous but any updates that happen during</span></div><div class="line">  <span class="comment">// rendering, in componentWillMount or componentDidMount, will be batched</span></div><div class="line">  <span class="comment">// according to the current batching strategy.</span></div><div class="line">  ReactUpdates.batchedUpdates(</div><div class="line">    batchedMountComponentIntoNode,</div><div class="line">    componentInstance,</div><div class="line">    container,</div><div class="line">    shouldReuseMarkup,</div><div class="line">    context,</div><div class="line">  );</div><div class="line"></div><div class="line">  <span class="keyword">var</span> wrapperID = componentInstance._instance.rootID;</div><div class="line">  instancesByReactRootID[wrapperID] = componentInstance;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> componentInstance;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<h3 id="instantiateReactComponent"><a href="#instantiateReactComponent" class="headerlink" title="instantiateReactComponent"></a>instantiateReactComponent</h3><p>根据传入的参数来生成不同的 React Component, 核心代码：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (node === <span class="literal">null</span> || node === <span class="literal">false</span>) &#123;</div><div class="line">  instance = ReactEmptyComponent.create(instantiateReactComponent);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> node === <span class="string">'object'</span>) &#123;</div><div class="line">  <span class="keyword">var</span> element = node;</div><div class="line">  <span class="keyword">var</span> type = element.type;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> type !== <span class="string">'function'</span> &amp;&amp; <span class="keyword">typeof</span> type !== <span class="string">'string'</span>) &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// Special case string values</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> element.type === <span class="string">'string'</span>) &#123;</div><div class="line">    instance = ReactHostComponent.createInternalComponent(element);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isInternalComponentType(element.type)) &#123;</div><div class="line">    <span class="comment">// This is temporarily available for custom components that are not string</span></div><div class="line">    <span class="comment">// representations. I.e. ART. Once those are updated to use the string</span></div><div class="line">    <span class="comment">// representation, we can drop this code path.</span></div><div class="line">    instance = <span class="keyword">new</span> element.type(element);</div><div class="line"></div><div class="line">    <span class="comment">// We renamed this. Allow the old name for compat. :(</span></div><div class="line">    <span class="keyword">if</span> (!instance.getHostNode) &#123;</div><div class="line">      instance.getHostNode = instance.getNativeNode;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    instance = <span class="keyword">new</span> ReactCompositeComponentWrapper(element);</div><div class="line">  &#125;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> node === <span class="string">'string'</span> || <span class="keyword">typeof</span> node === <span class="string">'number'</span>) &#123;</div><div class="line">  instance = ReactHostComponent.createInstanceForText(node);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  invariant(<span class="literal">false</span>, <span class="string">'Encountered invalid React node of type %s'</span>, <span class="keyword">typeof</span> node);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从代码中可以看到，根据 <code>element.type</code> 的不同，有三个方法来生成三种不同 React 组件实例，分别为：</p>
+<ul>
+<li>ReactHostComponent.createInternalComponent(element)</li>
+<li>new ReactCompositeComponentWrapper(element)</li>
+<li>ReactHostComponent.createInstanceForText(node);</li>
+</ul>
+<p>可能读者会注意到，当 <code>isInternalComponentType(element.type)</code> 成立时， <code>instance = new element.type(element);</code> 的这段代码被我忽略了，那是因为这个是 React 封装的内部组件不是由字符串表达时的解决方法，我们是不用关心的。<br>我们来看上面的三个方法，其中两个方法都调用了 ReactHostComponent 模块。</p>
+<h3 id="ReactHostComponent"><a href="#ReactHostComponent" class="headerlink" title="ReactHostComponent"></a>ReactHostComponent</h3><p>核心代码:<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactHostComponentInjection = &#123;</div><div class="line">  <span class="comment">// This accepts a class that receives the tag string. This is a catch all</span></div><div class="line">  <span class="comment">// that can render any kind of tag.</span></div><div class="line">  injectGenericComponentClass: <span class="function"><span class="keyword">function</span>(<span class="params">componentClass</span>) </span>&#123;</div><div class="line">    genericComponentClass = componentClass;</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// This accepts a text component class that takes the text string to be</span></div><div class="line">  <span class="comment">// rendered as props.</span></div><div class="line">  injectTextComponentClass: <span class="function"><span class="keyword">function</span>(<span class="params">componentClass</span>) </span>&#123;</div><div class="line">    textComponentClass = componentClass;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInternalComponent</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">  invariant(</div><div class="line">    genericComponentClass,</div><div class="line">    <span class="string">'There is no registered component for the tag %s'</span>,</div><div class="line">    element.type,</div><div class="line">  );</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> genericComponentClass(element);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;ReactText&#125; text</div><div class="line"> * @return &#123;ReactComponent&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInstanceForText</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> textComponentClass(text);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就是提供了两个方法来创建组件，而其中两个组件 class 的实现是通过其他模块注入进来的，那到底是从哪里注入进来的呢。<br>经过一番查找，发现是在 <code>ReactDOMStackInjection.js</code> 中注入的，我们看一下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactComponentEnvironment = <span class="built_in">require</span>(<span class="string">'ReactComponentEnvironment'</span>);</div><div class="line"><span class="keyword">var</span> ReactComponentBrowserEnvironment = <span class="built_in">require</span>(<span class="string">'ReactComponentBrowserEnvironment'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOMComponent = <span class="built_in">require</span>(<span class="string">'ReactDOMComponent'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOMComponentTree = <span class="built_in">require</span>(<span class="string">'ReactDOMComponentTree'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOMEmptyComponent = <span class="built_in">require</span>(<span class="string">'ReactDOMEmptyComponent'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOMTextComponent = <span class="built_in">require</span>(<span class="string">'ReactDOMTextComponent'</span>);</div><div class="line"><span class="keyword">var</span> ReactDefaultBatchingStrategy = <span class="built_in">require</span>(<span class="string">'ReactDefaultBatchingStrategy'</span>);</div><div class="line"><span class="keyword">var</span> ReactEmptyComponent = <span class="built_in">require</span>(<span class="string">'ReactEmptyComponent'</span>);</div><div class="line"><span class="keyword">var</span> ReactGenericBatching = <span class="built_in">require</span>(<span class="string">'ReactGenericBatching'</span>);</div><div class="line"><span class="keyword">var</span> ReactHostComponent = <span class="built_in">require</span>(<span class="string">'ReactHostComponent'</span>);</div><div class="line"><span class="keyword">var</span> ReactReconcileTransaction = <span class="built_in">require</span>(<span class="string">'ReactReconcileTransaction'</span>);</div><div class="line"><span class="keyword">var</span> ReactUpdates = <span class="built_in">require</span>(<span class="string">'ReactUpdates'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> findDOMNode = <span class="built_in">require</span>(<span class="string">'findDOMNode'</span>);</div><div class="line"><span class="keyword">var</span> getHostComponentFromComposite = <span class="built_in">require</span>(<span class="string">'getHostComponentFromComposite'</span>);</div><div class="line"></div><div class="line">ReactGenericBatching.injection.injectStackBatchedUpdates(</div><div class="line">  ReactUpdates.batchedUpdates,</div><div class="line">);</div><div class="line"></div><div class="line">ReactHostComponent.injection.injectGenericComponentClass(ReactDOMComponent);</div><div class="line"></div><div class="line">ReactHostComponent.injection.injectTextComponentClass(ReactDOMTextComponent);</div><div class="line"></div><div class="line">ReactEmptyComponent.injection.injectEmptyComponentFactory(<span class="function"><span class="keyword">function</span>(<span class="params"></span></span></div><div class="line">  instantiate,</div><div class="line">) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ReactDOMEmptyComponent(instantiate);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ReactUpdates.injection.injectReconcileTransaction(ReactReconcileTransaction);</div><div class="line">ReactUpdates.injection.injectBatchingStrategy(ReactDefaultBatchingStrategy);</div><div class="line"></div><div class="line">ReactComponentEnvironment.injection.injectEnvironment(</div><div class="line">  ReactComponentBrowserEnvironment,</div><div class="line">);</div><div class="line"></div><div class="line">findDOMNode._injectStack(<span class="function"><span class="keyword">function</span>(<span class="params">inst</span>) </span>&#123;</div><div class="line">  inst = getHostComponentFromComposite(inst);</div><div class="line">  <span class="keyword">return</span> inst ? ReactDOMComponentTree.getNodeFromInstance(inst) : <span class="literal">null</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>可以看到，这个模块通过 <code>ReactHostComponent.injection</code> 注入了 ReactDOMComponent 和 ReactDOMTextComponent. 同时也注入了一些其他模块，这个我们后面还会用到。</p>
+<p>这里 ReactDOMComponent 和 ReactDOMTextComponent 才是真是的生成 DOM 标记的模块，它们的内容过多，但是代码比较简单了，这里就不细说了。总之调用这两个模块的 <code>mountComponent</code> 方法都会生成 DOM Markup. 不同的地方在于， ReactDOMComponent 会如下结构的 Markup<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">node</span>: node,</div><div class="line">  <span class="attr">children</span>: [],</div><div class="line">  <span class="attr">html</span>: <span class="literal">null</span>,</div><div class="line">  <span class="attr">text</span>: <span class="literal">null</span>,</div><div class="line">  toString</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>而 ReactDOMTextComponent 会直接生成要渲染在 DOM 里面的 <code>String</code> 类型的文本。</p>
+<h3 id="ReactCompositeComponent"><a href="#ReactCompositeComponent" class="headerlink" title="ReactCompositeComponent"></a>ReactCompositeComponent</h3><p>最后一类组件应该是 <code>ReactCompositeComponentWrapper</code>, 但查看 instantiateReactComponent 里面的这两段代码：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactCompositeComponentWrapper = <span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.construct(element);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(</div><div class="line">  ReactCompositeComponentWrapper.prototype,</div><div class="line">  ReactCompositeComponent,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">_instantiateReactComponent</span>: instantiateReactComponent,</div><div class="line">  &#125;,</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>当调用 <code>this.construct</code> 的时候，还是调用到了 ReactCompositeComponent ,这个就是用户自定义的组件。</p>
+<h3 id="ReactUpdates-batchedUpdates"><a href="#ReactUpdates-batchedUpdates" class="headerlink" title="ReactUpdates.batchedUpdates"></a>ReactUpdates.batchedUpdates</h3><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">batchedUpdates</span>(<span class="params">callback, a, b, c, d, e</span>) </span>&#123;</div><div class="line">  ensureInjected();</div><div class="line">  <span class="keyword">return</span> batchingStrategy.batchedUpdates(callback, a, b, c, d, e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到 ReactUpdates 里面是 通过 batchingStrategy 调用 batchedUpdate. 而 batchingStrategy 也是前面说到的 ReactDOMStackInjection 来注入进去的。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">ReactUpdates.injection.injectReconcileTransaction(ReactReconcileTransaction);</div><div class="line">ReactUpdates.injection.injectBatchingStrategy(ReactDefaultBatchingStrategy);</div></pre></td></tr></table></figure></p>
+<p>ReactUpdates 共注入了两个模块，分别是 ReactReconcileTransaction 和 ReactDefaultBatchingStrategy. </p>
+<p>先来看一下 ReactDefaultBatchingStrategy, ReactReconcileTransaction 后面碰到再说，来看一下它的代码：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactUpdates = <span class="built_in">require</span>(<span class="string">'ReactUpdates'</span>);</div><div class="line"><span class="keyword">var</span> Transaction = <span class="built_in">require</span>(<span class="string">'Transaction'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> emptyFunction = <span class="built_in">require</span>(<span class="string">'fbjs/lib/emptyFunction'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> RESET_BATCHED_UPDATES = &#123;</div><div class="line">  <span class="attr">initialize</span>: emptyFunction,</div><div class="line">  <span class="attr">close</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ReactDefaultBatchingStrategy.isBatchingUpdates = <span class="literal">false</span>;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> FLUSH_BATCHED_UPDATES = &#123;</div><div class="line">  <span class="attr">initialize</span>: emptyFunction,</div><div class="line">  <span class="attr">close</span>: ReactUpdates.flushBatchedUpdates.bind(ReactUpdates),</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> TRANSACTION_WRAPPERS = [FLUSH_BATCHED_UPDATES, RESET_BATCHED_UPDATES];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ReactDefaultBatchingStrategyTransaction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.reinitializeTransaction();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(ReactDefaultBatchingStrategyTransaction.prototype, Transaction, &#123;</div><div class="line">  <span class="attr">getTransactionWrappers</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> TRANSACTION_WRAPPERS;</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> transaction = <span class="keyword">new</span> ReactDefaultBatchingStrategyTransaction();</div><div class="line"></div><div class="line"><span class="keyword">var</span> ReactDefaultBatchingStrategy = &#123;</div><div class="line">  <span class="attr">isBatchingUpdates</span>: <span class="literal">false</span>,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Call the provided function in a context within which calls to `setState`</div><div class="line">   * and friends are batched such that components aren't updated unnecessarily.</div><div class="line">   */</div><div class="line">  batchedUpdates: <span class="function"><span class="keyword">function</span>(<span class="params">callback, a, b, c, d, e</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> alreadyBatchingUpdates = ReactDefaultBatchingStrategy.isBatchingUpdates;</div><div class="line"></div><div class="line">    ReactDefaultBatchingStrategy.isBatchingUpdates = <span class="literal">true</span>;</div><div class="line"></div><div class="line">    <span class="comment">// The code is written this way to avoid extra allocations</span></div><div class="line">    <span class="keyword">if</span> (alreadyBatchingUpdates) &#123;</div><div class="line">      <span class="comment">// 如果当前 updates 已经完成，那么直接调用 callback</span></div><div class="line">      <span class="keyword">return</span> callback(a, b, c, d, e);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">// 通过事务的方式去调用 callback</span></div><div class="line">      <span class="keyword">return</span> transaction.perform(callback, <span class="literal">null</span>, a, b, c, d, e);</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>可以看到我们前面调用的 <code>ReactUpdates.batchUpdates</code> 实际上调用到了这里的 batchedUpdates, 里面的逻辑也很简单。</p>
+<p>这里面用到了一个 transaction 方法，这里我理解为“事务”。也就是说当如果当前正在进行一次更新，那么就通过事务的方式去调用这个 callback.</p>
+<h4 id="transaction"><a href="#transaction" class="headerlink" title="transaction"></a>transaction</h4><p>transaction 在 React 源码里面使用非常广泛，作用是通过事务的方式去调用一个方法。</p>
+<p>用一个或多个 wrapper 把方法包裹起来，在方法调用前和调用之后依次执行。事务会确保 wrapper 的 initialize 和 close 方法都会执行，无论要执行的方法执行成功或失败报错，看看它的源码解释就很明白了：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">* <span class="xml"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span></div><div class="line">*                       wrappers (injected at creation time)</div><div class="line">*                                      +        +</div><div class="line">*                                      |        |</div><div class="line">*                    +-----------------|--------|--------------+</div><div class="line">*                    |                 v        |              |</div><div class="line">*                    |      +---------------+   |              |</div><div class="line">*                    |   +--|    wrapper1   |---|----+         |</div><div class="line">*                    |   |  +---------------+   v    |         |</div><div class="line">*                    |   |          +-------------+  |         |</div><div class="line">*                    |   |     +----|   wrapper2  |--------+   |</div><div class="line">*                    |   |     |    +-------------+  |     |   |</div><div class="line">*                    |   |     |                     |     |   |</div><div class="line">*                    |   v     v                     v     v   | wrapper</div><div class="line">*                    | +---+ +---+   +---------+   +---+ +---+ | invariants</div><div class="line">* perform(anyMethod) | |   | |   |   |         |   |   | |   | | maintained</div><div class="line">* +-----------------&gt;|-|---|-|---|--&gt;|anyMethod|---|---|-|---|-|--------&gt;</div><div class="line">*                    | |   | |   |   |         |   |   | |   | |</div><div class="line">*                    | |   | |   |   |         |   |   | |   | |</div><div class="line">*                    | |   | |   |   |         |   |   | |   | |</div><div class="line">*                    | +---+ +---+   +---------+   +---+ +---+ |</div><div class="line">*                    |  initialize                    close    |</div><div class="line">*                    +-----------------------------------------+</div><div class="line">* <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这里我们再回到刚才的 ReactDefaultBatchingStrategy, 代码里面有两个 wrapper.<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> RESET_BATCHED_UPDATES = &#123;</div><div class="line">  <span class="attr">initialize</span>: emptyFunction,</div><div class="line">  <span class="attr">close</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ReactDefaultBatchingStrategy.isBatchingUpdates = <span class="literal">false</span>;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> FLUSH_BATCHED_UPDATES = &#123;</div><div class="line">  <span class="attr">initialize</span>: emptyFunction,</div><div class="line">  <span class="attr">close</span>: ReactUpdates.flushBatchedUpdates.bind(ReactUpdates),</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>它们的 initialize 方法都是一个空函数，close 方法分别是：</p>
+<ol>
+<li>把当前的更新状态置为 false</li>
+<li><code>flushBatchedUpdates</code> 这个方法比较复杂，这里不展开讲，主要是确保所有组件能够正确更新（<code>flushBatchedUpdates-&gt;ReactUpdates.runBatchedUpdates-&gt;ReactCompositeComponent.performUpdateIfNecessary</code>）</li>
+</ol>
+<p>现在回到上面的代码：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">ReactUpdates.batchedUpdates(</div><div class="line">  batchedMountComponentIntoNode,</div><div class="line">  componentInstance,</div><div class="line">  container,</div><div class="line">  shouldReuseMarkup,</div><div class="line">  context,</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>可以知道，这里是调用了 batchedMountComponentIntoNode 进行后续的工作。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">batchedMountComponentIntoNode</span>(<span class="params"></span></span></div><div class="line">  componentInstance,</div><div class="line">  container,</div><div class="line">  shouldReuseMarkup,</div><div class="line">  context,</div><div class="line">) &#123;</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> transaction = ReactUpdates.ReactReconcileTransaction.getPooled(</div><div class="line">    <span class="comment">/* useCreateElement */</span></div><div class="line">    !shouldReuseMarkup,</div><div class="line">  );</div><div class="line">  transaction.perform(</div><div class="line">    mountComponentIntoNode,</div><div class="line">    <span class="literal">null</span>,</div><div class="line">    componentInstance,</div><div class="line">    container,</div><div class="line">    transaction,</div><div class="line">    shouldReuseMarkup,</div><div class="line">    context,</div><div class="line">  );</div><div class="line">  ReactUpdates.ReactReconcileTransaction.release(transaction);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里第一条赋值语句就用到了上面注入到 ReactUpdates 里面的另一个模块 ReactReconcileTransaction 即 React 的调度事务模块。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> SELECTION_RESTORATION = &#123;</div><div class="line">  <span class="attr">initialize</span>: ReactInputSelection.getSelectionInformation,</div><div class="line">  <span class="attr">close</span>: ReactInputSelection.restoreSelection,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Suppresses events (blur/focus) that could be inadvertently dispatched due to</div><div class="line"> * high level DOM manipulations (like temporarily removing a text input from the</div><div class="line"> * DOM).</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> EVENT_SUPPRESSION = &#123;</div><div class="line">  <span class="attr">initialize</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> currentlyEnabled = ReactBrowserEventEmitter.isEnabled();</div><div class="line">    ReactBrowserEventEmitter.setEnabled(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">return</span> currentlyEnabled;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">close</span>: <span class="function"><span class="keyword">function</span>(<span class="params">previouslyEnabled</span>) </span>&#123;</div><div class="line">    ReactBrowserEventEmitter.setEnabled(previouslyEnabled);</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Provides a queue for collecting `componentDidMount` and</div><div class="line"> * `componentDidUpdate` callbacks during the transaction.</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> ON_DOM_READY_QUEUEING = &#123;</div><div class="line">  <span class="attr">initialize</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.reactMountReady.reset();</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">close</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.reactMountReady.notifyAll();</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line">...</div><div class="line">var TRANSACTION_WRAPPERS = [</div><div class="line">  SELECTION_RESTORATION,</div><div class="line">  EVENT_SUPPRESSION,</div><div class="line">  ON_DOM_READY_QUEUEING,</div><div class="line">];</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ReactReconcileTransaction</span>(<span class="params">useCreateElement</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.reinitializeTransaction();</div><div class="line">  <span class="keyword">this</span>.renderToStaticMarkup = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">this</span>.reactMountReady = CallbackQueue.getPooled();</div><div class="line">  <span class="keyword">this</span>.useCreateElement = useCreateElement;</div><div class="line">&#125;</div><div class="line">...</div><div class="line">var Mixin = &#123;</div><div class="line">  <span class="attr">getTransactionWrappers</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> TRANSACTION_WRAPPERS;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.assign(ReactReconcileTransaction.prototype, Transaction, Mixin);</div><div class="line"></div><div class="line">PooledClass.addPoolingTo(ReactReconcileTransaction);</div></pre></td></tr></table></figure></p>
+<p>这里也是通过事务的方式去调用，它有三个 wrapper:</p>
+<ul>
+<li>Selection Restoration 在更新过程中尽可能不打扰用户的选中范围（selection range）</li>
+<li>Event Suppression 抑制一些不需要的事件分发，比如暂时性删除一个 input 元素而导致的 blur 事件</li>
+<li>On DOM Ready Queueing 在事务执行过程中，提供一个 <code>componentDidMount</code> 和 <code>componentDidUpdate</code> 回调函数的队列</li>
+</ul>
+<p>而后面的 getPooled 方法，是一个利用实例池来避免不必要的 GC 的方法，不过多解释。</p>
+<p>接着用这个事务的方式去调用 mountComponentIntoNode, 详细的看一下这个方法。</p>
+<h3 id="mountComponentIntoNode"><a href="#mountComponentIntoNode" class="headerlink" title="mountComponentIntoNode"></a>mountComponentIntoNode</h3><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mountComponentIntoNode</span>(<span class="params"></span></span></div><div class="line">  wrapperInstance,</div><div class="line">  container,</div><div class="line">  transaction,</div><div class="line">  shouldReuseMarkup,</div><div class="line">  context,</div><div class="line">) &#123;</div><div class="line">  <span class="keyword">var</span> markup = ReactReconciler.mountComponent(</div><div class="line">    wrapperInstance,</div><div class="line">    transaction,</div><div class="line">    <span class="literal">null</span>,</div><div class="line">    ReactDOMContainerInfo(wrapperInstance, container),</div><div class="line">    context,</div><div class="line">    <span class="number">0</span> <span class="comment">/* parentDebugID */</span>,</div><div class="line">  );</div><div class="line"></div><div class="line">  wrapperInstance._renderedComponent._topLevelWrapper = wrapperInstance;</div><div class="line">  ReactMount._mountImageIntoNode(</div><div class="line">    markup,</div><div class="line">    container,</div><div class="line">    wrapperInstance,</div><div class="line">    shouldReuseMarkup,</div><div class="line">    transaction,</div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里看到了重点变量 <strong>markup</strong> 的操作, 这个就是我们最终要往 DOM 里面渲染的对象。通过 <code>ReactReconciler.mountComponent</code> 方法来得到 markup. <code>ReactReconciler.mountComponent</code> 的源码如下：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">mountComponent: <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></div><div class="line">  internalInstance,</div><div class="line">  transaction,</div><div class="line">  hostParent,</div><div class="line">  hostContainerInfo,</div><div class="line">  context,</div><div class="line">  parentDebugID, <span class="regexp">//</span> <span class="number">0</span> in production and for roots</div><div class="line">) &#123;</div><div class="line">  <span class="keyword">var</span> markup = internalInstance.mountComponent(</div><div class="line">    transaction,</div><div class="line">    hostParent,</div><div class="line">    hostContainerInfo,</div><div class="line">    context,</div><div class="line">    parentDebugID,</div><div class="line">  );</div><div class="line">  <span class="keyword">if</span> (</div><div class="line">    internalInstance._currentElement &amp;&amp;</div><div class="line">    internalInstance._currentElement.ref != <span class="literal">null</span></div><div class="line">  ) &#123;</div><div class="line">    transaction.getReactMountReady().enqueue(attachRefs, internalInstance);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> markup;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>它又调用了 <code>internalInstance.mountComponent</code>, 这里的 internalInstance 其实就是前面说的通过 instantiateReactComponent 得到的 React Component 实例。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// _renderNewRootComponent</span></div><div class="line"><span class="keyword">var</span> componentInstance = instantiateReactComponent(nextElement, <span class="literal">false</span>)</div></pre></td></tr></table></figure></p>
+<p>这里的 <code>nextElement</code> 是要渲染的 React root 元素。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// _renderSubtreeIntoContainer</span></div><div class="line">    <span class="keyword">var</span> nextWrappedElement = React.createElement(TopLevelWrapper, &#123;</div><div class="line">      <span class="attr">child</span>: nextElement,</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
+<p>TopLevelWrapper 的实现，需要注意它的 <code>render</code> 方法。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> TopLevelWrapper = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.rootID = topLevelRootCounter++;</div><div class="line">&#125;;</div><div class="line">TopLevelWrapper.prototype.isReactComponent = &#123;&#125;;</div><div class="line">TopLevelWrapper.prototype.render = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.props.child;</div><div class="line">&#125;;</div><div class="line">TopLevelWrapper.isReactTopLevelWrapper = <span class="literal">true</span>;</div></pre></td></tr></table></figure></p>
+<p>它的 <code>render</code> 方法里面返回的 <code>this.props.child</code> 就是 nextElement 也就是我们项目代码里面入口 <code>ReactDOM.render(&lt;App/&gt;,document.getElementById(&#39;root&#39;))</code> 里面的 <code>&lt;App/&gt;</code>.</p>
+<p>回到 <code>ReactReconciler.mountComponent</code> 里面的 <code>internalInstance.mountComponent</code>. 通过前面的讲到的 instantiateReactComponent 我们知道返回的组件有三类：</p>
+<ol>
+<li>ReactDOMComponent</li>
+<li>ReactDOMTextComponent</li>
+<li>ReactCompositeComponent</li>
+</ol>
+<p>前两类很简单，都是 DOM 本身的元素，最终会渲染出来它们对应的 Markup. 而 ReactCompositeComponent 比较复杂，我们只看关键代码：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//ReactCompositeComponent.mountComponent</span></div><div class="line">    <span class="keyword">var</span> Component = <span class="keyword">this</span>._currentElement.type;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> updateQueue = transaction.getUpdateQueue();</div><div class="line"></div><div class="line">    <span class="comment">// Initialize the public class</span></div><div class="line">    <span class="keyword">var</span> doConstruct = shouldConstruct(Component);</div><div class="line">    <span class="keyword">var</span> inst = <span class="keyword">this</span>._constructComponent(</div><div class="line">      doConstruct,</div><div class="line">      publicProps,</div><div class="line">      publicContext,</div><div class="line">      updateQueue,</div><div class="line">    );</div><div class="line">    <span class="keyword">var</span> renderedElement;</div><div class="line">    <span class="keyword">if</span> (!doConstruct &amp;&amp; (inst == <span class="literal">null</span> || inst.render == <span class="literal">null</span>)) &#123;</div><div class="line">      renderedElement = inst;</div><div class="line">      inst = <span class="keyword">new</span> StatelessComponent(Component);</div><div class="line">      <span class="keyword">this</span>._compositeType = ReactCompositeComponentTypes.StatelessFunctional;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">     。...</div><div class="line">    &#125;</div><div class="line">      markup = <span class="keyword">this</span>.performInitialMount(</div><div class="line">        renderedElement,</div><div class="line">        hostParent,</div><div class="line">        hostContainerInfo,</div><div class="line">        transaction,</div><div class="line">        context,</div><div class="line">      );</div></pre></td></tr></table></figure></p>
+<p>首先得到 inst , 得到 inst 的调用栈是这样的： <code>this._constructComponent -&gt; this._constructComponentWithoutOwner</code><br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// this._constructComponentWithoutOwner</span></div><div class="line">...</div><div class="line">   var Component = <span class="keyword">this</span>._currentElement.type;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (doConstruct) &#123;</div><div class="line">      <span class="keyword">if</span> (__DEV__) &#123;</div><div class="line">        <span class="keyword">return</span> measureLifeCyclePerf(</div><div class="line">          <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> Component(publicProps, publicContext, updateQueue),</div><div class="line">          <span class="keyword">this</span>._debugID,</div><div class="line">          <span class="string">'ctor'</span>,</div><div class="line">        );</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Component(publicProps, publicContext, updateQueue);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>根据 <code>_currentElement.type</code> 生成 Component 实例, <code>currentElement.type</code> 即就是继承自 <code>React.Component</code> 的 class 或者纯渲染组件 function.<br>然后声明 renderElement, 对于 stateless (函数声明的纯渲染组件)组件，<code>renderElement = inst</code>, 否则为 undefined.</p>
+<p>接着来看 performInitialMount, </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (renderedElement === <span class="literal">undefined</span>) &#123;</div><div class="line">  renderedElement = <span class="keyword">this</span>._renderValidatedComponent();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> nodeType = ReactNodeTypes.getType(renderedElement);</div><div class="line"><span class="keyword">this</span>._renderedNodeType = nodeType;</div><div class="line"><span class="keyword">var</span> child = <span class="keyword">this</span>._instantiateReactComponent(</div><div class="line">  renderedElement,</div><div class="line">  nodeType !== ReactNodeTypes.EMPTY <span class="comment">/* shouldHaveDebugID */</span>,</div><div class="line">);</div><div class="line"><span class="keyword">this</span>._renderedComponent = child;</div><div class="line"></div><div class="line"><span class="keyword">var</span> markup = ReactReconciler.mountComponent(</div><div class="line">  child,</div><div class="line">  transaction,</div><div class="line">  hostParent,</div><div class="line">  hostContainerInfo,</div><div class="line">  <span class="keyword">this</span>._processChildContext(context),</div><div class="line">  debugID,</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>对于非 stateless 组件时，需要对 renderedElement 赋值。调用栈为： <code>this._renderValidatedComponent -&gt; this._renderValidatedComponentWithoutOwnerOrContext</code><br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">_renderValidatedComponentWithoutOwnerOrContext: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> inst = <span class="keyword">this</span>._instance;</div><div class="line">  <span class="keyword">var</span> renderedElement;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (__DEV__) &#123;</div><div class="line">    renderedElement = measureLifeCyclePerf(</div><div class="line">      <span class="function"><span class="params">()</span> =&gt;</span> inst.render(),</div><div class="line">      <span class="keyword">this</span>._debugID,</div><div class="line">      <span class="string">'render'</span>,</div><div class="line">    );</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    renderedElement = inst.render();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (__DEV__) &#123;</div><div class="line">    <span class="comment">// We allow auto-mocks to proceed as if they're returning null.</span></div><div class="line">    <span class="keyword">if</span> (renderedElement === <span class="literal">undefined</span> &amp;&amp; inst.render._isMockFunction) &#123;</div><div class="line">      <span class="comment">// This is probably bad practice. Consider warning here and</span></div><div class="line">      <span class="comment">// deprecating this convenience.</span></div><div class="line">      renderedElement = <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> renderedElement;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>最终得到 renderedElement 也就是 <code>inst.render()</code> 后的结果。</p>
+<p>再往下走 <code>child = this._instantiateReactComponent(renderedElement)</code> 和 <code>markup = ReactReconciler.mountComponent(child,...)</code> . </p>
+<p>可以联想到，这里会不断的循环递归调用 <code>ReactReconciler.mountComponent</code>, 知道 child 不是 ReactCompositeComponent 为止，得到最终的 MarkUp. MarkUp 的数据结构可以在 DOMLazyTree 中找到：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// DOMLazyTree</span></div><div class="line">&#123;</div><div class="line">  <span class="attr">node</span>: node,</div><div class="line">  <span class="attr">children</span>: [],</div><div class="line">  <span class="attr">html</span>: <span class="literal">null</span>,</div><div class="line">  <span class="attr">text</span>: <span class="literal">null</span>,</div><div class="line">  toString,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>拿到了 MarkUp，就只剩下最后一步了，通过 <code>ReactMount._mountImageIntoNode</code> 来吧 MarkUp 挂载到实际 DOM 中。</p>
+<h3 id="ReactMount-mountImageIntoNode"><a href="#ReactMount-mountImageIntoNode" class="headerlink" title="ReactMount._mountImageIntoNode"></a>ReactMount._mountImageIntoNode</h3><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">_mountImageIntoNode: <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></div><div class="line">  markup,</div><div class="line">  container,</div><div class="line">  instance,</div><div class="line">  shouldReuseMarkup,</div><div class="line">  transaction,</div><div class="line">) &#123;</div><div class="line">  invariant(</div><div class="line">    isValidContainer(container),</div><div class="line">    <span class="string">'mountComponentIntoNode(...): Target container is not valid.'</span>,</div><div class="line">  );</div><div class="line">  <span class="comment">// 首次渲染，这里为 shouldReuseMarkup = false ，里面都是更新的逻辑</span></div><div class="line">  <span class="keyword">if</span> (shouldReuseMarkup) &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 首次渲染，transaction.useCreateElement = true</span></div><div class="line">  <span class="keyword">if</span> (transaction.useCreateElement) &#123;</div><div class="line">    <span class="keyword">while</span> (container.lastChild) &#123;</div><div class="line">      container.removeChild(container.lastChild);</div><div class="line">    &#125;</div><div class="line">    DOMLazyTree.insertTreeBefore(container, markup, <span class="literal">null</span>);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    setInnerHTML(container, markup);</div><div class="line">    ReactDOMComponentTree.precacheNode(instance, container.firstChild);</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>逻辑很简单，有两种方式把 markup 渲染到 DOM 中：</p>
+<ul>
+<li>清空给定的容器组件，然后把 markup 插入到给定的容器中</li>
+<li>调用 <code>setInnerHTML</code> 来把 markup 插入到给定容器中，并缓存虚拟 DOM 到实际的 DOM 节点上</li>
+</ul>
+<p>对于初次渲染， 会执行第一种方法，清空容器组件，把 markup 挂载到实际的 DOM 中。调用栈：<code>DOMLazyTree.insertTreeBefore -&gt; insertTreeChildren</code><br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertTreeChildren</span>(<span class="params">tree</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!enableLazy) &#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> node = tree.node;</div><div class="line">  <span class="keyword">var</span> children = tree.children;</div><div class="line">  <span class="keyword">if</span> (children.length) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; children.length; i++) &#123;</div><div class="line">      insertTreeBefore(node, children[i], <span class="literal">null</span>);</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tree.html != <span class="literal">null</span>) &#123;</div><div class="line">    setInnerHTML(node, tree.html);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tree.text != <span class="literal">null</span>) &#123;</div><div class="line">    setTextContent(node, tree.text);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>递归的挂载所有子组件到 DOM 中。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>那么到这里整个初次渲染的逻辑就算走完了，整体上可以看到 React 和 ReactDOM 的代码抽象程度非常高，以至于代码阅读起来非常的绕。本文也只限于整体的流程，没有深究细节，因为细节太多了。</p>
+<p>最后整理了一个 <code>ReactDOM.render</code> 执行后流程关系图，能一定程度上帮助理解它的整过过程：<br>图很大，点击放大后也看不清，建议保存到本地后浏览，会看的清晰点。</p>
+<img src="/2017/09/20/how-react-render-component-to-dom/ReactDOM.png" title="ReactDOM.render">
+<h1 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h1><ul>
+<li><a href="/2017/09/20/react-source-code-analyze-1/" title="React 源码浅析之 - 入口文件">React 源码浅析之 - 入口文件</a></li>
+<li><a href="/2017/09/20/react-source-code-analyze-2/" title="React 源码浅析之 - ReactBaseClasses">React 源码浅析之 - ReactBaseClasses</a></li>
+<li><a href="/2017/09/20/react-source-code-analyze-3/" title="React 源码浅析之 - ReactChildren">React 源码浅析之 - ReactChildren</a></li>
+<li><a href="/2017/09/20/react-source-code-analyze-4/" title="React 源码浅析之 - ReactElement">React 源码浅析之 - ReactElement</a></li>
+<li><a href="/2017/09/20/react-source-code-analyze-5/" title="React 源码浅析之 - onlyChildren">React 源码浅析之 - onlyChildren</a>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    抹桥
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/" title="ReactDOM 是如何把组件渲染到 DOM 中的？">https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/20/react-source-code-analyze-5/" rel="next" title="React 源码浅析之 - onlyChildren">
+                <i class="fa fa-chevron-left"></i> React 源码浅析之 - onlyChildren
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/14/redux-source-code-read/" rel="prev" title="Redux 源码解读（长文慎入）">
+                Redux 源码解读（长文慎入） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactDOMStackEntry"><span class="nav-number">1.</span> <span class="nav-text">ReactDOMStackEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactMount-render"><span class="nav-number">2.</span> <span class="nav-text">ReactMount.render</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactMount-renderSubtreeIntoContainer"><span class="nav-number">3.</span> <span class="nav-text">ReactMount._renderSubtreeIntoContainer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getTopLevelWrapperInContainer"><span class="nav-number">3.1.</span> <span class="nav-text">getTopLevelWrapperInContainer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shouldUpdateReactComponent"><span class="nav-number">3.2.</span> <span class="nav-text">shouldUpdateReactComponent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactMount-renderNewRootComponent"><span class="nav-number">4.</span> <span class="nav-text">ReactMount._renderNewRootComponent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#instantiateReactComponent"><span class="nav-number">4.1.</span> <span class="nav-text">instantiateReactComponent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactHostComponent"><span class="nav-number">4.2.</span> <span class="nav-text">ReactHostComponent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactCompositeComponent"><span class="nav-number">4.3.</span> <span class="nav-text">ReactCompositeComponent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactUpdates-batchedUpdates"><span class="nav-number">4.4.</span> <span class="nav-text">ReactUpdates.batchedUpdates</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transaction"><span class="nav-number">4.4.1.</span> <span class="nav-text">transaction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mountComponentIntoNode"><span class="nav-number">4.5.</span> <span class="nav-text">mountComponentIntoNode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactMount-mountImageIntoNode"><span class="nav-number">4.6.</span> <span class="nav-text">ReactMount._mountImageIntoNode</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关文章"><span class="nav-number"></span> <span class="nav-text">相关文章</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/';
+          this.page.identifier = '2017/09/20/how-react-render-component-to-dom/';
+          this.page.title = 'ReactDOM 是如何把组件渲染到 DOM 中的？';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

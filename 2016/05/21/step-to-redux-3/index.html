@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="学习笔记,Redux," />
@@ -74,34 +117,25 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="异步的 Actions前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。
-Actions当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。
-这两个时刻通常都会需要">
+<meta name="description" content="异步的 Actions前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。 Actions当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。 这两个时刻通常都会需要">
+<meta name="keywords" content="学习笔记,Redux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【翻译向】走进 Redux 之高级篇">
-<meta property="og:url" content="http://kisnows.com/2016/05/21/step-to-redux-3/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="异步的 Actions前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。
-Actions当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。
-这两个时刻通常都会需要">
-<meta property="og:updated_time" content="2017-01-18T12:35:28.604Z">
+<meta property="og:url" content="https://blog.kisnows.com/2016/05/21/step-to-redux-3/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="异步的 Actions前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。 Actions当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。 这两个时刻通常都会需要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-17T14:26:44.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【翻译向】走进 Redux 之高级篇">
-<meta name="twitter:description" content="异步的 Actions前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。
-Actions当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。
-这两个时刻通常都会需要">
+<meta name="twitter:description" content="异步的 Actions前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。 Actions当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。 这两个时刻通常都会需要">
 
 
 
@@ -109,13 +143,15 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -129,7 +165,7 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
 
 
-  <link rel="canonical" href="http://kisnows.com/2016/05/21/step-to-redux-3/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/2016/05/21/step-to-redux-3/"/>
 
 
 
@@ -143,23 +179,23 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
   });
 </script>
 
-  <title> 【翻译向】走进 Redux 之高级篇 | 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>【翻译向】走进 Redux 之高级篇 | 抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -175,38 +211,42 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -221,37 +261,47 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -283,35 +333,29 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2016/05/21/step-to-redux-3/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/05/21/step-to-redux-3/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                【翻译向】走进 Redux 之高级篇
-              
-            
-          </h1>
+          <h2 class="post-title" itemprop="name headline">【翻译向】走进 Redux 之高级篇</h2>
         
 
         <div class="post-meta">
@@ -320,24 +364,42 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-21T20:14:46+08:00">
                 2016-05-21
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:26:44+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -355,13 +417,15 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/05/21/step-to-redux-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/21/step-to-redux-3/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/21/step-to-redux-3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
-          
-
           
 
           
@@ -371,9 +435,13 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -384,8 +452,10 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -399,14 +469,14 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 <li>一个通知 reducers 请求已经成功完成的 action<br>  reducers 可能通过把新数据合并到它控制的 state 中并重置 <code>isFetching</code> 来处理这个 action. UI 会隐藏等待标识，并展示获取到的数据。</li>
 <li>一个通知 reducers 请求失败的 action<br>  reducers 可能通过重置 <code>isFetching</code> 来处理这个 action. 另外，有些 reducers 可能想要存储这个错误信息，这样可以让 UI 展示出来。</li>
 </ul>
-<p>可能需要在 actions 添加一个专用的 <code>status</code> 字段：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;type: <span class="string">'FETCH_POSTS'</span>&#125;</div><div class="line">&#123;type: <span class="string">'FETCH_POSTS'</span>, status: <span class="string">'error'</span>, error: <span class="string">'Oops'</span>&#125;</div><div class="line">&#123;typs: <span class="string">'FETCH_POSTS'</span>, status: <span class="string">'success'</span>, response: &#123; ... &#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>或者为它们定义单独的 types：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123; type: <span class="string">'FETCH_POSTS_REQUEST'</span> &#125;</div><div class="line">&#123; type: <span class="string">'FETCH_POSTS_FAILURE'</span>, error: <span class="string">'Oops'</span> &#125;</div><div class="line">&#123; type: <span class="string">'FETCH_POSTS_SUCCESS'</span>, response: &#123; ... &#125; &#125;</div></pre></td></tr></table></figure></p>
-<p>选择一个拥有 flags 的单独的 action type, 或者多个 actions types, 这都取决与你。多个 types 会有更少的犯错空间，但这不是一个问题，如果你使用 <a href="https://github.com/acdlite/redux-actions" target="_blank" rel="external">redux-actions</a> 这样的辅助库来生成 action creator 和 reducers 的话。</p>
+<p>可能需要在 actions 添加一个专用的 <code>status</code> 字段：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;<span class="attr">type</span>: <span class="string">'FETCH_POSTS'</span>&#125;</div><div class="line">&#123;<span class="attr">type</span>: <span class="string">'FETCH_POSTS'</span>, <span class="attr">status</span>: <span class="string">'error'</span>, <span class="attr">error</span>: <span class="string">'Oops'</span>&#125;</div><div class="line">&#123;<span class="attr">typs</span>: <span class="string">'FETCH_POSTS'</span>, <span class="attr">status</span>: <span class="string">'success'</span>, <span class="attr">response</span>: &#123; ... &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>或者为它们定义单独的 types：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123; <span class="attr">type</span>: <span class="string">'FETCH_POSTS_REQUEST'</span> &#125;</div><div class="line">&#123; <span class="attr">type</span>: <span class="string">'FETCH_POSTS_FAILURE'</span>, <span class="attr">error</span>: <span class="string">'Oops'</span> &#125;</div><div class="line">&#123; <span class="attr">type</span>: <span class="string">'FETCH_POSTS_SUCCESS'</span>, <span class="attr">response</span>: &#123; ... &#125; &#125;</div></pre></td></tr></table></figure></p>
+<p>选择一个拥有 flags 的单独的 action type, 或者多个 actions types, 这都取决与你。多个 types 会有更少的犯错空间，但这不是一个问题，如果你使用 <a href="https://github.com/acdlite/redux-actions" target="_blank" rel="noopener">redux-actions</a> 这样的辅助库来生成 action creator 和 reducers 的话。</p>
 <h1 id="异步的数据流"><a href="#异步的数据流" class="headerlink" title="异步的数据流"></a>异步的数据流</h1><p>不使用 middlerware, Redux store 只提供同步的数据流。这是你通过 createStore() 得到的默认结果。</p>
 <p>可以使用 applyMiddleware() 来增强 createStore(). 这不是必须的，但它可以让你通过一个便利的方法描述异步的 action 。</p>
 <p>异步的 middleware 比如 redux-thunk 或 redux-promise 都包装了 store 的 dispatch() 方法，允许你 dispatch 除了 action 以外的内容，比如函数或者 Promise。你所使用的 middleware 可以以自己的方式解析你 dispatch 的任何内容，并继续传递 actions 给下一个 middleware。比如，支持 Promise 的 middleware 能够拦截 Promise，然后为每个 Promise 异步地 dispatch 一对 begin/end actions。</p>
 <p>当数据流上最后一个 middleware dispatches 一个 actions 时，它必须是一个普通的对象。这是同步的 Redux 数据流开始的地方。</p>
-<h1 id="中间件（Middleware）"><a href="#中间件（Middleware）" class="headerlink" title="中间件（Middleware）"></a>中间件（Middleware）</h1><p>中间件提供一个第三方的扩展点，在 dispatching 一个 action 和 它到达 reducer 的中间时刻。人们使用中间件来打印日志，记录崩溃报告，调用一个异步的 API, 路由……<br>这里有<a href="http://redux.js.org/docs/advanced/Middleware.html#seven-examples" target="_blank" rel="external">一些例子</a>来展示中间件的强大作用</p>
+<h1 id="中间件（Middleware）"><a href="#中间件（Middleware）" class="headerlink" title="中间件（Middleware）"></a>中间件（Middleware）</h1><p>中间件提供一个第三方的扩展点，在 dispatching 一个 action 和 它到达 reducer 的中间时刻。人们使用中间件来打印日志，记录崩溃报告，调用一个异步的 API, 路由……<br>这里有<a href="http://redux.js.org/docs/advanced/Middleware.html#seven-examples" target="_blank" rel="noopener">一些例子</a>来展示中间件的强大作用</p>
 <h2 id="理解中间件"><a href="#理解中间件" class="headerlink" title="理解中间件"></a>理解中间件</h2><p>中间件可以做很多事情，理解它是从哪来的非常重要。我们通过使用 logging 和 crash reporting 这俩个例子来展示一个使用中间件的思维过程。</p>
 <h3 id="问题-日志记录"><a href="#问题-日志记录" class="headerlink" title="问题: 日志记录"></a>问题: 日志记录</h3><h4 id="尝试-1：手动记录"><a href="#尝试-1：手动记录" class="headerlink" title="尝试#1：手动记录"></a>尝试#1：手动记录</h4><p>最原始的解决方案就是每次在调用 <code>store.dispatch(action)</code> 时记录 action 和 下一个 state. 代码可能就是下面的样子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> action = addTodo(<span class="string">'Use Redux'</span>)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'dispatching'</span>,action)</div><div class="line">store.dispatch(action)</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'next state'</span>, store.getState())</div></pre></td></tr></table></figure></p>
 <p>这真的是一种很搓的办法。</p>
@@ -418,21 +488,33 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    抹桥
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.kisnows.com/2016/05/21/step-to-redux-3/" title="【翻译向】走进 Redux 之高级篇">https://blog.kisnows.com/2016/05/21/step-to-redux-3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> unless stating additionally.
+  </li>
+</ul>
 
-      
-    </div>
-
+      </div>
+    
 
     <footer class="post-footer">
       
@@ -443,6 +525,10 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
             <a href="/tags/redux/" rel="tag"># Redux</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -470,6 +556,10 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -481,20 +571,28 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
 
           </div>
-          
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-
           
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+  
 
 
         </div>
@@ -510,114 +608,127 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -637,6 +748,25 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
         </section>
       <!--/noindex-->
       
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -648,38 +778,52 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -701,6 +845,17 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -720,72 +875,87 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = '2016/05/21/step-to-redux-3/';
 
-      var disqus_title = "【翻译向】走进 Redux 之高级篇";
+  
 
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
 
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
+    
+      <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = disqus_url;
-            this.page.identifier = disqus_identifier;
-            this.page.title = disqus_title;
+          this.page.url = 'https://blog.kisnows.com/2016/05/21/step-to-redux-3/';
+          this.page.identifier = '2016/05/21/step-to-redux-3/';
+          this.page.title = '【翻译向】走进 Redux 之高级篇';
         };
-        run_disqus_script('embed.js');
-      
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
-    </script>
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -793,14 +963,9 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
 
   
-  
 
   
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -907,9 +1072,43 @@ Actions当你调用一个异步的 API 时，有两个至关重要的时刻：�
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

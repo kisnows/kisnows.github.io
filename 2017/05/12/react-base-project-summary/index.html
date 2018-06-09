@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React,Redux,react-router," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="技术选型我们的项目主要选用以下技术开发，再配合一些其它辅助工具。  react react-router redux react-redux  开发及线上环境开发环境由于项目是前后端分离的，所以我们需要一套完整的开发环境，需要包括以下功能：  数据 Mock Webpack 实施编译刷新 方便前后端联调  基于这些需求，我们基于 Express, Webpack,Webpack-dev-middl">
+<meta name="keywords" content="React,Redux,react-router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 React 的前端项目开发总结">
+<meta property="og:url" content="https://blog.kisnows.com/2017/05/12/react-base-project-summary/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="技术选型我们的项目主要选用以下技术开发，再配合一些其它辅助工具。  react react-router redux react-redux  开发及线上环境开发环境由于项目是前后端分离的，所以我们需要一套完整的开发环境，需要包括以下功能：  数据 Mock Webpack 实施编译刷新 方便前后端联调  基于这些需求，我们基于 Express, Webpack,Webpack-dev-middl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.kisnows.com/imgs/react-base-project-summary/dev-env.png">
+<meta property="og:image" content="https://blog.kisnows.com/imgs/react-base-project-summary/online.png">
+<meta property="og:image" content="https://blog.kisnows.com/imgs/react-base-project-summary/data-flow.png">
+<meta property="og:image" content="https://blog.kisnows.com/imgs/react-base-project-summary/overall-process.png">
+<meta property="og:updated_time" content="2017-07-20T14:39:59.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于 React 的前端项目开发总结">
+<meta name="twitter:description" content="技术选型我们的项目主要选用以下技术开发，再配合一些其它辅助工具。  react react-router redux react-redux  开发及线上环境开发环境由于项目是前后端分离的，所以我们需要一套完整的开发环境，需要包括以下功能：  数据 Mock Webpack 实施编译刷新 方便前后端联调  基于这些需求，我们基于 Express, Webpack,Webpack-dev-middl">
+<meta name="twitter:image" content="https://blog.kisnows.com/imgs/react-base-project-summary/dev-env.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.kisnows.com/2017/05/12/react-base-project-summary/"/>
+
+
+
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5680248525294797",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <title>基于 React 的前端项目开发总结 | 抹桥的博客</title>
+  
+
+
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
+</script>
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?be602d9678e35053ae404d6230640d41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/05/12/react-base-project-summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">基于 React 的前端项目开发总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T15:00:52+08:00">
+                2017-05-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-07-20T22:39:59+08:00">
+                2017-07-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/12/react-base-project-summary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/12/react-base-project-summary/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/12/react-base-project-summary/" class="leancloud_visitors" data-flag-title="基于 React 的前端项目开发总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><p>我们的项目主要选用以下技术开发，再配合一些其它辅助工具。</p>
+<ul>
+<li>react</li>
+<li>react-router</li>
+<li>redux</li>
+<li>react-redux</li>
+</ul>
+<h1 id="开发及线上环境"><a href="#开发及线上环境" class="headerlink" title="开发及线上环境"></a>开发及线上环境</h1><h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>由于项目是前后端分离的，所以我们需要一套完整的开发环境，需要包括以下功能：</p>
+<ul>
+<li>数据 Mock</li>
+<li>Webpack 实施编译刷新</li>
+<li>方便前后端联调</li>
+</ul>
+<p>基于这些需求，我们基于 Express, Webpack,Webpack-dev-middleware 搭建了这套完整的开发环境。</p>
+<p><img src="/imgs/react-base-project-summary/dev-env.png" alt="开发环境"></p>
+<p>可以看到，浏览器所有的请求都被本地的 Node.js 服务拦截。对于静态资源请求，都委托给 <code>webpack-dev-middleware</code> 来处理，对于接口请求根据不同的环境来决定要做的操作。</p>
+<h3 id="本地开发"><a href="#本地开发" class="headerlink" title="本地开发"></a>本地开发</h3><p>当 <code>ENV = &#39;development&#39;</code> 时，也就是开发环境，那么就直接读取本地的 mock 数据来渲染页面。</p>
+<h3 id="前后端联调"><a href="#前后端联调" class="headerlink" title="前后端联调"></a>前后端联调</h3><p>当 <code>ENV = &#39;api&#39;</code> 时，也就是我们认为的联调环境，这个时候对于接口请求由 node.js 转发到需要联调的真实后端服务地址上，从而避免直接调用所产生的跨域问题。</p>
+<p>这样就可以直接用本地开发代码和后端联调，能大大提高效率，省去了每次需要往服务器上构建部署的步骤。</p>
+<h2 id="线上环境"><a href="#线上环境" class="headerlink" title="线上环境"></a>线上环境</h2><a id="more"></a>
+<p>前后端是分开部署的，所有的静态资源都放在 CDN (example.cdn.com)上面。</p>
+<p>也就是说我们的页面在 example.cdn/index.html 这里，但是请求的接口在 example.163.com/api/xxx,我们肯定不能让用户去直接去访问 example.cdn.com/index.html,这样不合理，而且由跨域问题存在</p>
+<p>那么访问 example.dai.163.com 的时候，怎么拿到我们的 html 页面呢？<br>看下图：</p>
+<p><img src="/imgs/react-base-project-summary/online.png" alt="线上环境"></p>
+<p>在客户端和后台服务之间架设一台 nginx, 我们访问的 example.dai.163.com 有两种请求：</p>
+<ul>
+<li>html 页面资源</li>
+<li>接口请求</li>
+</ul>
+<p>这两种请求都先经过 nginx，在这里做判断，如果是页面请求那么由 nginx 转发到 CDN， 否则交给后端服务来响应接口请求。</p>
+<p>拿到页面以后，其它所有的 css, js 等静态资源都是直接请求到 CDN ，这里没什么说的。</p>
+<h1 id="数据流转"><a href="#数据流转" class="headerlink" title="数据流转"></a>数据流转</h1><p>借助 redux 来管理数据流，我们来看这张图。</p>
+<p><img src="/imgs/react-base-project-summary/data-flow.png" alt="数据流转"></p>
+<p>首先，通过 <code>middleware</code> 和 <code>reducer</code> 生成 <code>store</code>, 然后获得项目的初始 <code>state</code>,通过初始 <code>state</code> 去渲染页面的初始状态。</p>
+<p>以 <code>Home</code> 页面为例，首先 <code>Home</code> 通过 <code>react-redux</code> 提供的 <code>connect</code> 方法拿到初始 <code>state</code> 作为 <code>Home</code> 的 <code>prop</code> 传递给 <code>Home</code>. 而 <code>Home</code> 由多个不同的子组件组成，这些组件的需要数据再由 Home 通过 props 传递给自己的子组件。</p>
+<p>当 <code>Home</code> 的初始状态加载完毕后，我们需要向后端请求去拿去一些用户数据。这时，我们分发一个下面这种格式的 <code>action</code>:<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">types</span>: [<span class="string">'home/start'</span>,<span class="string">'home/success'</span>,<span class="string">'home/failure'</span>],</div><div class="line">  <span class="attr">payload</span>: &#123;</div><div class="line">    <span class="attr">api</span>:</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">meta</span>: &#123;</div><div class="line">    <span class="attr">isApi</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>所有的 <code>action</code> 都会按照我们制定的循序通过一个个 <code>middleware</code>. </p>
+<p>在这里，我们的 <code>action</code> 会被 <code>callApiMiddleware</code> 通过 <code>meta</code> 里面的 <code>isApi</code> 标识命中，并去做相应的事情。</p>
+<p>比如在这个中间件里面，我们去做了真实的接口请求，在请求成功或失败的时候分发对应的 <code>action</code>，以及做一些统一的业务逻辑。比如我们对后端返回的接口中 <code>code</code> 值有统一的约定，假设 1 为成功， 2 为失败， 3 为未登录。那么我们就可以在中间件中去处理这些业务逻辑。 </p>
+<p>当请求成功，并渲染页面后，假设用户点击了一个按钮，这个按钮需要唤起 <code>native</code> 的一些功能，比如说拍照。那么我们分发一个唤起拍照功能的 <code>camera/start</code> 的<code>action</code>:<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">types</span>: [<span class="string">'sdk/start'</span>,<span class="string">'sdk/success'</span>,<span class="string">'sdk/failure'</span>],</div><div class="line">  <span class="attr">payload</span>: &#123;</div><div class="line">    <span class="attr">command</span>:</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">meta</span>: &#123;</div><div class="line">    <span class="attr">isSDK</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同样的道理，这个 <code>action</code> 会被 <code>EpaySDKMiddleware</code> 所识别并处理，在调起 native 的时候， 为了保证安全性，我们需要向后发起一个请求去拿签名，这个时候就可以在 <code>EpaySDKMiddleware</code> 里面分发一个接口请求的 <code>action</code>，那么这个 <code>action</code> 同样需要走一遍所有的 <code>middleware</code>. 那么这个接口请求的 <code>action</code> 就会像上面的流程一样，通过 <code>callApiMiddleware</code> 去处理。</p>
+<p>中间件的存在，使整个流程变得非常清晰，接口的请求的中间件就只做接口请求，调用 native 接口的中间件就只做对 native 的调用，当对 native 接口的调用需要做后端接口请求的时候，去分发一个 <code>action</code> 走接口请求的中间件。</p>
+<p>每个中间件只专注于自己的事情，既方便后续的维护，同时也提供了一个很好的拓展方式。而 <code>View</code> 层需要做的就只是做出分发 action，然后拿数据渲染页面就可以了，其他的逻辑都不用关心。</p>
+<h1 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h1><p><img src="/imgs/react-base-project-summary/overall-process.png" alt="整体流程"></p>
+<p>假设我们由如下的一个路由配置。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">component</span>: App,</div><div class="line">    <span class="attr">path</span>: <span class="string">'/'</span>,</div><div class="line">    <span class="attr">onEnter</span>: initLogin(store),</div><div class="line">    <span class="attr">indexRoute</span>: &#123;</div><div class="line">      getComponent(nextState, cb) &#123;</div><div class="line">        <span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</div><div class="line">          cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../views/Home'</span>).default)</div><div class="line">        &#125;, <span class="string">'Home'</span>)</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">onEnter</span>: initHome(store)</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">childRoutes</span>: [</div><div class="line">      createActivateRoute(store),</div><div class="line">      &#123;</div><div class="line">        <span class="attr">path</span>: <span class="string">'test'</span>,</div><div class="line">        <span class="attr">indexRoute</span>: &#123;</div><div class="line">          getComponent(nextState, cb) &#123;</div><div class="line">            <span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</div><div class="line">              cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../views/Test'</span>).default)</div><div class="line">            &#125;, <span class="string">'Test'</span>)</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;,</div><div class="line">      ...</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那结合 <code>react-route</code> 我们来看一个完整的流程。当我们浏览器里面输入 example.dai.163.com/index.html/#/ 的时候。</p>
+<p>首先，通过最上面 线上环境 一节提到的内容，拿到页面需要 html,css,js.</p>
+<p>然后渲染 <code>Provide</code> 和 <code>Router</code> 组件，分别提供 <code>store</code> 的注入和路由的控制。</p>
+<p>此时触发根路径的路由匹配，然后加载根组件 <code>APP</code>, 然后根据路由匹配规则匹配到 <code>IndexRouter</code>, 加载 <code>Home</code> 组件。</p>
+<p>后面的事情就和前面数据流转一节讲的是一样的了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前后端完全分离的基础上，借助一套完善的开发环境，可以大大提高的我们的开发效率，降低前后端联调的成本。</p>
+<p>同时借助于 Redux 思想，实现单向数据流，让我们可以实现一个非常清晰的数据流向。并且，借助于中间件，我们可以更加有效的控制数据流转的过程。为后面项目的扩展提供无限的想象空间。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    抹桥
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.kisnows.com/2017/05/12/react-base-project-summary/" title="基于 React 的前端项目开发总结">https://blog.kisnows.com/2017/05/12/react-base-project-summary/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># React</a>
+          
+            <a href="/tags/redux/" rel="tag"># Redux</a>
+          
+            <a href="/tags/react-router/" rel="tag"># react-router</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/20/react-page-render-improve/" rel="next" title="React 单页面初始化渲染优化">
+                <i class="fa fa-chevron-left"></i> React 单页面初始化渲染优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/03/react-redux-source-code-read/" rel="prev" title="React-Redux 源码粗读">
+                React-Redux 源码粗读 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#技术选型"><span class="nav-number">1.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发及线上环境"><span class="nav-number">2.</span> <span class="nav-text">开发及线上环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">2.1.</span> <span class="nav-text">开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地开发"><span class="nav-number">2.1.1.</span> <span class="nav-text">本地开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前后端联调"><span class="nav-number">2.1.2.</span> <span class="nav-text">前后端联调</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线上环境"><span class="nav-number">2.2.</span> <span class="nav-text">线上环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据流转"><span class="nav-number">3.</span> <span class="nav-text">数据流转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个例子"><span class="nav-number">4.</span> <span class="nav-text">一个例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://blog.kisnows.com/2017/05/12/react-base-project-summary/';
+          this.page.identifier = '2017/05/12/react-base-project-summary/';
+          this.page.title = '基于 React 的前端项目开发总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

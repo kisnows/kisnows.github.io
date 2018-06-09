@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="JavaScript,JS,Web Develop,Front end,前端开发,Kisnows" />
@@ -74,27 +117,23 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="description" content="怕什么真理无穷">
 <meta property="og:type" content="website">
-<meta property="og:title" content="抹桥杂货店">
-<meta property="og:url" content="http://kisnows.com/page/5/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta property="og:title" content="抹桥的博客">
+<meta property="og:url" content="https://blog.kisnows.com/page/5/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="怕什么真理无穷">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="抹桥杂货店">
-<meta name="twitter:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="twitter:title" content="抹桥的博客">
+<meta name="twitter:description" content="怕什么真理无穷">
 
 
 
@@ -102,13 +141,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -122,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://kisnows.com/page/5/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/page/5/"/>
 
 
 
@@ -136,23 +177,23 @@
   });
 </script>
 
-  <title> 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -168,40 +209,43 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -216,37 +260,47 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -278,38 +332,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/10/13/fullpage-js/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/05/21/step-to-redux-3/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/10/13/fullpage-js/" itemprop="url">
-                  轻量级fullPage整屏滚动框架V1.3发布
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/05/21/step-to-redux-3/" itemprop="url">【翻译向】走进 Redux 之高级篇</a></h2>
         
 
         <div class="post-meta">
@@ -318,24 +365,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-13T20:23:40+08:00">
-                2015-10-13
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-21T20:14:46+08:00">
+                2016-05-21
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:26:44+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -353,25 +418,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2015/10/13/fullpage-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/13/fullpage-js/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/21/step-to-redux-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/21/step-to-redux-3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2015/10/13/fullpage-js/" class="leancloud_visitors" data-flag-title="轻量级fullPage整屏滚动框架V1.3发布">
+             <span id="/2016/05/21/step-to-redux-3/" class="leancloud_visitors" data-flag-title="【翻译向】走进 Redux 之高级篇">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -382,59 +453,612 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <h1 id="项目初衷"><a href="#项目初衷" class="headerlink" title="项目初衷"></a>项目初衷</h1><p>前段时间接到一个新的项目，是一个整屏滚动的单页应用。</p>
-<p>本来打算完全自己写的，但是由于项目时间吃紧，就用了<a href="https://github.com/alvarotrigo/fullPage.js">fullpage</a>这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。</p>
-<p>但是它也有几个缺点，第一它必须依赖 <code>jQuery</code>,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。</p>
-<p><a href="https://github.com/kisnows/fullpage-light.js">项目地址</a></p>
-<p><a href="http://kisnows.com/fullpage-light.js/">一个简单的DEMO</a></p>
-<h1 id="changeList"><a href="#changeList" class="headerlink" title="changeList"></a>changeList</h1><p>V1.3.0</p>
+          <h1 id="异步的-Actions"><a href="#异步的-Actions" class="headerlink" title="异步的 Actions"></a>异步的 Actions</h1><p>前几篇的教程里面，我们搭建了一个 todo 应用。这是一个完全同步的，每次一个 action 被 dispatched, state 都会即时更新。<br>解析来，我们要搭建一个不同的，异步的应用。它使用 Reddit API 来展示一个选中栏目的头条。</p>
+<h2 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>当你调用一个异步的 API 时，有两个至关重要的时刻：你开始调用的时刻，和你收到答复的时刻。</p>
+<p>这两个时刻通常都会需要对应用的 state 做出变化；为此，你需要 dispatch 普通的将会被 reducers 同步处理的 actions. 通常，对于任意 API 请求，你将需要 dispatch 至少三次不同的 actions:</p>
 <ul>
-<li>修复对firefox的支持</li>
-<li>添加页面导航控制</li>
-<li>解决一些bug</li>
+<li>一个通知 reducers 请求开始的 action<br>  reducers 可能通过切换一个 state 中的 <code>isFetching</code> flag 来处理这个 action.  用来告诉 UI 是时候显示一个等待标识了。</li>
+<li>一个通知 reducers 请求已经成功完成的 action<br>  reducers 可能通过把新数据合并到它控制的 state 中并重置 <code>isFetching</code> 来处理这个 action. UI 会隐藏等待标识，并展示获取到的数据。</li>
+<li>一个通知 reducers 请求失败的 action<br>  reducers 可能通过重置 <code>isFetching</code> 来处理这个 action. 另外，有些 reducers 可能想要存储这个错误信息，这样可以让 UI 展示出来。</li>
 </ul>
-<p>V1.1.0 </p>
+<p>可能需要在 actions 添加一个专用的 <code>status</code> 字段：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/05/21/step-to-redux-3/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/05/04/step-to-flexbox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/05/04/step-to-flexbox/" itemprop="url">Flex 布局</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-04T16:10:43+08:00">
+                2016-05-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2016-07-15T22:04:25+08:00">
+                2016-07-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/04/step-to-flexbox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/04/step-to-flexbox/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/05/04/step-to-flexbox/" class="leancloud_visitors" data-flag-title="Flex 布局">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>第一次接触 flex 是在去年，当时是我第一次做手机项目，结果却因为兼容性问题给掉坑了。查了 can I use 发现它只支持到安卓 4.1, 然而我们的要求是要兼容到 4.0 才行的。<br>所以之后一直都没敢用，昨天听到有人说 flex 是可以支持到安卓 2.1 以上的。我不信，难道是我当时看错了？！<br>今天又去查了一下，发现确实是 4.1 啊。盯着屏幕想了半天，突然发现 Can I Use 上一个浏览器浏览器使用率，想着该不会直接把使用率低的浏览器给忽略掉了吧。打开设置一看，果真如此，于是把数据源改成中国，浏览器最小使用率 0.03% 果真 2.3 出来了。</p>
+<p><img src="/imgs/step-to-flexbox/can-i-use.png" alt="Can I USE"></p>
+<p>既然如此，说明 flex 还是可以在生产环境中使用了。那么就好好在过一下它的用法吧。<br>Flex 就是弹性布局，任何一个元素都可以设置为 flex 布局，当一个元素被设置为 flex 布局后，它的子元素上 float, vertical-align 都会失效。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">true<span class="attribute">display</span>:flex</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt="base"><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/05/04/step-to-flexbox/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/05/03/step-to-redux-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/05/03/step-to-redux-2/" itemprop="url">【翻译向】走进 Redux 之基础篇(二)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-03T10:02:50+08:00">
+                2016-05-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:18:40+08:00">
+                2017-03-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/03/step-to-redux-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/03/step-to-redux-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/05/03/step-to-redux-2/" class="leancloud_visitors" data-flag-title="【翻译向】走进 Redux 之基础篇(二)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>紧接上一篇<a href="https://www.kisnows.com/2016/04/26/step-to-redux-1/" target="_blank" rel="noopener">走进 Redux 之基础篇(一)</a>,接下来会跟着文档从下面三个点开始。</p>
 <ul>
-<li>添加自动播放 </li>
-<li>添加循环播放</li>
+<li>数据流</li>
+<li>与 React 配合</li>
+<li>实例：TodoList</li>
 </ul>
-<p>V1.0.0</p>
-<ul>
-<li>支持移动端触摸控制</li>
-<li>添加slide水平滑动</li>
-<li>添加PC端键盘控制和鼠标滚轮控制</li>
-<li>提供实用的API方便开发</li>
+<h1 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h1><p>Redux 的架构围绕与如何搭建一个<strong>严格的单向数据流</strong>。</p>
+<p>这意味着所有的数据都有遵循一个同样的生命周期模式，可以让整个应用变得可预测也更加易于理解。在 Redux 应用中，所有的数据生命周期分为如下四个步骤：</p>
+<h2 id="1-你主动调用-store-dispatch-action"><a href="#1-你主动调用-store-dispatch-action" class="headerlink" title="1 你主动调用 store.dispatch(action)"></a>1 你主动调用 <code>store.dispatch(action)</code></h2><p>Action 是一个用来描述发生了事情的对象。比如：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;<span class="attr">type</span>:<span class="string">'ADD_TODO'</span>,<span class="attr">text</span>:<span class="string">'todo\'s content'</span>&#125;</div><div class="line">&#123;<span class="attr">type</span>: <span class="string">'FETCH_USER_SUCCESS'</span>, <span class="attr">response</span>: &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'Mary'</span>&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>可以认为 action 是一个事件的简短片段描述。你可以在任何地方调用  <code>store.dispatch(action)</code>  ，包括组件和 XHR 中，甚至可以在定时器中调用。</p>
+<h2 id="2-Redux-store-调用你提供的-reducer-函数"><a href="#2-Redux-store-调用你提供的-reducer-函数" class="headerlink" title="2 Redux store 调用你提供的 reducer 函数"></a>2 Redux store 调用你提供的 reducer 函数</h2><p>store 会传递俩个参数给 reducer：当前的 state 和 action. 比如，在一个 todo 应用中，根 reducer 会收到类似下面这样的参数：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/05/03/step-to-redux-2/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/04/26/step-to-redux-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/26/step-to-redux-1/" itemprop="url">【翻译向】走进 Redux 之基础篇(一)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-26T22:17:16+08:00">
+                2016-04-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:26:44+08:00">
+                2017-03-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/26/step-to-redux-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/26/step-to-redux-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/04/26/step-to-redux-1/" class="leancloud_visitors" data-flag-title="【翻译向】走进 Redux 之基础篇(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Redux-的三个原则"><a href="#Redux-的三个原则" class="headerlink" title="Redux 的三个原则"></a>Redux 的三个原则</h1><ul>
+<li>整个应用的状态都以一个对象树的形式保存在一个单一的 store 中</li>
+<li>唯一去改变这个对象树的方法就是通过去触发 action,一个用来描述发生了什么事情的对象</li>
+<li>通过编写纯函数 reducers，去描述这个 action 如何改变了整个对象树</li>
 </ul>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一个轻巧的<code>fullpage</code>框架，不依赖其他任何库，主要针对移动端设备（同时也支持桌面端），压缩后不到4kb。<br>轻松创建炫酷的单页滑动网站。<br>
+<h1 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h1><p>Action 就是承载了要从你的应用传送给 store 的信息。它们只是 store 的信息数据来源。可以通过 <code>store.dispatch()</code> 来传递 action.<br>action 可能长这个样子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> ADD_TODO = <span class="string">'ADD_TODO'</span></div><div class="line">&#123;</div><div class="line">    <span class="attr">type</span>: ADD_TODO,</div><div class="line">    <span class="attr">text</span>: <span class="string">'Bulid my first Redux App'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Actions 就是普通的 JavaScript 对象，但是必须有 <code>type</code> 属性，用来指定是发生了哪种类型的操作。 Types 应该被定义为字符串常量。当你的项目变的庞大起来时，你可能需要把它们移动到一个单独隔离的模块里面。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; ADD_TODO, REMOVE_TODO &#125; <span class="keyword">from</span> <span class="string">'../actionTypes'</span></div></pre></td></tr></table></figure></p>
+<p>与 <code>type</code> 不同的是，整个 action 的结构完全由你来决定。不过可以参考 <a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="noopener">Flux Standard Action</a> 里面的指南来了解如何更好的组织 action 的结构。</p>
+<h2 id="Action-Creators"><a href="#Action-Creators" class="headerlink" title="Action Creators"></a>Action Creators</h2><p>Action Creators 就是用来生成 action 的函数。<br>在 Redux 中 action creators 简单的返回一个 action 对象就可以了：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">type</span>: ADD_TODO,</div><div class="line">        <span class="attr">text</span>: <span class="string">'Some text'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样可以更加容易的创建一类 action, 而且更易于测试。</p>
+<h2 id="Dispatch"><a href="#Dispatch" class="headerlink" title="Dispatch"></a>Dispatch</h2><p>实际的初始化一个 dispatch 可以通过把结果传递给 <code>diapatch()</code> 函数：<br>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/13/fullpage-js/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/26/step-to-redux-1/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -444,6 +1068,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -456,38 +1084,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/10/08/react-router/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/03/21/class and inherit in JavaScript/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/10/08/react-router/" itemprop="url">
-                  初试 react-router
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/03/21/class and inherit in JavaScript/" itemprop="url">JavaScript 中的类和继承</a></h2>
         
 
         <div class="post-meta">
@@ -496,24 +1117,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-08T21:58:24+08:00">
-                2015-10-08
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-21T19:38:13+08:00">
+                2016-03-21
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:21:34+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -531,25 +1170,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2015/10/08/react-router/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/08/react-router/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/21/class and inherit in JavaScript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/21/class and inherit in JavaScript/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2015/10/08/react-router/" class="leancloud_visitors" data-flag-title="初试 react-router">
+             <span id="/2016/03/21/class and inherit in JavaScript/" class="leancloud_visitors" data-flag-title="JavaScript 中的类和继承">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -560,37 +1205,51 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <p>react-router 提供简单有强大 API 来方便我们在<code>React</code>搭建的单页面中实现路由功能。<br>首先看一个简单的例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> &#123;render,findDOMNode&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, Link &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> Page1 = React.createClass(&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Page1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium animi dicta</div><div class="line">        dignissimos earum eos esse impedit ipsum iste laboriosam numquam odio perspiciatis porro, quas sequi tempore</div><div class="line">        vero vitae voluptates?<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">let</span> Page2 = React.createClass(&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Page2<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga porro voluptas voluptatum.</div><div class="line">        Corporis debitis deleniti, doloremque et eum ex id iste magni nobis nostrum quae, reiciendis rem repellendus</div><div class="line">        similique tempora.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">let</span> App = React.createClass(&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/page1"</span>&gt;</span>Page1<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/page2"</span>&gt;</span>Page2<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">render((</div><div class="line">  &lt;Router&gt;</div><div class="line">    &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">      &lt;Route path="page1" component=&#123;Page1&#125;/&gt;</div><div class="line">      &lt;Route path="page2" component=&#123;Page2&#125;/&gt;</div><div class="line">    &lt;/Route&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line">), document.body);</div></pre></td></tr></table></figure></p>
-<p>只需要在 <code>&lt;Link&gt;</code> 标签中的 to 属性中定义路径，那么在渲染出的页面中点击 Page1 或 Page2 标签，就会显示相应的 Components，而且 url 也会跟着路径进行变化。<br>我们来简单分析一个这段代码，这里我们定义了三个路由，一个指向根目录即 ‘/‘,一个指向 ‘page/‘,一个指向 ‘page/2’.<br>路由定义必须包裹在 <code>&lt;Router&gt;&lt;/Router&gt;</code> 中。<br><code>&lt;Route&gt;&lt;/Route&gt;</code>为每一个路由要定义的路径，并处理它的行为。其中 path 为路径， component 为要渲染的组件。并且还可以提供相应的 handle，用来处理控制路由的行为。<br>接下来我们来模拟一个拦截登陆的行为。<br>
+          <p>我们都知道 JavaScript 是一门基于原型的语言。当我们调用一个对象本身没有的属性时，JavaScript 就会从对象的原型对象上去找该属性，如果原型上也没有该属性，那就去找原型的原型，一直找原型链的末端也就是 <code>Object.prototype</code> 的原型 <code>null</code>。这种属性查找的方式我们称之为原型链。</p>
+<h1 id="类的实现"><a href="#类的实现" class="headerlink" title="类的实现"></a>类的实现</h1><p>由于 JavaScript 本身是没有的类的感念的。所以我们如果要实现一个类，一般是通过构造函数来模拟类的实现：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;  <span class="comment">//实现一个类</span></div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>,<span class="number">23</span>); <span class="comment">//通过 new 来新建实例</span></div></pre></td></tr></table></figure></p>
+<p>首先新建一个 <code>Person</code> 的构造函数，为了和一般的函数区别，我们会使用 CamelCase 方式来命名构造函数。<br>然后通过 <code>new</code> 操作符来创建实例，<code>new</code> 操作符其实干了这么几件事：</p>
+<ol>
+<li>创建一个继承自 <code>Person.prototype</code> 的新对象</li>
+<li>构造函数 <code>Person</code> 执行时，相应的参数传入，同时上下文被指定为这个新建的对象。</li>
+<li>如果构造函数返回了一个对象，那么这个对象会取代 <code>new</code> 的结果。如果构造函数返回的不是对象，则会忽略这个返回值。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">返回值不是对象</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">return</span> <span class="string">'person'</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>);</div><div class="line"><span class="comment">//  you 的值: Person &#123;name: "you"&#125;</span></div><div class="line">返回值是对象</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">return</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>);</div><div class="line"><span class="comment">//  you的值: [1,2,3]</span></div></pre></td></tr></table></figure>
+<p>如果类的实例需要共享类的方法，那么就需要给构造函数的 <code>prototype</code> 属性添加方法了。因为 <code>new</code> 操作符创建的对象都继承自构造函数的 <code>prototype</code> 属性。他们可以共享定义在类 <code>prototype</code> 上的方法和属性。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;  </div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">    <span class="attr">sayName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'My name is'</span>,<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>,<span class="number">23</span>);</div><div class="line"><span class="keyword">var</span> me = <span class="keyword">new</span> Person(<span class="string">'me'</span>,<span class="number">23</span>);</div><div class="line">you.sayName()   <span class="comment">// My name is you.</span></div><div class="line">me.sayName()    <span class="comment">// My name is me.</span></div></pre></td></tr></table></figure>
+<h1 id="继承的实现"><a href="#继承的实现" class="headerlink" title="继承的实现"></a>继承的实现</h1>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/08/react-router/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/03/21/class and inherit in JavaScript/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -600,478 +1259,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/09/23/learnyounode-functional-javascript/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/23/learnyounode-functional-javascript/" itemprop="url">
-                  learnyounode-functional-javascript
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-23T19:53:33+08:00">
-                2015-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/09/23/learnyounode-functional-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/23/learnyounode-functional-javascript/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/09/23/learnyounode-functional-javascript/" class="leancloud_visitors" data-flag-title="learnyounode-functional-javascript">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/imgs/learnyounode-functional-javascript.png" alt="fun"><br>坑爹的CMD不知怎么回事，在做到倒数第三道题后突然罢工了，不能选择题目，公司和自己的电脑都是这样。<br>于是最后三道题还是放弃了，也没精力去找那三道题到底是什么了，就这样吧。</p>
-<p>做题的过程中有个需要注意的地方，也是在js中一个很常用的方法。<br>那就是被setTimeout延迟的函数会等前面函数彻底执行完以后，才会执行,也就是说可以阻塞js的进程。如下：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params">operation, num</span>) </span>&#123;</div><div class="line">  <span class="comment">// modify this so it can be interrupted</span></div><div class="line">  <span class="keyword">if</span> (num &lt;= <span class="number">0</span>) <span class="keyword">return</span></div><div class="line">      operation();</div><div class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">          <span class="keyword">return</span> repeat(operation, --num);</div><div class="line">      &#125;,<span class="number">0</span>)</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = repeat</div></pre></td></tr></table></figure></p>
-<p>Operation是一个操作很费时间的函数，如果不用setTimeout延迟后面的递归调用的话，就会造成repeat函数已经执行完了，但是含有很多个operation没有执行完的情况。</p>
-<p>其它的到没有什么了，所有代码都放在<a href="https://github.com/kisnows/nodeschool/tree/master/functional-javascript" target="_blank" rel="external">这里</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/09/08/Learning-ECMAScript6-Three/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/08/Learning-ECMAScript6-Three/" itemprop="url">
-                  ECMAScript6学习简记（三）- 函数扩展
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-08T21:24:03+08:00">
-                2015-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/09/08/Learning-ECMAScript6-Three/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/08/Learning-ECMAScript6-Three/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/09/08/Learning-ECMAScript6-Three/" class="leancloud_visitors" data-flag-title="ECMAScript6学习简记（三）- 函数扩展">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-函数参数默认值"><a href="#1-函数参数默认值" class="headerlink" title="1.函数参数默认值"></a>1.函数参数默认值</h1><p>以前我们经常会些下面的代码</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doS</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    e = e|<span class="built_in">window</span>.e;</div><div class="line">    <span class="comment">//doSomeThing with e</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过这样的方法来给函数设置默认值，这样有一个缺点就是，如果传进来的参数对应的布尔值为<code>false</code>，比如空字符串或者0，那就尴尬了。</p>
-<p>所以如果我们还想上面的代码得到正确的结果，就需要对e在做一个判断，判断它是否被赋值了。</p>
-<p>这样会很麻烦，所以ES6有了新的方法，如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doS</span>(<span class="params">e=window.e</span>)</span>&#123;</div><div class="line">    <span class="comment">//doSomeThing with e</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样不尽代码简短了很多，而且可读性大大提高，看代码的人可以一样看到那些参数是有默认值的。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/08/Learning-ECMAScript6-Three/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/09/02/learning-ECMAScript6-Two/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/02/learning-ECMAScript6-Two/" itemprop="url">
-                  ECMAScript6学习简记（二）- 数组扩展
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-02T13:39:20+08:00">
-                2015-09-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/09/02/learning-ECMAScript6-Two/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/02/learning-ECMAScript6-Two/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/09/02/learning-ECMAScript6-Two/" class="leancloud_visitors" data-flag-title="ECMAScript6学习简记（二）- 数组扩展">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h1><p>将类数组或可迭代对象转换为真正的数组。</p>
-<h2 id="可转换的类别"><a href="#可转换的类别" class="headerlink" title="可转换的类别"></a>可转换的类别</h2><h3 id="Dom集合"><a href="#Dom集合" class="headerlink" title="Dom集合"></a>Dom集合</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> ps = <span class="built_in">document</span>.querySelectAll(<span class="string">'p'</span>);          <span class="comment">//通过Array.from 转换后可以使用forEach方法</span></div><div class="line"><span class="built_in">Array</span>.from(ps).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">p,index</span>)</span>&#123;</div><div class="line"><span class="meta">	"use strict"</span>;</div><div class="line">true<span class="built_in">console</span>.log(p,index)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="arguments对象"><a href="#arguments对象" class="headerlink" title="arguments对象"></a>arguments对象</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">	"use strict"</span>;</div><div class="line">true<span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);                   <span class="comment">//可以替代以前下面这种方式来转换</span></div><div class="line">true<span class="keyword">var</span> argvs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</div><div class="line">true<span class="built_in">console</span>.log(argvs, args);</div><div class="line">&#125;</div><div class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);           <span class="comment">//[ 1, 2, 3, 4 ] [ 1, 2, 3, 4 ]</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/02/learning-ECMAScript6-Two/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -1080,14 +1271,22 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
-          
-
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
           
 
@@ -1104,107 +1303,139 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -1217,38 +1448,52 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -1270,6 +1515,17 @@
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -1289,76 +1545,81 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = 'page/5/index.html';
-
-      var disqus_title = "";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
-
-    </script>
-  
-
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
 
 
   
   
 
-  
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -1465,9 +1726,43 @@
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

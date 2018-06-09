@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,40 +93,49 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,JS,Web Develop,Front end,前端开发,Kisnows" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
 
 
 
 
 
-<meta name="description" content="resolve.root,resolve.fallback,resolve.modulesDirectories这些配置项项都被一个单独的配置所替代 resolve.modules. 查看 resolving 了解更多。
-resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [+     path.join(__dirna">
+  <meta name="keywords" content="webpack," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="resolve.root,resolve.fallback,resolve.modulesDirectories这些配置项项都被一个单独的配置所替代 resolve.modules. 查看 resolving 了解更多。 resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [+     path.join(__dirna">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【翻译向】Webpack 1 到 2 升级指南">
-<meta property="og:url" content="http://kisnows.com/2017/01/19/webpack2-migrating-v1-v2/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="resolve.root,resolve.fallback,resolve.modulesDirectories这些配置项项都被一个单独的配置所替代 resolve.modules. 查看 resolving 了解更多。
-resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [+     path.join(__dirna">
-<meta property="og:updated_time" content="2017-03-16T13:07:32.520Z">
+<meta property="og:url" content="https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="resolve.root,resolve.fallback,resolve.modulesDirectories这些配置项项都被一个单独的配置所替代 resolve.modules. 查看 resolving 了解更多。 resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [+     path.join(__dirna">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-17T14:17:38.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【翻译向】Webpack 1 到 2 升级指南">
-<meta name="twitter:description" content="resolve.root,resolve.fallback,resolve.modulesDirectories这些配置项项都被一个单独的配置所替代 resolve.modules. 查看 resolving 了解更多。
-resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [+     path.join(__dirna">
+<meta name="twitter:description" content="resolve.root,resolve.fallback,resolve.modulesDirectories这些配置项项都被一个单独的配置所替代 resolve.modules. 查看 resolving 了解更多。 resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [+     path.join(__dirna">
 
 
 
@@ -106,13 +143,15 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -126,7 +165,7 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
 
 
-  <link rel="canonical" href="http://kisnows.com/2017/01/19/webpack2-migrating-v1-v2/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/"/>
 
 
 
@@ -140,23 +179,23 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
   });
 </script>
 
-  <title> 【翻译向】Webpack 1 到 2 升级指南 | 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>【翻译向】Webpack 1 到 2 升级指南 | 抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -172,38 +211,42 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -218,37 +261,47 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -280,35 +333,29 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/01/19/webpack2-migrating-v1-v2/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                【翻译向】Webpack 1 到 2 升级指南
-              
-            
-          </h1>
+          <h2 class="post-title" itemprop="name headline">【翻译向】Webpack 1 到 2 升级指南</h2>
         
 
         <div class="post-meta">
@@ -317,24 +364,42 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T17:00:33+08:00">
                 2017-01-19
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:17:38+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -352,13 +417,15 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/01/19/webpack2-migrating-v1-v2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/19/webpack2-migrating-v1-v2/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/19/webpack2-migrating-v1-v2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
-          
-
           
 
           
@@ -368,9 +435,13 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -381,23 +452,25 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
-        <h2 id="resolve-root-resolve-fallback-resolve-modulesDirectories"><a href="#resolve-root-resolve-fallback-resolve-modulesDirectories" class="headerlink" title="resolve.root,resolve.fallback,resolve.modulesDirectories"></a><code>resolve.root</code>,<code>resolve.fallback</code>,<code>resolve.modulesDirectories</code></h2><p>这些配置项项都被一个单独的配置所替代 <code>resolve.modules</code>. 查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="external">resolving</a> 了解更多。</p>
+        <h2 id="resolve-root-resolve-fallback-resolve-modulesDirectories"><a href="#resolve-root-resolve-fallback-resolve-modulesDirectories" class="headerlink" title="resolve.root,resolve.fallback,resolve.modulesDirectories"></a><code>resolve.root</code>,<code>resolve.fallback</code>,<code>resolve.modulesDirectories</code></h2><p>这些配置项项都被一个单独的配置所替代 <code>resolve.modules</code>. 查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="noopener">resolving</a> 了解更多。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">-   root: path.join(__dirname, <span class="string">"src"</span>)</div><div class="line">+   modules: [</div><div class="line">+     path.join(__dirname, <span class="string">"src"</span>),</div><div class="line">+     <span class="string">"node_modules"</span></div><div class="line">+   ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="resolve-extensions"><a href="#resolve-extensions" class="headerlink" title="resolve.extensions"></a><code>resolve.extensions</code></h2><p>这个选项已经不在需要传一个空字符串了。它的行为已经被移动到了 <code>resolve.enforceExtension</code>. 查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="external">resolving</a> 了解更多。</p>
-<h2 id="resolve"><a href="#resolve" class="headerlink" title="resolve.*"></a><code>resolve.*</code></h2><p>这里修改了很多内容。因为被用到的不是很多，所以就不一一列举出来了。查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="external">resolving</a> 了解更多。</p>
+<h2 id="resolve-extensions"><a href="#resolve-extensions" class="headerlink" title="resolve.extensions"></a><code>resolve.extensions</code></h2><p>这个选项已经不在需要传一个空字符串了。它的行为已经被移动到了 <code>resolve.enforceExtension</code>. 查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="noopener">resolving</a> 了解更多。</p>
+<h2 id="resolve"><a href="#resolve" class="headerlink" title="resolve.*"></a><code>resolve.*</code></h2><p>这里修改了很多内容。因为被用到的不是很多，所以就不一一列举出来了。查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="noopener">resolving</a> 了解更多。</p>
 <h2 id="module-loaders-现在是-module-rules"><a href="#module-loaders-现在是-module-rules" class="headerlink" title="module.loaders 现在是 module.rules"></a><code>module.loaders</code> 现在是 <code>module.rules</code></h2><p>老的 loader 配置被一个更加强大的 rules 系统所取代了，允许配置 loader 和更多内容。为了保证一致性，旧的 <code>module.loaders</code> 语法依然可以合法且可以使用的。新的命名规范更加易于理解，这是一个使用 <code>module.rules</code> 去升级配置的很好的理由。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">-   loaders: [</div><div class="line">+   rules: [</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.css$/</span>,</div><div class="line">-       loaders: [</div><div class="line">+       use: [</div><div class="line">          &#123;</div><div class="line">            loader: <span class="string">"style-loader"</span></div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            loader: <span class="string">"css-loader"</span>,</div><div class="line">-           query: &#123;</div><div class="line">+           options: &#123;</div><div class="line">              modules: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.jsx$/</span>,</div><div class="line">        loader: <span class="string">"babel-loader"</span>, <span class="comment">// Do not use "use" here</span></div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">-   loaders: [</div><div class="line">+   rules: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">-       loaders: [</div><div class="line">+       use: [</div><div class="line">          &#123;</div><div class="line">            <span class="attr">loader</span>: <span class="string">"style-loader"</span></div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            <span class="attr">loader</span>: <span class="string">"css-loader"</span>,</div><div class="line">-           query: &#123;</div><div class="line">+           options: &#123;</div><div class="line">              <span class="attr">modules</span>: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.jsx$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">"babel-loader"</span>, <span class="comment">// Do not use "use" here</span></div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="把-loader-链接起来（Chaining-loaders）"><a href="#把-loader-链接起来（Chaining-loaders）" class="headerlink" title="把 loader 链接起来（Chaining loaders）"></a>把 loader 链接起来（Chaining loaders）</h2><p>就像在 webpack1 中那样，loader 可以被链接起来，把上一个 loader 的结果传递给下一个 loader. 使用 <a href="https://webpack.js.org/configuration/module#rule-use" target="_blank" rel="external">rule.use</a>， <code>use</code> 可以设置为一个 loaders 的列表。在 webpack1 中，loader 通过 <code>!</code> 来链接再一起。现在只会在 <code>module.loaders</code> 里面才会支持这样的风格。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">-   loaders: &#123;</div><div class="line">+   rules: &#123;</div><div class="line">      test: <span class="regexp">/\.less$/</span>,</div><div class="line">-     loader: <span class="string">"style-loader!css-loader!less-loader"</span></div><div class="line">+     use: [</div><div class="line">+       <span class="string">"style-loader"</span>,</div><div class="line">+       <span class="string">"css-loader"</span>,</div><div class="line">+       <span class="string">"less-loader"</span></div><div class="line">+     ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="自动添加-loader-后辍的特性被移除了"><a href="#自动添加-loader-后辍的特性被移除了" class="headerlink" title="自动添加 -loader 后辍的特性被移除了"></a>自动添加 <code>-loader</code> 后辍的特性被移除了</h2><p>在引入 loader 的时候不能在省略后面的 <code>-loader</code> 了。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"> <span class="built_in">module</span>: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        use: [</div><div class="line">-         <span class="string">"style"</span>,</div><div class="line">+         <span class="string">"style-loader"</span>,</div><div class="line">-         <span class="string">"css"</span>,</div><div class="line">+         <span class="string">"css-loader"</span>,</div><div class="line">-         <span class="string">"less"</span>,</div><div class="line">+         <span class="string">"less-loader"</span>,</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="把-loader-链接起来（Chaining-loaders）"><a href="#把-loader-链接起来（Chaining-loaders）" class="headerlink" title="把 loader 链接起来（Chaining loaders）"></a>把 loader 链接起来（Chaining loaders）</h2><p>就像在 webpack1 中那样，loader 可以被链接起来，把上一个 loader 的结果传递给下一个 loader. 使用 <a href="https://webpack.js.org/configuration/module#rule-use" target="_blank" rel="noopener">rule.use</a>， <code>use</code> 可以设置为一个 loaders 的列表。在 webpack1 中，loader 通过 <code>!</code> 来链接再一起。现在只会在 <code>module.loaders</code> 里面才会支持这样的风格。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">-   loaders: &#123;</div><div class="line">+   rules: &#123;</div><div class="line">      <span class="attr">test</span>: <span class="regexp">/\.less$/</span>,</div><div class="line">-     loader: <span class="string">"style-loader!css-loader!less-loader"</span></div><div class="line">+     use: [</div><div class="line">+       <span class="string">"style-loader"</span>,</div><div class="line">+       <span class="string">"css-loader"</span>,</div><div class="line">+       <span class="string">"less-loader"</span></div><div class="line">+     ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="自动添加-loader-后辍的特性被移除了"><a href="#自动添加-loader-后辍的特性被移除了" class="headerlink" title="自动添加 -loader 后辍的特性被移除了"></a>自动添加 <code>-loader</code> 后辍的特性被移除了</h2><p>在引入 loader 的时候不能在省略后面的 <code>-loader</code> 了。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"> <span class="built_in">module</span>: &#123;</div><div class="line">    <span class="attr">rules</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">use</span>: [</div><div class="line">-         <span class="string">"style"</span>,</div><div class="line">+         <span class="string">"style-loader"</span>,</div><div class="line">-         <span class="string">"css"</span>,</div><div class="line">+         <span class="string">"css-loader"</span>,</div><div class="line">-         <span class="string">"less"</span>,</div><div class="line">+         <span class="string">"less-loader"</span>,</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
 <p>不过依旧可以使用 <code>resolveLoader.moduleExtensions</code> 配置来达到以前的目的，但是我们不推荐这样做。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">+ resolveLoader: &#123;</div><div class="line">+   moduleExtensions: [&quot;-loader&quot;]</div><div class="line">+ &#125;</div></pre></td></tr></table></figure></p>
 <h2 id="不再需要-json-loader"><a href="#不再需要-json-loader" class="headerlink" title="不再需要 json-loader"></a>不再需要 <code>json-loader</code></h2><p>当没有给 sjon 文件配置对应的 loader 的时候，webpack 会自动使用 <code>json-loader</code> 来载入 JSON 文件。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">  module: &#123;</div><div class="line">    rules: [</div><div class="line">-     &#123;</div><div class="line">-       test: /\.json/,</div><div class="line">-       loader: &quot;json-loader&quot;</div><div class="line">-     &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
@@ -430,15 +503,15 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 <p>作为替代，现在有一个接口用来给配置传递参数。未来的工具会基于这个。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">webpack --env.customStuff</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> customStuff = env.customStuff;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">  <span class="keyword">return</span> config;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>查看 <a href="https://webpack.js.org/api/cli" target="_blank" rel="external">CLI</a></p>
+<p>查看 <a href="https://webpack.js.org/api/cli" target="_blank" rel="noopener">CLI</a></p>
 <h2 id="require-ensure-和-AMD-require-是异步的了"><a href="#require-ensure-和-AMD-require-是异步的了" class="headerlink" title="require.ensure 和 AMD require 是异步的了"></a><code>require.ensure</code> 和 AMD <code>require</code> 是异步的了</h2><p>这些函数变成了异步的，代替之前如果代码块已经被加载后它们的回调函数会同步执行的行为。</p>
 <p><strong><code>require.ensure</code> 现在依赖与原生的 <code>Promise</code>, 如果在一个不支持 <code>Promise</code> 的环境下使用 <code>require.ensure</code> ，那么你需要一个 polyfill.</strong></p>
 <h2 id="Loader-的配置要通过-options"><a href="#Loader-的配置要通过-options" class="headerlink" title="Loader 的配置要通过 options"></a>Loader 的配置要通过 <code>options</code></h2><p>不能在通过在 <code>webpack.config.js</code> 中一个自定义的属性来配置 loader 了。必须通过 <code>options</code>. 下面这个 <code>ts</code> 属性的配置在 webpack2 中已经不合法了。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  ...</div><div class="line">    module: &#123;</div><div class="line">  rules: [&#123;</div><div class="line">    test: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">    loader: <span class="string">'ts-loader'</span></div><div class="line">  &#125;]</div><div class="line">&#125;,</div><div class="line"><span class="comment">// does not work with webpack 2</span></div><div class="line">ts: &#123; transpileOnly: <span class="literal">false</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="什么是-options？"><a href="#什么是-options？" class="headerlink" title="什么是 options？"></a>什么是 <code>options</code>？</h2><p>好问题。严格的说，它可能是两个东西；都是用来配置一个 loader 的方式。典型的 <code>options</code> 被称为 <code>query</code>, 是一个可以被添加 loader 名字后面的字符串。更像一个 查询字符（query  string），但实际上是 <a href="https://github.com/webpack/loader-utils#parsequery" target="_blank" rel="external">greater powers</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  ...</div><div class="line">  module: &#123;</div><div class="line">  rules: [&#123;</div><div class="line">    test: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">    loader: <span class="string">'ts-loader?'</span> + <span class="built_in">JSON</span>.stringify(&#123; transpileOnly: <span class="literal">false</span> &#125;)</div><div class="line">   &#125;]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  ...</div><div class="line">    module: &#123;</div><div class="line">  <span class="attr">rules</span>: [&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'ts-loader'</span></div><div class="line">  &#125;]</div><div class="line">&#125;,</div><div class="line"><span class="comment">// does not work with webpack 2</span></div><div class="line">ts: &#123; <span class="attr">transpileOnly</span>: <span class="literal">false</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="什么是-options？"><a href="#什么是-options？" class="headerlink" title="什么是 options？"></a>什么是 <code>options</code>？</h2><p>好问题。严格的说，它可能是两个东西；都是用来配置一个 loader 的方式。典型的 <code>options</code> 被称为 <code>query</code>, 是一个可以被添加 loader 名字后面的字符串。更像一个 查询字符（query  string），但实际上是 <a href="https://github.com/webpack/loader-utils#parsequery" target="_blank" rel="noopener">greater powers</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  ...</div><div class="line">  module: &#123;</div><div class="line">  <span class="attr">rules</span>: [&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'ts-loader?'</span> + <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">transpileOnly</span>: <span class="literal">false</span> &#125;)</div><div class="line">   &#125;]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>同样可以是一个指定的对象，和 loader 一同提供：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  ...</div><div class="line">    module: &#123;</div><div class="line">  rules: [&#123;</div><div class="line">    test: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">    loader: <span class="string">'ts-loader'</span></div><div class="line">    options:  &#123; transpileOnly: <span class="literal">false</span> &#125;</div><div class="line">  &#125;]</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  ...</div><div class="line">    module: &#123;</div><div class="line">  <span class="attr">rules</span>: [&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'ts-loader'</span></div><div class="line">    options:  &#123; <span class="attr">transpileOnly</span>: <span class="literal">false</span> &#125;</div><div class="line">  &#125;]</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="LoaderOptionsPlugin-上下文"><a href="#LoaderOptionsPlugin-上下文" class="headerlink" title="LoaderOptionsPlugin 上下文"></a><code>LoaderOptionsPlugin</code> 上下文</h2><p>一些 loader 需要从配置文件中读取上下文信息。这个需要长期的设置在 loader 的选项中。</p>
 <p>为了兼容老的 loader，可以通过这个插件来传递给 loader：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">plugins: [</div><div class="line">  +   <span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">    +     options: &#123;</div><div class="line">  +       context: __dirname</div><div class="line">  +     &#125;</div><div class="line">+   &#125;)</div><div class="line">]</div></pre></td></tr></table></figure>
@@ -451,14 +524,14 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 <p>在 ES2015 中我们使用 <code>import()</code> 作为一个方法在运行时动态的记载 ES2015.</p>
 <p>webpack 会把 <code>import()</code> 作为一个分割点，并且把加载的代码分离出来作为一个单独的代码块。</p>
 <p><code>import()</code> 需要一个模块的名称作为参数，并返回一个 Promise 对象。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">import</span>(<span class="string">"./module"</span>).then(<span class="built_in">module</span> =&gt; &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.default;</div><div class="line">  &#125;).catch(err =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Chunk loading failed"</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">import</span>(<span class="string">"./module"</span>).then(<span class="function"><span class="params">module</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.default;</div><div class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Chunk loading failed"</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>好消息：现在代码块加载失败可以被处理了，因为它们是基于 Promise 的。</p>
 <p>警告（Caveat）：<code>require.ensure</code> 可以方便的指定代码块的名字，通过第三个参数，但是 <code>import</code> API 还不支持这个特性。如果你还依赖这个功能，那么你可以继续使用 <code>require.ensure</code>.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.ensure([], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> foo = <span class="built_in">require</span>(<span class="string">"./module"</span>);</div><div class="line">&#125;, <span class="string">"custom-chunk-name"</span>);</div></pre></td></tr></table></figure>
-<p>如果想要和 Babel 结合使用 <code>import</code>, 你需要安装 <a href="http://babeljs.io/docs/plugins/syntax-dynamic-import/" target="_blank" rel="external">dynamic-import</a> 这个还处于 Stage 3 的语法插件来绕过语法解析错误。当这个提案被加到标准里面后，就不需要这么做了。</p>
+<p>如果想要和 Babel 结合使用 <code>import</code>, 你需要安装 <a href="http://babeljs.io/docs/plugins/syntax-dynamic-import/" target="_blank" rel="noopener">dynamic-import</a> 这个还处于 Stage 3 的语法插件来绕过语法解析错误。当这个提案被加到标准里面后，就不需要这么做了。</p>
 <h2 id="动态表达式（Dynamic-expressions）"><a href="#动态表达式（Dynamic-expressions）" class="headerlink" title="动态表达式（Dynamic expressions）"></a>动态表达式（Dynamic expressions）</h2><p>很有可能你会需要传递一个表达式给 <code>import()</code>. 这里处理的模式跟 CommonJs 中很相似。</p>
 <p><code>import()</code> 创建一个单独的代码块给每个可能的模块。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span>(<span class="params">path, query</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">import</span>(<span class="string">`./routes/<span class="subst">$&#123;path&#125;</span>/route`</span>)</div><div class="line">    .then(route =&gt; <span class="keyword">new</span> route.Route(query));</div><div class="line">&#125;</div><div class="line"><span class="comment">// This creates a separate chunk for each possible route</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span>(<span class="params">path, query</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">import</span>(<span class="string">`./routes/<span class="subst">$&#123;path&#125;</span>/route`</span>)</div><div class="line">    .then(<span class="function"><span class="params">route</span> =&gt;</span> <span class="keyword">new</span> route.Route(query));</div><div class="line">&#125;</div><div class="line"><span class="comment">// This creates a separate chunk for each possible route</span></div></pre></td></tr></table></figure>
 <h2 id="混合使用-ES2015，AMD-和-CommonJS"><a href="#混合使用-ES2015，AMD-和-CommonJS" class="headerlink" title="混合使用 ES2015，AMD 和 CommonJS"></a>混合使用 ES2015，AMD 和 CommonJS</h2><p>如果是 AMD 和 CommonJs ，那么它们完全可以很自由的混合使用。在这种情况下，Webpack 的处理的行为和 babel 或者 node-eps 相似。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// CommonJS consuming ES2015 Module</span></div><div class="line"><span class="keyword">var</span> book = <span class="built_in">require</span>(<span class="string">"./book"</span>);</div><div class="line"></div><div class="line">book.currentPage;</div><div class="line">book.readPage();</div><div class="line">book.default === <span class="string">"This is a book"</span>;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// ES2015 Module consuming CommonJS</span></div><div class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">"fs"</span>; <span class="comment">// module.exports map to default</span></div><div class="line"><span class="keyword">import</span> &#123; readFileSync &#125; <span class="keyword">from</span> <span class="string">"fs"</span>; <span class="comment">// named exports are read from returned object+</span></div><div class="line"></div><div class="line"><span class="keyword">typeof</span> fs.readFileSync === <span class="string">"function"</span>;</div><div class="line"><span class="keyword">typeof</span> readFileSync === <span class="string">"function"</span>;</div></pre></td></tr></table></figure>
@@ -469,9 +542,9 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- require(&quot;./templates/&quot; + name);</div><div class="line">+ require(`./templates/$&#123;name&#125;`);</div></pre></td></tr></table></figure>
 <h3 id="Configuration-Promise"><a href="#Configuration-Promise" class="headerlink" title="Configuration Promise"></a>Configuration Promise</h3><p>webpack 现在支持从配置文件中返回一个 <code>Promise</code> 了。这意味着我们可以在配置文件中做一些异步的处理。</p>
 <p><strong>webapck.config.js</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> fetchLangs().then(lang =&gt; (&#123;</div><div class="line">    entry: <span class="string">"..."</span>,</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    plugins: [</div><div class="line">      <span class="keyword">new</span> DefinePlugin(&#123; LANGUAGE: lang &#125;)</div><div class="line">    ]</div><div class="line">  &#125;));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> fetchLangs().then(<span class="function"><span class="params">lang</span> =&gt;</span> (&#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">"..."</span>,</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    plugins: [</div><div class="line">      <span class="keyword">new</span> DefinePlugin(&#123; <span class="attr">LANGUAGE</span>: lang &#125;)</div><div class="line">    ]</div><div class="line">  &#125;));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="高级-loader-匹配"><a href="#高级-loader-匹配" class="headerlink" title="高级 loader 匹配"></a>高级 loader 匹配</h3><p>webpack 现在支持更多的方式来让 loader 去匹配文件</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  rules: [</div><div class="line">    &#123;</div><div class="line">      resource: <span class="regexp">/filename/</span>, <span class="comment">// matches "/path/filename.js"</span></div><div class="line">      resourceQuery: <span class="regexp">/querystring/</span>, <span class="comment">// matches "/filename.js?querystring"</span></div><div class="line">      issuer: <span class="regexp">/filename/</span>, <span class="comment">// matches "/path/something.js" if requested from "/path/filename.js"</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  <span class="attr">rules</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">resource</span>: <span class="regexp">/filename/</span>, <span class="comment">// matches "/path/filename.js"</span></div><div class="line">      resourceQuery: <span class="regexp">/querystring/</span>, <span class="comment">// matches "/filename.js?querystring"</span></div><div class="line">      issuer: <span class="regexp">/filename/</span>, <span class="comment">// matches "/path/something.js" if requested from "/path/filename.js"</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="更多的命令行选项"><a href="#更多的命令行选项" class="headerlink" title="更多的命令行选项"></a>更多的命令行选项</h3><p>添加了一些新的命令行选项：<br><code>--define process.env.NODE_ENV=&quot;production&quot;</code> ,查看 <code>DefinePlugin</code>.</p>
 <p><code>--display-depth</code> 展示每个模块和入口的距离</p>
 <p><code>--display-used-exports</code> 展示模块使用了那个模块的暴露的信息</p>
@@ -492,23 +565,45 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    抹桥
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/" title="【翻译向】Webpack 1 到 2 升级指南">https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> unless stating additionally.
+  </li>
+</ul>
 
-      
-    </div>
-
+      </div>
+    
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
       
 
       
@@ -536,6 +631,10 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -547,20 +646,28 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
 
           </div>
-          
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-
           
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+  
 
 
         </div>
@@ -576,114 +683,127 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -703,6 +823,25 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
         </section>
       <!--/noindex-->
       
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -714,38 +853,52 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -767,6 +920,17 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -786,72 +950,87 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = '2017/01/19/webpack2-migrating-v1-v2/';
 
-      var disqus_title = "【翻译向】Webpack 1 到 2 升级指南";
+  
 
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
 
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
+    
+      <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = disqus_url;
-            this.page.identifier = disqus_identifier;
-            this.page.title = disqus_title;
+          this.page.url = 'https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/';
+          this.page.identifier = '2017/01/19/webpack2-migrating-v1-v2/';
+          this.page.title = '【翻译向】Webpack 1 到 2 升级指南';
         };
-        run_disqus_script('embed.js');
-      
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
-    </script>
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -859,14 +1038,9 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
 
   
-  
 
   
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -973,9 +1147,43 @@ resolve: &amp;#123;-   root: path.join(__dirname, &quot;src&quot;)+   modules: [
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

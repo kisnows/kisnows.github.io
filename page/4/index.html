@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="JavaScript,JS,Web Develop,Front end,前端开发,Kisnows" />
@@ -74,27 +117,23 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="description" content="怕什么真理无穷">
 <meta property="og:type" content="website">
-<meta property="og:title" content="抹桥杂货店">
-<meta property="og:url" content="http://kisnows.com/page/4/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta property="og:title" content="抹桥的博客">
+<meta property="og:url" content="https://blog.kisnows.com/page/4/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="怕什么真理无穷">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="抹桥杂货店">
-<meta name="twitter:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="twitter:title" content="抹桥的博客">
+<meta name="twitter:description" content="怕什么真理无穷">
 
 
 
@@ -102,13 +141,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -122,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://kisnows.com/page/4/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/page/4/"/>
 
 
 
@@ -136,23 +177,23 @@
   });
 </script>
 
-  <title> 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -168,40 +209,43 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -216,37 +260,47 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -278,38 +332,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2016/01/12/解决手机键盘覆盖弹窗问题/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="url">
-                  手机上键盘弹出时的一些问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/01/19/webpack2-migrating-v1-v2/" itemprop="url">【翻译向】Webpack 1 到 2 升级指南</a></h2>
         
 
         <div class="post-meta">
@@ -318,24 +365,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-12T20:27:52+08:00">
-                2016-01-12
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T17:00:33+08:00">
+                2017-01-19
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:17:38+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -353,25 +418,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/01/12/解决手机键盘覆盖弹窗问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/19/webpack2-migrating-v1-v2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/19/webpack2-migrating-v1-v2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2016/01/12/解决手机键盘覆盖弹窗问题/" class="leancloud_visitors" data-flag-title="手机上键盘弹出时的一些问题">
+             <span id="/2017/01/19/webpack2-migrating-v1-v2/" class="leancloud_visitors" data-flag-title="【翻译向】Webpack 1 到 2 升级指南">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -382,36 +453,45 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <p>做手机商城接到一个需求。<br>具体大概是这样子的，要求用户点击购买按钮后，直接显示输入密码的弹窗并弹出键盘。<br>拿到需求一想，这挺简单的。<br>就麻利的写了个模拟的密码输入框，然后在用户点击购买按钮的时候让他弹出来，并且让焦点 focus 在 input 框上。<br>Chrome 上一试，完全没问题，觉得自己简直太棒了有没有。可是拿出自己的手机一试，oh no ~,键盘直接把页面给推了上去，导致完全看不到弹窗弹的是个什么东西。<br><img src="/imgs/2016-01-12-1.png" alt="解决前"><br>但是在 Android 上是没有任何问题的。观察了下是因为 Android 和 ios 上键盘弹出的行为是不一样的，Android 上键盘弹出来，直接覆盖在原来的页面上，而 ios 上键盘弹出来的时候会直接把整个页面推上去。<br>怎么解决呢？其实也挺好解决，就是针对不同系统 hack 一下。<br>
+          <h2 id="resolve-root-resolve-fallback-resolve-modulesDirectories"><a href="#resolve-root-resolve-fallback-resolve-modulesDirectories" class="headerlink" title="resolve.root,resolve.fallback,resolve.modulesDirectories"></a><code>resolve.root</code>,<code>resolve.fallback</code>,<code>resolve.modulesDirectories</code></h2><p>这些配置项项都被一个单独的配置所替代 <code>resolve.modules</code>. 查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="noopener">resolving</a> 了解更多。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">-   root: path.join(__dirname, <span class="string">"src"</span>)</div><div class="line">+   modules: [</div><div class="line">+     path.join(__dirname, <span class="string">"src"</span>),</div><div class="line">+     <span class="string">"node_modules"</span></div><div class="line">+   ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="resolve-extensions"><a href="#resolve-extensions" class="headerlink" title="resolve.extensions"></a><code>resolve.extensions</code></h2><p>这个选项已经不在需要传一个空字符串了。它的行为已经被移动到了 <code>resolve.enforceExtension</code>. 查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="noopener">resolving</a> 了解更多。</p>
+<h2 id="resolve"><a href="#resolve" class="headerlink" title="resolve.*"></a><code>resolve.*</code></h2><p>这里修改了很多内容。因为被用到的不是很多，所以就不一一列举出来了。查看 <a href="https://webpack.js.org/configuration/resolve" target="_blank" rel="noopener">resolving</a> 了解更多。</p>
+<h2 id="module-loaders-现在是-module-rules"><a href="#module-loaders-现在是-module-rules" class="headerlink" title="module.loaders 现在是 module.rules"></a><code>module.loaders</code> 现在是 <code>module.rules</code></h2><p>老的 loader 配置被一个更加强大的 rules 系统所取代了，允许配置 loader 和更多内容。为了保证一致性，旧的 <code>module.loaders</code> 语法依然可以合法且可以使用的。新的命名规范更加易于理解，这是一个使用 <code>module.rules</code> 去升级配置的很好的理由。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">-   loaders: [</div><div class="line">+   rules: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">-       loaders: [</div><div class="line">+       use: [</div><div class="line">          &#123;</div><div class="line">            <span class="attr">loader</span>: <span class="string">"style-loader"</span></div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            <span class="attr">loader</span>: <span class="string">"css-loader"</span>,</div><div class="line">-           query: &#123;</div><div class="line">+           options: &#123;</div><div class="line">              <span class="attr">modules</span>: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.jsx$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">"babel-loader"</span>, <span class="comment">// Do not use "use" here</span></div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/12/解决手机键盘覆盖弹窗问题/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/19/webpack2-migrating-v1-v2/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -421,6 +501,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -433,38 +517,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/12/30/2015-year-end-summary/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/18/webpack2-guide-3/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/30/2015-year-end-summary/" itemprop="url">
-                  2015年终总结
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/01/18/webpack2-guide-3/" itemprop="url">【翻译向】webpack2 指南（下）</a></h2>
         
 
         <div class="post-meta">
@@ -473,24 +550,614 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-30T23:49:23+08:00">
-                2015-12-30
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T17:14:35+08:00">
+                2017-01-18
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-02-15T21:17:36+08:00">
+                2017-02-15
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/18/webpack2-guide-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/18/webpack2-guide-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/18/webpack2-guide-3/" class="leancloud_visitors" data-flag-title="【翻译向】webpack2 指南（下）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="缓存（Caching）"><a href="#缓存（Caching）" class="headerlink" title="缓存（Caching）"></a>缓存（Caching）</h1><p>为了能够使 webpack 处理后的静态资源能够长期缓存下来，需要：</p>
+<ol>
+<li>使用 <code>[chunkhash]</code> 给每一个文件创建基于内容变化的缓存标识</li>
+<li>在 HTML 文件中引入文件时使用编译状态来拿到文件名称</li>
+<li>在载入资源之前生成 chunk-manifest JSON 文件并写入到 HTML 页面中</li>
+<li>确保包含启动代码的入口代码块的 hash 值不会被修改，当它的依赖没有变化的时候</li>
+</ol>
+<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><p>每当我们代码中有一些东西需要被更新的时候，它需要在服务上部署然后由客户端重新下载这些文件。当网络状状况不太好的时候，这是意见非常低效的事情。这也是为什么浏览器要缓存静态资源的原因。</p>
+<p>这会导致一个陷阱：当我们发布一个新的版本的时候不去更新的文件名，这会让浏览器认为文件没有变化，导致客户端拿不到最新的资源。</p>
+<p>一个简单解决问题的方式就是告诉浏览器一个新的文件名。在没有 webpack 的时候我们会使用构建版本来标识此次的更新：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">application.js?build=1</div><div class="line">application.css?build=1</div></pre></td></tr></table></figure>
+<p>在 webpack 中这样做也很简单：每一次 webpack 的构建都会生成一个可以用来构成文件名的独一无二的 hash 值。下面这个配置文件会生成两个带有 hash 值的文件名：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: &#123;</div><div class="line">    <span class="attr">vendor</span>: <span class="string">'./src/vendor.js'</span>,</div><div class="line">    <span class="attr">main</span>: <span class="string">'./src/index.js'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: path.join(__dirname, <span class="string">'build'</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">'[name].[hash].js'</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/18/webpack2-guide-3/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/18/webpack2-guide-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/18/webpack2-guide-2/" itemprop="url">【翻译向】webpack2 指南（中）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T11:49:14+08:00">
+                2017-01-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-02-15T21:17:36+08:00">
+                2017-02-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/18/webpack2-guide-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/18/webpack2-guide-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/18/webpack2-guide-2/" class="leancloud_visitors" data-flag-title="【翻译向】webpack2 指南（中）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="动态模块替换（Hot-Module-Repalcement-React）"><a href="#动态模块替换（Hot-Module-Repalcement-React）" class="headerlink" title="动态模块替换（Hot Module Repalcement -React）"></a>动态模块替换（Hot Module Repalcement -React）</h1><p>就像之前 <a href="https://webpack.js.org/concepts/hot-module-repalcement" target="_blank" rel="noopener">理念页面</a> 中解析的细节那样，动态模块替换（HMR）会在应用运行时动态的替换、添加或者删除模块而不用重新刷新页面。 HMR 非常有用，当应用只有一个状态树（single state tree）时。</p>
+<p>下面介绍的方法描述中使用了 Babel 和 React ,但这并不是使用 HRM 所必须的工具。</p>
+<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><p>这里会指导你如何用 Babel， React 和 PostCss 一起使用 HMR 去演示一个项目。为了能够跟着下面走下去，需要把这些依赖添加到 <code>package.json</code> 中去。</p>
+<p>为了使用 HMR，你需要如下这些依赖：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install --save-dev babel@6.5.2 babel-core@6.13.2 babel-loader@6.2.4 babel-preset-es2015@6.13.2 babel-preset-react@6.11.1 babel-preset-stage-2@6.13.0 css-loader@0.23.1 postcss-loader@0.9.1 react-hot-loader@3.0.0-beta.6 style-loader@0.13.1 webpack@2.1.0-beta.25 webpack-dev-server@2.1.0-beta.0</div></pre></td></tr></table></figure>
+<p>同时，为了达到我们演示的目的，还需要：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install --save react@15.3.0 react-dom@15.3.0</div></pre></td></tr></table></figure>
+<h3 id="Babel-Config"><a href="#Babel-Config" class="headerlink" title="Babel Config"></a>Babel Config</h3><p><code>.babelrc</code> 文件应该如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [</div><div class="line">    [<span class="string">"es2015"</span>, &#123;<span class="attr">"modules"</span>: <span class="literal">false</span>&#125;],</div><div class="line">    // webpack understands the native import syntax, and uses it for tree shaking</div><div class="line"></div><div class="line">    <span class="string">"stage-2"</span>,</div><div class="line">    // Specifies what level of language features to activate.</div><div class="line">    // Stage <span class="number">2</span> is <span class="string">"draft"</span>, <span class="number">4</span> is finished, <span class="number">0</span> is strawman.</div><div class="line">    // See https://tc39.github.io/process-document/</div><div class="line"></div><div class="line">    <span class="string">"react"</span></div><div class="line">    // Transpile React components to JavaScript</div><div class="line">  ],</div><div class="line">  <span class="attr">"plugins"</span>: [</div><div class="line">    <span class="string">"react-hot-loader/babel"</span></div><div class="line">    // Enables React code to work with HMR.</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Webpack-Config"><a href="#Webpack-Config" class="headerlink" title="Webpack Config"></a>Webpack Config</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/18/webpack2-guide-2/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/17/webpack2-guide-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/17/webpack2-guide-1/" itemprop="url">【翻译向】webpack2 指南（上）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T13:49:35+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-01-18T20:39:40+08:00">
+                2017-01-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/17/webpack2-guide-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/17/webpack2-guide-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/17/webpack2-guide-1/" class="leancloud_visitors" data-flag-title="【翻译向】webpack2 指南（上）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="前置定义"><a href="#前置定义" class="headerlink" title="前置定义"></a>前置定义</h1><p>Bundle 代码包<br>Chunk 代码块</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>npm install webpack –save-dev</p>
+<h1 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h1><p>代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。</p>
+<h2 id="缓存和并行加载的资源分割"><a href="#缓存和并行加载的资源分割" class="headerlink" title="缓存和并行加载的资源分割"></a>缓存和并行加载的资源分割</h2><h3 id="第三方代码分割"><a href="#第三方代码分割" class="headerlink" title="第三方代码分割"></a>第三方代码分割</h3><p>一个典型的应用会依赖很多第三方的框架和库文件。不像应用代码本身，这些第三方代码的变更非常频繁。<br>如果我们保持这些库在它本身的代码包中，从应用代码本身分离出来，那么我们就可以使用浏览器的缓存策略去在一个长时间内把这些代码缓存到最终用户的机器上。</p>
+<p>为了达到这个效果，第三方代码的 verndor 包的 hash 部分必须保持不变，不管应用代码如何变化。学习 <a href="https://webpack.js.org/guids/code-splitting-libraries" target="_blank" rel="noopener">如何通过 <code>CommonsChunkPlugin</code> 来分割 verndor/libray 代码</a>。</p>
+<h3 id="CSS-分割"><a href="#CSS-分割" class="headerlink" title="CSS 分割"></a>CSS 分割</h3><p>你可能也想把样式文件分割成为一个单独的包，从应用逻辑总独立出来。这可以增强样式文件的可缓存性，并且允许浏览器在加载应用代码时并行加载你的样式文件，因此也可以避免 FOUC （一个无样式内容的闪屏）。<br>学习 <a href="https//webpack.js.org/guides/code-splitting-css">如何去分割 CSS</a> 通过使用 <code>ExtractTextWebpackPlugin</code>.</p>
+<h2 id="按需代码分割"><a href="#按需代码分割" class="headerlink" title="按需代码分割"></a>按需代码分割</h2><p>虽然前面的资源分割需要用户在配置文件中预先指定分割点，但是也可以在应用代码中创建动态的分割点。</p>
+<p>这个功能在有很多细微颗粒代码块时会很有用，举个例子，每一个应用的路由或者按照用户的预测行为。这可以使用户按需加载需要的资源。</p>
+<h3 id="通过-require-ensure-来分割代码"><a href="#通过-require-ensure-来分割代码" class="headerlink" title="通过 require.ensure() 来分割代码"></a>通过 <code>require.ensure()</code> 来分割代码</h3><p><code>require.ensure</code> 是一个 CommonJS 风格的方式去异步加载资源。通过添加 <code>require.ensure([&lt;fileurl&gt;])</code> , 我们可以在代码中定义一个分割点。 Webpack 可以创建一个包含在这个分割点中的所有代码的代码包。学习 <a href="https://webpack.js.org/guides/code-splitting-require" target="_blank" rel="noopener">如何分割代码</a> 通过使用 <code>require.ensure()</code>.</p>
+<blockquote>
+<p>TODO System.import()</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/17/webpack2-guide-1/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/12/09/2016-year-end-summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/09/2016-year-end-summary/" itemprop="url">2016年终总结</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T22:03:10+08:00">
+                2016-12-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2018-06-09T15:56:32+08:00">
+                2018-06-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/随笔/" itemprop="url" rel="index">
@@ -508,184 +1175,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2015/12/30/2015-year-end-summary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/30/2015-year-end-summary/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/12/30/2015-year-end-summary/" class="leancloud_visitors" data-flag-title="2015年终总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="来到杭州"><a href="#来到杭州" class="headerlink" title="来到杭州"></a>来到杭州</h1><p>回想一下二月二十八号怀着忐忑的心来到杭州。</p>
-<p>那天天还下着大雨，我从机场出来一路大巴加地铁到滨江区。出了地铁站，站口一个三轮师傅一看我拉一个行李箱，明显外地人，隔老远就吆喝，走不走！想想我怎么也是有导航的人，怎么能让你们坑。然后就跟着导航找酒店，结果怎么找也找不到，就在目的地旁边转来转去，问路人也没人听过酒店名，我一度认为是不是订的酒店有问题。最后无奈，又跑回地铁口，掏了二十块上了三轮，结果五分钟就开到了，其实那酒店距离地铁口也就不到一公里，因为下雨视线不好所以我一直找不到。到了酒店，收拾了一下发现行李箱都被雨水打湿了，赶紧打开看了一下，还好，只有基本放在外面的书有点潮，衣服什么的还是干的。洗了个澡，就出去感受这个被誉为人间天堂的陌生城市了。不得不说，杭州城市真的很干净，而且绿化也很好，但是雨真的真的太多了</p>
-<h1 id="找房子"><a href="#找房子" class="headerlink" title="找房子"></a>找房子</h1><p>到一个新的城市工作，首要的事情就是找房子。说道找房子，不得不说这是一个非常痛苦的过程。</p>
-<p>从好友三月初来到杭州开始找房子，找了差不多一星期的时间，最后还是在没办法，两个人第二天都要上班的情况随便找了一个两居室租了下来。这房间说好也还行，说不好那就是太吵了，尤其是天气很冷或者很热人们需要开空调的时候，那噪音，晚上不戴耳塞是没法睡觉的。睡眠质量不好大大影响我了日常工作和生活，可是由于种种原因，暂时又不能搬家，所以也就在各种噪音中度过了小一年时间。</p>
-<h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>本来是拿到余杭区一家公司offer的，三月一号要去报到的。但是被我们现在的老大提前一天拉去面试，发的offer虽然薪水没给到位，甚至还不如另一家公司给的多情况，依然选择了现在的公司。为什么呢？也许我傻吧，至少现在看来当时我确实是傻。一个公司给你薪水的多少，也就是对你能力的认可有多少。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/30/2015-year-end-summary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/12/26/react-v2ex/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/26/react-v2ex/" itemprop="url">
-                  react-v2ex
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-26T00:11:25+08:00">
-                2015-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/12/26/react-v2ex/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/26/react-v2ex/" itemprop="commentCount"></span>
+                <a href="/2016/12/09/2016-year-end-summary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/09/2016-year-end-summary/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2015/12/26/react-v2ex/" class="leancloud_visitors" data-flag-title="react-v2ex">
+             <span id="/2016/12/09/2016-year-end-summary/" class="leancloud_visitors" data-flag-title="2016年终总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -696,40 +1210,53 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <p>为了练手，用 react 写了个 v2ex 的首页：<br><a href="http://kisnows.com/react-v2ex/">页面地址</a><br><a href="https://github.com/kisnows/react-v2ex">项目地址</a></p>
-<p>整个项目基础 <code>react</code> 搭建，样式本来打算用 inlineStyle 来写的，但是发现写起来太累，于是还是用回到 <code>sass</code>，最后用 <code>webpack</code>来编译。本来想着看能不能直接调用 V 站的 API 来做一个纯前端的首页，所有的数据都用 ajax 来调，但是发现因为跨域的问题，前端无法拿到数据，也就放弃了，最终也只能是一个静态页面。</p>
-<p>说一下写代码中遇到的一些问题吧，首先整个项目的文件结构如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">│  .babelrc</div><div class="line">│  .editorconfig</div><div class="line">│  .eslintrc</div><div class="line">│  .gitignore</div><div class="line">│  index.html</div><div class="line">│  index.js</div><div class="line">│  package.json</div><div class="line">│  readme.md</div><div class="line">│  server.js</div><div class="line">│  tree.txt</div><div class="line">│  webpack.config.js</div><div class="line">│          </div><div class="line">├─api</div><div class="line">│      hot.json</div><div class="line">│      latest.json</div><div class="line">│      </div><div class="line">├─build</div><div class="line">│      bundle.js</div><div class="line">│      index.html</div><div class="line">│      </div><div class="line">├─components</div><div class="line">│      CommunityStatus.js</div><div class="line">│      Footer.js</div><div class="line">│      Header.js</div><div class="line">│      Main.js</div><div class="line">│      SearchInput.js</div><div class="line">│      TopicsHot.js</div><div class="line">│      UserLink.js</div><div class="line">│      UserPanel.js</div><div class="line">│      </div><div class="line">├─containers</div><div class="line">│      App.js</div><div class="line">│      </div><div class="line">├─sass</div><div class="line">│  │  main.scss</div><div class="line">│  │  _config.scss</div><div class="line">│  │  _global.scss</div><div class="line">│  │  _normalize.scss</div><div class="line">│  │  _page.scss</div><div class="line">│  │  </div><div class="line">│  └─components</div><div class="line">│          _CommunityStatus.scss</div><div class="line">│          _Footer.scss</div><div class="line">│          _Header.scss</div><div class="line">│          _Main.scss</div><div class="line">│          _TopicHot.scss</div><div class="line">│          _UserPanel.scss</div><div class="line">│          </div><div class="line">├─static</div><div class="line">│  └─images</div><div class="line">│          qbar_light@2x.png</div><div class="line">│          </div><div class="line">└─utils</div><div class="line">        getData.js</div></pre></td></tr></table></figure></p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>先说说用 react 写的优点，它火起来不是没有道理的，确实是有很多优点的，我这里只说实际码代码中的优点，不涉及 virtualDom 带来的性能提升之类的。</p>
-<h3 id="结构清晰"><a href="#结构清晰" class="headerlink" title="结构清晰"></a>结构清晰</h3><p>因为 react 本身就是组件化的，所以整个页面按结构被分为几个组件，每个组件自己管理自己的展示和行为，最后通过容器组合起来，结构非常清晰。<br>组件的状态都是通过 state 或者 props 来控制，而我认为大多数组件只需要 props 就行了，只在顶层组件上控制 state，这样可以更加清晰的管理 state。</p>
+          <h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>时间也真是快，从 15 年到现在算来我做前端开发也将近两年了，没想到这一路走过来这么顺利，运气真是挺好的。</p>
+<p>当初自学三个月，然后投简历面试，就拿到了好几个 offer，一切都太顺利了。然后去了一家做互联网金融的公司，老大对我很好，然而待了一年多还是在今年五月份选择了离职。原因很简单，公司的开发模式过于保守，一直待下去真的不会有任何长进了， 整天干的活都像是美工干的活，公司很不重视前端，而且前后端不分离，同一份文件前后端两个人一起改，想想真是痛苦。</p>
+<p>那离职了就要找工作，不得不说，找工作的经历真有意思。</p>
+<h2 id="找工作"><a href="#找工作" class="headerlink" title="找工作"></a>找工作</h2><p>有一家创业公司，人家对我还比较满意，但就是薪资没谈妥，就算了，谁知道后来我都拿到另一家公司的 offer 了又说那个薪资可以接受了。</p>
+<p>有一家外企，面试的时候对他们的工作环境非常满意，然而面试发挥太差，连 sass 的循环都写不出来，结果可想而知。面试官还很和蔼，说回去等消息吧，然后我出门不到五分钟就收到了短信，‘您不适合本公司的要求’，嗯，效率真高，挺喜欢这点。</p>
+<p>有一家在滨江的大公司，面试通过了，薪资都谈妥了， Hr 说回去等 offer 吧，一般三天内就会发出来。我很高兴，第二天回原公司就提了离职。结果等了一星期还没收到 offer ，就打电话问，对方很不好意思的回答说，部门公司架构重组，我面试的那个事业部已经没了,,Ծ ㅂ Ծ,,，我也不好说什么了。</p>
+<p>中途还有一堆不靠谱的公司，当然也有我能力不足没通过面试的。</p>
+<p>有一个最直接就是蘑菇街的人问你能接受加班吗，我说偶尔可以，经常不行，然后人家来了一句，那不行，我们这边加班还是很严重的，几乎每天 11 点。然后，就没有然后了。后来小伙伴给内推了阿里，面天猫挂在了三面，又面了滨江的 B2B 部门。</p>
+<p>到二面的时候，接到了网易的面试，面网易的时候谈的很高兴，双方都很满意，最后 hr 问说有没有在面其他公司，我说当然， 比如阿里也在面，现在已经到了二面。然后就有了下面的对话：</p>
+<pre><code>Hr ：“那如果阿里和网易同时给你发 offer 你去哪个？“
+我当时随口一说，“哪个先发 offer 就去哪个”
+</code></pre><p>然后当天晚上就电话通知我面试通过了，第二天就发了 offer。现在想想，我真是机智啊，O(∩_∩)O</p>
+<h2 id="网易"><a href="#网易" class="headerlink" title="网易"></a>网易</h2><p>找工作的事情就告一段落，来到网易。首先网易给我的第一印象就是，食堂真好（虽然已经吃腻了），仿佛回到了大学时候一样，然后妹子真多，嗯，真的。</p>
+<p>不得不说大公司跟小公司还是有很多差别的。首先，流程上就很规范，不会出现说之前公司那种产品经理过来一会要这样一会要那样的事情，但同时也有弊端，就是会议太多。想想那些会议有没有必要开，还是有必要的，但是会议的整体效率，真是低啊。</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/26/react-v2ex/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/09/2016-year-end-summary/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -739,333 +1266,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/11/02/dev-environment-Express-Gulp-BrowserSync/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/" itemprop="url">
-                  基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-02T20:45:23+08:00">
-                2015-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/02/dev-environment-Express-Gulp-BrowserSync/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/" class="leancloud_visitors" data-flag-title="基于 Express+Gulp+BrowserSync 搭建高性能的前端开发环境">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>原文发布于<a href="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/">我的博客</a></p>
-<h1 id="为什么要搭这么一套框架"><a href="#为什么要搭这么一套框架" class="headerlink" title="为什么要搭这么一套框架"></a>为什么要搭这么一套框架</h1><p>公司 Pc 端以前遗留的项目，都是基于jekyll+ruby-sass这一套比较老的技术搭建的。不过 jekyll 的模版继承加上 sass 强大预处理能力，同时配合 Grunt 做任务管理，一切还是很得心应手的。</p>
-<p>然而随着项目规模的急剧增大，这一套东西的速度是在是太慢了，一至于后来一旦这个项目有需要求要改我就头疼，倒不是说头疼需求怎么改，而是你随便改一个文件，从 jekyll 检测到改动到编译完 sass 到浏览器自动刷新，基本需要 40+ s，这完全不能接受。</p>
-<p>于是一直就打算新搭一套开发环境，刚好前段时间有个新项目，我就拿来操刀动手了，目前已经用它做了俩个项目下来，在原有基础上做了一些修改之后，已经完全可以替代原来那一套懂了。</p>
-<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>得益于 node-sass 对 ruby-sass 在编译速度上的碾压以及被 jade 完爆的 jekyll。现在项目中从文件变动=&gt;编译完成=&gt;浏览器自动刷新，整个过程在 1s 左右，可以说速度提升了几十倍。<br>而且整个过程都是全自动的，无论你修改了 js,css 还是 html 文件，浏览器都会在重新编译完成后自动刷新。<br><img src="/imgs/dev-environment/compile-time.png" alt="编译时间"></p>
-<h2 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h2><p>这是项目开发时的文件结构：<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/02/dev-environment-Express-Gulp-BrowserSync/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/10/19/first-contact-of-canvas/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/19/first-contact-of-canvas/" itemprop="url">
-                  Canvas 基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-19T22:41:38+08:00">
-                2015-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/10/19/first-contact-of-canvas/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/19/first-contact-of-canvas/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/10/19/first-contact-of-canvas/" class="leancloud_visitors" data-flag-title="Canvas 基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>首先引用 <code>MDN</code> 上对于 <code>canvas</code> 的定义：</p>
-<blockquote>
-<p><code>&lt;canvas&gt;</code> 是 HTML5 新增的元素，可使用JavaScript脚本来绘制图形。例如：画图，合成照片，创建动画甚至实时视频处理与渲染。</p>
-</blockquote>
-<p>也就是说这是浏览器提供给我们的一个画布和丰富的接口，可以用来制作各种复杂的效果。<br><code>&lt;canvas&gt;</code> 元素创造了一个固定大小的画布，它公开了一个或多个渲染上下文。其可以用来绘制和处理被现实的页面。<br><img src="https://mdn.mozillademos.org/files/224/Canvas_default_grid.png" alt="Canvas坐标"><br>这是 canvas 2d 的坐标，可以看到左上角为原点，横轴为x轴，纵轴为y轴。我们所有的canvas2d的功能实现都是在这个坐标系中。</p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>本文只简单介绍一下矩形、线段和圆弧的画法。</p>
-<h2 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h2><p>通过一个简单的例子来了解一下基本的API： </p>
-<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML:"></a>HTML:</h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"height:100%"</span>&gt;</span></div><div class="line">   当前浏览器不支持Canvas，请更换浏览器后再试</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript:"></a>JavaScript:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var canvas = document.getElementById(&apos;canvas&apos;);</div><div class="line">var ctx = canvas.getContext(&apos;2d&apos;);</div><div class="line">var WINDOW_WIDTH = window.screen.availWidth;</div><div class="line">var WINDOW_HEIGHT = window.screen.availHeight;</div><div class="line">ctx.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT)</div><div class="line">ctx.beginPath();</div><div class="line">ctx.fillStyle = &apos;#000&apos;;</div><div class="line">ctx.fillRect(10, 10, 55, 50);</div><div class="line">ctx.fillStyle = &apos;rgba(0,0,200,0.5)&apos;</div><div class="line">ctx.fillRect(30, 30, 55, 50);</div></pre></td></tr></table></figure>
-<p>页面上会如下显示：</p>
-<iframe width="100%" height="300" src="//jsfiddle.net/kisnows/v5Lhnf8k/embedded/result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p>首先获取到 canvas 元素，并通过 getContext(‘2d’) 获取到它的渲染上下文。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/19/first-contact-of-canvas/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -1074,14 +1278,22 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
-          
-
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
           
 
@@ -1098,107 +1310,139 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -1211,38 +1455,52 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -1264,6 +1522,17 @@
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -1283,76 +1552,81 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = 'page/4/index.html';
-
-      var disqus_title = "";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
-
-    </script>
-  
-
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
 
 
   
   
 
-  
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -1459,9 +1733,43 @@
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

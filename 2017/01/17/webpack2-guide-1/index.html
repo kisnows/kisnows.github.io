@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="webpack," />
@@ -74,37 +117,25 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="前置定义Bundle 代码包Chunk 代码块
-安装npm install webpack –save-dev
-代码分割代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。
-缓存和并行加载的">
+<meta name="description" content="前置定义Bundle 代码包Chunk 代码块 安装npm install webpack –save-dev 代码分割代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。 缓存和并行加载的">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【翻译向】webpack2 指南（上）">
-<meta property="og:url" content="http://kisnows.com/2017/01/17/webpack2-guide-1/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="前置定义Bundle 代码包Chunk 代码块
-安装npm install webpack –save-dev
-代码分割代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。
-缓存和并行加载的">
+<meta property="og:url" content="https://blog.kisnows.com/2017/01/17/webpack2-guide-1/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="前置定义Bundle 代码包Chunk 代码块 安装npm install webpack –save-dev 代码分割代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。 缓存和并行加载的">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-01-18T12:39:40.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【翻译向】webpack2 指南（上）">
-<meta name="twitter:description" content="前置定义Bundle 代码包Chunk 代码块
-安装npm install webpack –save-dev
-代码分割代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。
-缓存和并行加载的">
+<meta name="twitter:description" content="前置定义Bundle 代码包Chunk 代码块 安装npm install webpack –save-dev 代码分割代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。 缓存和并行加载的">
 
 
 
@@ -112,13 +143,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -132,7 +165,7 @@
 
 
 
-  <link rel="canonical" href="http://kisnows.com/2017/01/17/webpack2-guide-1/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/2017/01/17/webpack2-guide-1/"/>
 
 
 
@@ -146,23 +179,23 @@
   });
 </script>
 
-  <title> 【翻译向】webpack2 指南（上） | 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>【翻译向】webpack2 指南（上） | 抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -178,38 +211,42 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -224,37 +261,47 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -286,35 +333,29 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/01/17/webpack2-guide-1/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/17/webpack2-guide-1/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                【翻译向】webpack2 指南（上）
-              
-            
-          </h1>
+          <h2 class="post-title" itemprop="name headline">【翻译向】webpack2 指南（上）</h2>
         
 
         <div class="post-meta">
@@ -323,24 +364,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T13:49:35+08:00">
                 2017-01-17
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-01-18T20:39:40+08:00">
+                2017-01-18
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -358,13 +417,15 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/01/17/webpack2-guide-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/17/webpack2-guide-1/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/17/webpack2-guide-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
-          
-
           
 
           
@@ -374,9 +435,13 @@
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -387,8 +452,10 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -398,27 +465,27 @@
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>npm install webpack –save-dev</p>
 <h1 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h1><p>代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。</p>
 <h2 id="缓存和并行加载的资源分割"><a href="#缓存和并行加载的资源分割" class="headerlink" title="缓存和并行加载的资源分割"></a>缓存和并行加载的资源分割</h2><h3 id="第三方代码分割"><a href="#第三方代码分割" class="headerlink" title="第三方代码分割"></a>第三方代码分割</h3><p>一个典型的应用会依赖很多第三方的框架和库文件。不像应用代码本身，这些第三方代码的变更非常频繁。<br>如果我们保持这些库在它本身的代码包中，从应用代码本身分离出来，那么我们就可以使用浏览器的缓存策略去在一个长时间内把这些代码缓存到最终用户的机器上。</p>
-<p>为了达到这个效果，第三方代码的 verndor 包的 hash 部分必须保持不变，不管应用代码如何变化。学习 <a href="https://webpack.js.org/guids/code-splitting-libraries" target="_blank" rel="external">如何通过 <code>CommonsChunkPlugin</code> 来分割 verndor/libray 代码</a>。</p>
+<p>为了达到这个效果，第三方代码的 verndor 包的 hash 部分必须保持不变，不管应用代码如何变化。学习 <a href="https://webpack.js.org/guids/code-splitting-libraries" target="_blank" rel="noopener">如何通过 <code>CommonsChunkPlugin</code> 来分割 verndor/libray 代码</a>。</p>
 <h3 id="CSS-分割"><a href="#CSS-分割" class="headerlink" title="CSS 分割"></a>CSS 分割</h3><p>你可能也想把样式文件分割成为一个单独的包，从应用逻辑总独立出来。这可以增强样式文件的可缓存性，并且允许浏览器在加载应用代码时并行加载你的样式文件，因此也可以避免 FOUC （一个无样式内容的闪屏）。<br>学习 <a href="https//webpack.js.org/guides/code-splitting-css">如何去分割 CSS</a> 通过使用 <code>ExtractTextWebpackPlugin</code>.</p>
 <h2 id="按需代码分割"><a href="#按需代码分割" class="headerlink" title="按需代码分割"></a>按需代码分割</h2><p>虽然前面的资源分割需要用户在配置文件中预先指定分割点，但是也可以在应用代码中创建动态的分割点。</p>
 <p>这个功能在有很多细微颗粒代码块时会很有用，举个例子，每一个应用的路由或者按照用户的预测行为。这可以使用户按需加载需要的资源。</p>
-<h3 id="通过-require-ensure-来分割代码"><a href="#通过-require-ensure-来分割代码" class="headerlink" title="通过 require.ensure() 来分割代码"></a>通过 <code>require.ensure()</code> 来分割代码</h3><p><code>require.ensure</code> 是一个 CommonJS 风格的方式去异步加载资源。通过添加 <code>require.ensure([&lt;fileurl&gt;])</code> , 我们可以在代码中定义一个分割点。 Webpack 可以创建一个包含在这个分割点中的所有代码的代码包。学习 <a href="https://webpack.js.org/guides/code-splitting-require" target="_blank" rel="external">如何分割代码</a> 通过使用 <code>require.ensure()</code>.</p>
+<h3 id="通过-require-ensure-来分割代码"><a href="#通过-require-ensure-来分割代码" class="headerlink" title="通过 require.ensure() 来分割代码"></a>通过 <code>require.ensure()</code> 来分割代码</h3><p><code>require.ensure</code> 是一个 CommonJS 风格的方式去异步加载资源。通过添加 <code>require.ensure([&lt;fileurl&gt;])</code> , 我们可以在代码中定义一个分割点。 Webpack 可以创建一个包含在这个分割点中的所有代码的代码包。学习 <a href="https://webpack.js.org/guides/code-splitting-require" target="_blank" rel="noopener">如何分割代码</a> 通过使用 <code>require.ensure()</code>.</p>
 <blockquote>
 <p>TODO System.import()</p>
 </blockquote>
 <a id="more"></a>
 <h1 id="代码分割-CSS"><a href="#代码分割-CSS" class="headerlink" title="代码分割 - CSS"></a>代码分割 - CSS</h1><p>在 webpack 中，当你使用 css-loader 并且在 JavaScript 中引入 CSS 文件，那么 CSS 文件会被打包在你的 JavaScript 文件中。这有一个不好的地方，就是你无法使用浏览器异步并行加载 CSS 的能力。相反，你的页面会等到整个 JavaScript 文件加载完成，才完成了样式文件的加载。Webpack 可以通过使用 extract-text-webpack-plugin 和 css-loader 来把样式文件分离出来去解决这个问题。</p>
 <h2 id="使用-css-loader"><a href="#使用-css-loader" class="headerlink" title="使用 css-loader"></a>使用 <code>css-loader</code></h2><p>引入 css 到你的 JavaScript 中，需要使用 css-loader 去配置 webpack 的配置文件。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">//webpack.config.js</span></div><div class="line"></div><div class="line">modules.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>)</span>&#123;</div><div class="line">    entry: <span class="string">'..'</span>,</div><div class="line">    ...</div><div class="line">    module: &#123;</div><div class="line">        rules: [&#123;</div><div class="line">            test: <span class="regexp">/\.css$/</span>,</div><div class="line">            exclude: <span class="regexp">/node_modules/</span>,</div><div class="line">            loader: <span class="string">'css-loader'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">//webpack.config.js</span></div><div class="line"></div><div class="line">modules.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>)</span>&#123;</div><div class="line">    entry: <span class="string">'..'</span>,</div><div class="line">    ...</div><div class="line">    module: &#123;</div><div class="line">        <span class="attr">rules</span>: [&#123;</div><div class="line">            <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">            <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">            <span class="attr">loader</span>: <span class="string">'css-loader'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="使用-extract-text-webpack-plugin-ExtractTextPlugin"><a href="#使用-extract-text-webpack-plugin-ExtractTextPlugin" class="headerlink" title="使用 extract-text-webpack-plugin - ExtractTextPlugin"></a>使用 <code>extract-text-webpack-plugin</code> - ExtractTextPlugin</h2><p>安装：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm I --save-dev extract-text-webpack-plugin</div></pre></td></tr></table></figure>
 <p>要使用这个 <code>ExtractTextPlugin</code>,需要通过两个步骤配置在 <code>webpack.config.js</code> 中。</p>
 <h3 id="在-lodaer-里面"><a href="#在-lodaer-里面" class="headerlink" title="在 lodaer 里面"></a>在 lodaer 里面</h3><p>从之前的 <code>css-loader</code> 中适配，我们应该如下添加 <code>ExtractTextPlugin</code>.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">loader: ExtractTextPlugin.extract(<span class="string">'css-loader?sourceMap'</span>) //Can be used without sourcemaps too.</div></pre></td></tr></table></figure>
 <h3 id="在-plugin-里面"><a href="#在-plugin-里面" class="headerlink" title="在 plugin 里面"></a>在 plugin 里面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">new ExtractTextPlugin(&#123; filename: <span class="string">'bundle.css'</span>, <span class="built_in">disable</span>: <span class="literal">false</span>, allChunks: <span class="literal">true</span> &#125;)</div></pre></td></tr></table></figure>
-<p>通过这两步，就可以生成一个新的包含所有 CSS 模块的代码包，然后把他们添加到 <code>index.html</code> 的 <code>heade</code> 中去。可以通过 <a href="https://github.com/webpack/extract-text-webpack-plugin#api" target="_blank" rel="external">ExtractTextPlugin</a> 去了解关于它 api 的更多信息。</p>
+<p>通过这两步，就可以生成一个新的包含所有 CSS 模块的代码包，然后把他们添加到 <code>index.html</code> 的 <code>heade</code> 中去。可以通过 <a href="https://github.com/webpack/extract-text-webpack-plugin#api" target="_blank" rel="noopener">ExtractTextPlugin</a> 去了解关于它 api 的更多信息。</p>
 <p>完整的配置文件如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        entry: <span class="string">'./main.js'</span>,</div><div class="line">        output: &#123;</div><div class="line">            path: <span class="string">'./dist'</span>,</div><div class="line">            filename: <span class="string">'bundle.js'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="built_in">module</span>: &#123;</div><div class="line">            rules: [&#123;</div><div class="line">                test: <span class="regexp">/\.css$/</span>,</div><div class="line">                exclude: <span class="regexp">/node_modules/</span>,</div><div class="line">                loader: ExtractTextPlugin.extract(&#123;</div><div class="line">                    loader: <span class="string">'css-loader?sourceMap'</span></div><div class="line">                &#125;)</div><div class="line">            &#125;]</div><div class="line">        &#125;,</div><div class="line">        devtool: <span class="string">'source-map'</span>,</div><div class="line">        plugins: [</div><div class="line">            <span class="keyword">new</span> ExtractTextPlugin(&#123; filename: <span class="string">'bundle.css'</span>, disable: <span class="literal">false</span>, allChunks: <span class="literal">true</span> &#125;)</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">entry</span>: <span class="string">'./main.js'</span>,</div><div class="line">        <span class="attr">output</span>: &#123;</div><div class="line">            <span class="attr">path</span>: <span class="string">'./dist'</span>,</div><div class="line">            <span class="attr">filename</span>: <span class="string">'bundle.js'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">module</span>: &#123;</div><div class="line">            <span class="attr">rules</span>: [&#123;</div><div class="line">                <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">                <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">                <span class="attr">loader</span>: ExtractTextPlugin.extract(&#123;</div><div class="line">                    <span class="attr">loader</span>: <span class="string">'css-loader?sourceMap'</span></div><div class="line">                &#125;)</div><div class="line">            &#125;]</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">devtool</span>: <span class="string">'source-map'</span>,</div><div class="line">        <span class="attr">plugins</span>: [</div><div class="line">            <span class="keyword">new</span> ExtractTextPlugin(&#123; <span class="attr">filename</span>: <span class="string">'bundle.css'</span>, <span class="attr">disable</span>: <span class="literal">false</span>, <span class="attr">allChunks</span>: <span class="literal">true</span> &#125;)</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="代码分割-库文件"><a href="#代码分割-库文件" class="headerlink" title="代码分割-库文件"></a>代码分割-库文件</h1><p>一个典型的应用会依赖很多第三方来提供框架或功能支持。项目中使用的固定版本的库/框架文件的代码一般不会有变动，然而应用本身的业务逻辑代码却经常会有变动。</p>
 <p>把应用代码和库文件的代码打包在一起是一件非常低效的事情。这是因为浏览器可以根据缓存头缓存这些资源文件到本地而不用每次都去服务端或者 cdn 上去发请求重新获取，如果文件内容没有变动的话。为了能够享受这个好处，我们需要保持第三方文件的 hash 不变，无论应用本身的代码如何变化。</p>
 <p>我们只有把应用代码和第三方代码分离开才可以达到这样的效果。</p>
@@ -430,36 +497,36 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> moment = <span class="built_in">require</span>(<span class="string">'moment'</span>);</div><div class="line"><span class="built_in">console</span>.log(moment().format());</div></pre></td></tr></table></figure>
 <p>我们可以通过如下这个配置文件来打包这个应用</p>
 <p><strong>Webapck.config.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: <span class="string">'./index.js'</span>,</div><div class="line">    output: &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当运行 <code>webapck</code> 命令的时候，如果你检查打包后的文件，你会发现 <code>moment</code> 和 <code>index.js</code> 都被打包在了 <code>bundle.js</code> 中。</p>
 <p>这不是一个很好的解决方案。如果 <code>index.js</code> 修改了，那么这打包文件会重新构建，浏览器就需要重新去加载这个文件，即使 moment.js 文件并没有任何改动。</p>
 <h2 id="多个入口"><a href="#多个入口" class="headerlink" title="多个入口"></a>多个入口</h2><p>让我们缓和这个问题，我们给 moment 添加一个新的入口命名为 vendors.</p>
 <p><strong>Webpack.config.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      main: <span class="string">'./index.js'</span>,</div><div class="line">      vendor: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: &#123;</div><div class="line">      <span class="attr">main</span>: <span class="string">'./index.js'</span>,</div><div class="line">      <span class="attr">vendor</span>: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>现在执行 webpack 命令，我们会看到两个打包后的文件。如果你检查里面代码的话，你会看到 <code>moment</code> 的代码同时出现在两个代码包中。</p>
-<p>为了解决这个问题，我们需要使用 <a href="https://webpack.js.org/plugins/commons-chunk-plugin" target="_blank" rel="external">CommonsChunkPlugin</a>.</p>
+<p>为了解决这个问题，我们需要使用 <a href="https://webpack.js.org/plugins/commons-chunk-plugin" target="_blank" rel="noopener">CommonsChunkPlugin</a>.</p>
 <h2 id="CommonsChunksPlugin"><a href="#CommonsChunksPlugin" class="headerlink" title="CommonsChunksPlugin"></a><code>CommonsChunksPlugin</code></h2><p>这是一个相当复杂的插件。它从根本上允许你从不同的代码包中提取出所有的相同模块并且把它们加入到共同的代码包中。如果这个相同的代码包不存在，那么就创建一个新的。</p>
 <p>我们可以修改 webpack 的配置文件来使用这个 <code>CommonsCunksPlugin</code></p>
 <p><strong>Webpack.config.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      main: <span class="string">'./index.js'</span>,</div><div class="line">      vendor: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        name: <span class="string">'vendor'</span> <span class="comment">// Specify the common bundle's name.</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: &#123;</div><div class="line">      <span class="attr">main</span>: <span class="string">'./index.js'</span>,</div><div class="line">      <span class="attr">vendor</span>: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">plugins</span>: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'vendor'</span> <span class="comment">// Specify the common bundle's name.</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样的话， <code>moment</code> 的代码就只会出现在 vendor 代码包中了。</p>
 <h2 id="清单文件（Manifest-File）"><a href="#清单文件（Manifest-File）" class="headerlink" title="清单文件（Manifest File）"></a>清单文件（Manifest File）</h2><p>但是，如果我们可以修改应用的代码并且再次执行 <code>webpack</code> 命令，我们看到 vendors 文件的 hash 还是变化了。即使我们已经分离了 <code>vendor</code> 和 <code>main</code> 代码包，但是当应用代码发生修改的时候 <code>vendor</code> 还是变化了。 这意味着我们依旧不能享受浏览器缓存带来的好处，因为每一次重新编译都会修改 vendors 的 hash 值。</p>
 <p>这个问题是因为每一次编译，webpack 生成一些 webpack 运行时代码，用来帮助 webpack 来做它的工作。当那里存在一个单独的代码包，运行时会驻留在其中。但当多个代码包被生成的时候，运行时代码会被提取到公共的模块中，就是这个 <code>vendor</code> 文件。</p>
 <p>为了阻止这个，我们需要提取出运行时到一个分离的清单文件（Manifest File）。虽然我们又多创建另一个代码包，但它的开销也被我们在 vendor 文件上获得的长期缓存所带来的好处所抵消了。</p>
 <p><strong>Webpack.config.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      main: <span class="string">'./index.js'</span>,</div><div class="line">      vendor: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        names: [<span class="string">'vendor'</span>, <span class="string">'manifest'</span>] <span class="comment">// Specify the common bundle's name.</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: &#123;</div><div class="line">      <span class="attr">main</span>: <span class="string">'./index.js'</span>,</div><div class="line">      <span class="attr">vendor</span>: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">plugins</span>: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        <span class="attr">names</span>: [<span class="string">'vendor'</span>, <span class="string">'manifest'</span>] <span class="comment">// Specify the common bundle's name.</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>通过上面这个配置文件，我们会看到三个代码包被生成。<code>vendor</code>,<code>main</code> 和 <code>manifest</code>. 这样当应用代码修改的时候，重新打包后，修改的就只有 <code>main</code> 和 <code>manifest</code> 了。 <code>manifest</code> 被修改是因为里面有对生成文件 hash 值的引用。</p>
 <h1 id="代码分割-使用-RequireJS"><a href="#代码分割-使用-RequireJS" class="headerlink" title="代码分割-使用 RequireJS"></a>代码分割-使用 RequireJS</h1><p>在这个章节，我们讨论 webpack 如何通过 <code>require.ensure()</code> 分割代码。</p>
 <h2 id="require-ensure"><a href="#require-ensure" class="headerlink" title="require.ensure()"></a><code>require.ensure()</code></h2><p>Webpack 静态分析给 <code>require.ensure()</code> 在代码中当构建和添加模块到分离的代码块中。这个新的代码块会被 webpack 在需要的时候通过 jsonp 引入。</p>
 <p>它的语法如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.ensure(dependencies: <span class="built_in">String</span>[], callback: <span class="function"><span class="keyword">function</span>(<span class="params">require</span>), <span class="title">chunkName</span>: <span class="title">String</span>)</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.ensure(dependencies: <span class="built_in">String</span>[], <span class="attr">callback</span>: <span class="function"><span class="keyword">function</span>(<span class="params">require</span>), <span class="title">chunkName</span>: <span class="title">String</span>)</span></div></pre></td></tr></table></figure>
 <h3 id="依赖-dependencies"><a href="#依赖-dependencies" class="headerlink" title="依赖(dependencies)"></a>依赖(dependencies)</h3><p>这是一个字符串数组，用来声明所有需要在执行回掉函数之前就需要预先加载好且可用的模块。</p>
 <h3 id="回调函数-callback"><a href="#回调函数-callback" class="headerlink" title="回调函数(callback)"></a>回调函数(callback)</h3><p>一个回调函数会被 webpack 执行一次当所有依赖(dependencies)都被加载以后。Require 对象的实现作为一个参数传递给这个回调函数。这样，我们可以更进一步 <code>require</code> 需要的依赖(dependencies)和其他需要执行的模块。</p>
 <h3 id="代码块名字-chunkName"><a href="#代码块名字-chunkName" class="headerlink" title="代码块名字(chunkName)"></a>代码块名字(chunkName)</h3><p>代码块名字是一个用来命名通过 <code>require.ensrue()</code> 创建的代码块。通过给不同的 <code>require.ensure()</code> 创建的代码分割点分割出来的代码块一个相同的名字，我们可以确保所有的依赖都被打包到同一个代码块中。</p>
 <p>我们来看一下如下结构的一个项目</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">\\ file structure</div><div class="line">    |</div><div class="line">    js --|</div><div class="line">    |    |-- entry.js</div><div class="line">    |    |-- a.js</div><div class="line">    |    |-- b.js</div><div class="line">    webpack.config.js</div><div class="line">    |</div><div class="line">    dist</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// entry.js</span></div><div class="line"></div><div class="line"><span class="built_in">require</span>(<span class="string">'a'</span>);</div><div class="line"><span class="built_in">require</span>.ensure([], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>)</span>&#123;</div><div class="line">  <span class="built_in">require</span>(<span class="string">'b'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// a.js</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'***** I AM a *****'</span>);</div><div class="line"></div><div class="line"><span class="comment">// b.js</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'***** I AM b *****'</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: <span class="string">'./js/entry.js'</span>,</div><div class="line">    output: &#123;</div><div class="line">      filename: <span class="string">'bundle.js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">env</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">'./js/entry.js'</span>,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当运行 webpack 命令的时候，我们发现 webpack 创建了两个新的代码包，<code>bundle.js</code> 和 <code>0.bundle.js</code>.</p>
 <p><code>entry.js</code> 和 <code>a.js</code> 被打包到了 <code>bundle.js</code> 中。</p>
 <p><code>b.js</code> 被打包到了 <code>0.bundle.js</code></p>
@@ -484,30 +551,42 @@
 <p>它的语法如下：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.context(directory, useSubdirectories = <span class="literal">false</span>, regExp = <span class="regexp">/^\.\//</span>)</div></pre></td></tr></table></figure>
 <p>例：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.context(<span class="string">"./test"</span>, <span class="literal">false</span>, <span class="regexp">/\.test\.js$/</span>);</div><div class="line"><span class="comment">// a context with files from the test directory that can be required with a request endings with `.test.js`.</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.context(<span class="string">"../"</span>, <span class="literal">true</span>, <span class="regexp">/\.stories\.js$/</span>);</div><div class="line"><span class="comment">// a context with all files in the parent folder and descending folders ending with `.stories.js`.</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.context(<span class="string">"./test"</span>, <span class="literal">false</span>, /\.test\.js$/);</div><div class="line"><span class="comment">// a context with files from the test directory that can be required with a request endings with `.test.js`.</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.context(<span class="string">"../"</span>, <span class="literal">true</span>, /\.stories\.js$/);</div><div class="line"><span class="comment">// a context with all files in the parent folder and descending folders ending with `.stories.js`.</span></div></pre></td></tr></table></figure>
 <h2 id="上下文模块API（context-module-API）"><a href="#上下文模块API（context-module-API）" class="headerlink" title="上下文模块API（context module API）"></a>上下文模块API（context module API）</h2><p>一个上下文模块暴露一个方法，它接收一个参数：请求的内容。<br>暴露出来的函数有三个属性：<code>resolve</code>,<code>key</code>,<code>id</code><br>    • <code>resolve</code> 是一个函数，执行后返回解析后的请求内容的模块 id<br>    • <code>keys</code>是一个函数，执行后返回一个数组，包含所有可能被上下文模块所请求的所有的模块的 id<br>    当你想要通过正则匹配引入一个文件夹下所有模块时，这会非常有用：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">importAll</span> (<span class="params">r</span>) </span>&#123;</div><div class="line">  r.keys().forEach(r);</div><div class="line">&#125;</div><div class="line">importAll(<span class="built_in">require</span>.context(<span class="string">'../components/'</span>, <span class="literal">true</span>, <span class="regexp">/\.js$/</span>))</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> cache = &#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">importAll</span> (<span class="params">r</span>) </span>&#123;</div><div class="line">  r.keys().forEach(key =&gt; cache[key] = r(key));</div><div class="line">&#125;</div><div class="line">importAll(<span class="built_in">require</span>.context(<span class="string">'../components/'</span>, <span class="literal">true</span>, <span class="regexp">/\.js$/</span>));</div><div class="line"><span class="comment">// At build-time cache will be polulated with all required modules.</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">importAll</span> (<span class="params">r</span>) </span>&#123;</div><div class="line">  r.keys().forEach(r);</div><div class="line">&#125;</div><div class="line">importAll(<span class="built_in">require</span>.context(<span class="string">'../components/'</span>, <span class="literal">true</span>, /\.js$/))</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> cache = &#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">importAll</span> (<span class="params">r</span>) </span>&#123;</div><div class="line">  r.keys().forEach(<span class="function"><span class="params">key</span> =&gt;</span> cache[key] = r(key));</div><div class="line">&#125;</div><div class="line">importAll(<span class="built_in">require</span>.context(<span class="string">'../components/'</span>, <span class="literal">true</span>, /\.js$/));</div><div class="line"><span class="comment">// At build-time cache will be polulated with all required modules.</span></div></pre></td></tr></table></figure>
 <pre><code>• `id` 是上下文模块生成的模块 id. 当使用 `module.hot.accept` 时，这会非常有用。
 </code></pre>
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    抹桥
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.kisnows.com/2017/01/17/webpack2-guide-1/" title="【翻译向】webpack2 指南（上）">https://blog.kisnows.com/2017/01/17/webpack2-guide-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> unless stating additionally.
+  </li>
+</ul>
 
-      
-    </div>
-
+      </div>
+    
 
     <footer class="post-footer">
       
@@ -516,6 +595,10 @@
             <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -543,6 +626,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -554,20 +641,28 @@
 
 
           </div>
-          
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-
           
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+  
 
 
         </div>
@@ -583,114 +678,127 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -710,6 +818,25 @@
         </section>
       <!--/noindex-->
       
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -721,38 +848,52 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -774,6 +915,17 @@
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -793,72 +945,87 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = '2017/01/17/webpack2-guide-1/';
 
-      var disqus_title = "【翻译向】webpack2 指南（上）";
+  
 
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
 
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
+    
+      <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = disqus_url;
-            this.page.identifier = disqus_identifier;
-            this.page.title = disqus_title;
+          this.page.url = 'https://blog.kisnows.com/2017/01/17/webpack2-guide-1/';
+          this.page.identifier = '2017/01/17/webpack2-guide-1/';
+          this.page.title = '【翻译向】webpack2 指南（上）';
         };
-        run_disqus_script('embed.js');
-      
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
-    </script>
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -866,14 +1033,9 @@
 
 
   
-  
 
   
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -980,9 +1142,43 @@
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

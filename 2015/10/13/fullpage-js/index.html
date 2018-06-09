@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="JavaScript,project," />
@@ -74,43 +117,25 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="项目初衷前段时间接到一个新的项目，是一个整屏滚动的单页应用。
-本来打算完全自己写的，但是由于项目时间吃紧，就用了fullpage这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。
-但是它也有几个缺点，第一它必须依赖 jQuery,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。
-项目地址
-一个简单的DEMO
-changeListV1">
+<meta name="description" content="项目初衷前段时间接到一个新的项目，是一个整屏滚动的单页应用。 本来打算完全自己写的，但是由于项目时间吃紧，就用了fullpage这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。 但是它也有几个缺点，第一它必须依赖 jQuery,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。 项目地址 一个简单的DEMO changeListV1">
+<meta name="keywords" content="JavaScript,project">
 <meta property="og:type" content="article">
 <meta property="og:title" content="轻量级fullPage整屏滚动框架V1.3发布">
-<meta property="og:url" content="http://kisnows.com/2015/10/13/fullpage-js/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="项目初衷前段时间接到一个新的项目，是一个整屏滚动的单页应用。
-本来打算完全自己写的，但是由于项目时间吃紧，就用了fullpage这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。
-但是它也有几个缺点，第一它必须依赖 jQuery,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。
-项目地址
-一个简单的DEMO
-changeListV1">
-<meta property="og:updated_time" content="2016-04-13T13:06:22.762Z">
+<meta property="og:url" content="https://blog.kisnows.com/2015/10/13/fullpage-js/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="项目初衷前段时间接到一个新的项目，是一个整屏滚动的单页应用。 本来打算完全自己写的，但是由于项目时间吃紧，就用了fullpage这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。 但是它也有几个缺点，第一它必须依赖 jQuery,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。 项目地址 一个简单的DEMO changeListV1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-17T14:20:42.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="轻量级fullPage整屏滚动框架V1.3发布">
-<meta name="twitter:description" content="项目初衷前段时间接到一个新的项目，是一个整屏滚动的单页应用。
-本来打算完全自己写的，但是由于项目时间吃紧，就用了fullpage这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。
-但是它也有几个缺点，第一它必须依赖 jQuery,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。
-项目地址
-一个简单的DEMO
-changeListV1">
+<meta name="twitter:description" content="项目初衷前段时间接到一个新的项目，是一个整屏滚动的单页应用。 本来打算完全自己写的，但是由于项目时间吃紧，就用了fullpage这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。 但是它也有几个缺点，第一它必须依赖 jQuery,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。 项目地址 一个简单的DEMO changeListV1">
 
 
 
@@ -118,13 +143,15 @@ changeListV1">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -138,7 +165,7 @@ changeListV1">
 
 
 
-  <link rel="canonical" href="http://kisnows.com/2015/10/13/fullpage-js/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/2015/10/13/fullpage-js/"/>
 
 
 
@@ -152,23 +179,23 @@ changeListV1">
   });
 </script>
 
-  <title> 轻量级fullPage整屏滚动框架V1.3发布 | 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>轻量级fullPage整屏滚动框架V1.3发布 | 抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -184,38 +211,42 @@ changeListV1">
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -230,37 +261,47 @@ changeListV1">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -292,35 +333,29 @@ changeListV1">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/10/13/fullpage-js/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2015/10/13/fullpage-js/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                轻量级fullPage整屏滚动框架V1.3发布
-              
-            
-          </h1>
+          <h2 class="post-title" itemprop="name headline">轻量级fullPage整屏滚动框架V1.3发布</h2>
         
 
         <div class="post-meta">
@@ -329,24 +364,42 @@ changeListV1">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-13T20:23:40+08:00">
                 2015-10-13
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:20:42+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -364,13 +417,15 @@ changeListV1">
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/10/13/fullpage-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/13/fullpage-js/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/10/13/fullpage-js/" itemprop="commentCount"></span>
                 </a>
               </span>
             
-          
-
           
 
           
@@ -380,9 +435,13 @@ changeListV1">
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -393,18 +452,20 @@ changeListV1">
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         <h1 id="项目初衷"><a href="#项目初衷" class="headerlink" title="项目初衷"></a>项目初衷</h1><p>前段时间接到一个新的项目，是一个整屏滚动的单页应用。</p>
-<p>本来打算完全自己写的，但是由于项目时间吃紧，就用了<a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="external">fullpage</a>这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。</p>
+<p>本来打算完全自己写的，但是由于项目时间吃紧，就用了<a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="noopener">fullpage</a>这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。</p>
 <p>但是它也有几个缺点，第一它必须依赖 <code>jQuery</code>,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。</p>
-<p><a href="https://github.com/kisnows/fullpage-light.js" target="_blank" rel="external">项目地址</a></p>
-<p><a href="http://kisnows.com/fullpage-light.js/">一个简单的DEMO</a></p>
+<p><a href="https://github.com/kisnows/fullpage-light.js" target="_blank" rel="noopener">项目地址</a></p>
+<p><a href="http://kisnows.com/fullpage-light.js/" target="_blank" rel="noopener">一个简单的DEMO</a></p>
 <h1 id="changeList"><a href="#changeList" class="headerlink" title="changeList"></a>changeList</h1><p>V1.3.0</p>
 <ul>
 <li>修复对firefox的支持</li>
@@ -450,7 +511,7 @@ changeListV1">
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fullpage.init(&apos;#sectionContent&apos;);</div></pre></td></tr></table></figure>
 <p>如果需要定制化，则需要如下方法：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fullpage.init(&apos;#sectionContent&apos;,&#123;</div><div class="line">       threshold: 10,              //触发滚动事件的阈值，越小越灵敏</div><div class="line">       pageSpeed: 600,             //滚屏速度，单位为毫秒 ms</div><div class="line">       afterLoad: null,            //页面载入事件，具体查看下面的 afterLoad 函数</div><div class="line">       beforeLeave: null           //页面离开事件，具体查看下面的 beforeLeave 函数</div><div class="line">   &#125;);</div></pre></td></tr></table></figure></p>
 <p>##beforeLeave(leaveIndex,nowIndex)<br>离开当前页面时触发的事件，函数中 <code>this</code> 指向当前页面的 <code>section</code>,<code>leaveIndex</code>为要离开页面的 <code>index</code> ，<code>nowIndex</code> 为要载入页面的 <code>Index</code></p>
-<p>##afterLoad(afterIndex)<br>载入下一张页面后触发的事件，函数中 <code>this</code> 指向将要载入页面的 <code>section</code>, <code>afterIndex</code> 为要载入页面的 <code>index</code><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">fullpage.init(<span class="string">'#sectionContent'</span>, &#123;</div><div class="line">  beforeLeave: <span class="function"><span class="keyword">function</span> (<span class="params">leaveIndex, nowIndex</span>) </span>&#123;        <span class="comment">//如果现在在第1个页面，向下滚动后</span></div><div class="line">    <span class="keyword">if</span> (nowIndex === <span class="number">2</span>) &#123;                               <span class="comment">//leaveIndex = 1,nowIndex = 2</span></div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'You will leave page 2'</span>)              <span class="comment">//这条语句会执行</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, leaveIndex, nowIndex)             <span class="comment">//这里的 this 指向将要离开的页面元素，即第一个页面</span></div><div class="line">  &#125;,</div><div class="line">  afterLoad: <span class="function"><span class="keyword">function</span> (<span class="params">afterIndex</span>) </span>&#123;                    <span class="comment">//afterIndex = 2</span></div><div class="line">    <span class="keyword">if</span> (afterIndex === <span class="number">2</span>) &#123;                             </div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'You will go to page 2'</span>)              <span class="comment">//这条语句会执行</span></div><div class="line">    &#125; </div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, afterIndex)                       <span class="comment">//此处 this 指向当前载入的页面，即第二个页面</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>##afterLoad(afterIndex)<br>载入下一张页面后触发的事件，函数中 <code>this</code> 指向将要载入页面的 <code>section</code>, <code>afterIndex</code> 为要载入页面的 <code>index</code><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">fullpage.init(<span class="string">'#sectionContent'</span>, &#123;</div><div class="line">  <span class="attr">beforeLeave</span>: <span class="function"><span class="keyword">function</span> (<span class="params">leaveIndex, nowIndex</span>) </span>&#123;        <span class="comment">//如果现在在第1个页面，向下滚动后</span></div><div class="line">    <span class="keyword">if</span> (nowIndex === <span class="number">2</span>) &#123;                               <span class="comment">//leaveIndex = 1,nowIndex = 2</span></div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'You will leave page 2'</span>)              <span class="comment">//这条语句会执行</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, leaveIndex, nowIndex)             <span class="comment">//这里的 this 指向将要离开的页面元素，即第一个页面</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">afterLoad</span>: <span class="function"><span class="keyword">function</span> (<span class="params">afterIndex</span>) </span>&#123;                    <span class="comment">//afterIndex = 2</span></div><div class="line">    <span class="keyword">if</span> (afterIndex === <span class="number">2</span>) &#123;                             </div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'You will go to page 2'</span>)              <span class="comment">//这条语句会执行</span></div><div class="line">    &#125; </div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, afterIndex)                       <span class="comment">//此处 this 指向当前载入的页面，即第二个页面</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>##init(el,options)<br>页面初始化，<code>el</code>为最外包裹层选择器，<code>options</code>是要定制的参数。具体同<a href="#初始化">初始化</a></p>
 <p>##moveTo(index,slideIndex)<br>滚动到指定页面,<code>index</code> 为必选参数，<code>slideIndex</code>为可选参数<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">fullpage.moveTo(<span class="number">1</span>)      <span class="comment">//滚动到第一个页面</span></div><div class="line">fullpage.moveTo(<span class="number">3</span>,<span class="number">2</span>)    <span class="comment">//滚动到第三个页面的第二个slider</span></div></pre></td></tr></table></figure></p>
 <p>##moveToNext(callback)<br>垂直滚动到下一个页面,<code>callback</code>为回掉函数，可选。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">fullpage.moveToNext();            <span class="comment">//滚动到下一个页面</span></div><div class="line">fullpage.moveToNext(callback)     <span class="comment">//滚动到下一个页面后，执行 callback</span></div><div class="line">fullpage.moveToNext(callback,params...)   <span class="comment">//滚动到下一个页面后，执行 callback,params为callback的参数，根据情况传入</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a,b)</div><div class="line">&#125;</div><div class="line">fullpage.moveToNext(foo,<span class="number">1</span>,<span class="number">2</span>)              <span class="comment">//滚动到下一个页面，并输出 1，2</span></div></pre></td></tr></table></figure></p>
@@ -467,21 +528,33 @@ changeListV1">
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    抹桥
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.kisnows.com/2015/10/13/fullpage-js/" title="轻量级fullPage整屏滚动框架V1.3发布">https://blog.kisnows.com/2015/10/13/fullpage-js/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> unless stating additionally.
+  </li>
+</ul>
 
-      
-    </div>
-
+      </div>
+    
 
     <footer class="post-footer">
       
@@ -492,6 +565,10 @@ changeListV1">
             <a href="/tags/project/" rel="tag"># project</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -519,6 +596,10 @@ changeListV1">
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -530,20 +611,28 @@ changeListV1">
 
 
           </div>
-          
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-
           
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+  
 
 
         </div>
@@ -559,114 +648,127 @@ changeListV1">
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -686,6 +788,25 @@ changeListV1">
         </section>
       <!--/noindex-->
       
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -697,38 +818,52 @@ changeListV1">
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -750,6 +885,17 @@ changeListV1">
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -769,72 +915,87 @@ changeListV1">
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = '2015/10/13/fullpage-js/';
 
-      var disqus_title = "轻量级fullPage整屏滚动框架V1.3发布";
+  
 
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
 
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
+    
+      <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = disqus_url;
-            this.page.identifier = disqus_identifier;
-            this.page.title = disqus_title;
+          this.page.url = 'https://blog.kisnows.com/2015/10/13/fullpage-js/';
+          this.page.identifier = '2015/10/13/fullpage-js/';
+          this.page.title = '轻量级fullPage整屏滚动框架V1.3发布';
         };
-        run_disqus_script('embed.js');
-      
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
-    </script>
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -842,14 +1003,9 @@ changeListV1">
 
 
   
-  
 
   
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -956,9 +1112,43 @@ changeListV1">
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

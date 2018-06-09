@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="JavaScript,JS,Web Develop,Front end,前端开发,Kisnows" />
@@ -74,27 +117,23 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="description" content="怕什么真理无穷">
 <meta property="og:type" content="website">
-<meta property="og:title" content="抹桥杂货店">
-<meta property="og:url" content="http://kisnows.com/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta property="og:title" content="抹桥的博客">
+<meta property="og:url" content="https://blog.kisnows.com/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="怕什么真理无穷">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="抹桥杂货店">
-<meta name="twitter:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="twitter:title" content="抹桥的博客">
+<meta name="twitter:description" content="怕什么真理无穷">
 
 
 
@@ -102,13 +141,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -122,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://kisnows.com/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/"/>
 
 
 
@@ -136,23 +177,23 @@
   });
 </script>
 
-  <title> 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -168,40 +209,43 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -216,37 +260,47 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -278,38 +332,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/03/17/react-form-rework-thinking/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2018/06/09/thailand-travel-notes/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/17/react-form-rework-thinking/" itemprop="url">
-                  一个 React Form 组件的重构思路
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/06/09/thailand-travel-notes/" itemprop="url">泰国懒人游</a></h2>
         
 
         <div class="post-meta">
@@ -318,24 +365,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T21:31:31+08:00">
-                2017-03-17
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-09T15:57:12+08:00">
+                2018-06-09
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2018-06-09T16:42:35+08:00">
+                2018-06-09
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -353,25 +418,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/03/17/react-form-rework-thinking/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/17/react-form-rework-thinking/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/09/thailand-travel-notes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/09/thailand-travel-notes/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2017/03/17/react-form-rework-thinking/" class="leancloud_visitors" data-flag-title="一个 React Form 组件的重构思路">
+             <span id="/2018/06/09/thailand-travel-notes/" class="leancloud_visitors" data-flag-title="泰国懒人游">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -382,77 +453,43 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <p>最近对团队内部 React 组件库（<a href="https://github.com/NE-LOAN-FED/NE-Component"><strong>ne-rc</strong></a>）中的 Form 组件进行了重构，记录一下思考的过程。</p>
-<p>一些前置定义：</p>
-<table>
-<thead>
-<tr>
-<th>名词</th>
-<th>定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>表单</td>
-<td>Form 组件</td>
-</tr>
-<tr>
-<td>子表单</td>
-<td>嵌套在 Form 下面的类似 Input, Select 这样的子组件</td>
-</tr>
-</tbody>
-</table>
-<p>首先我们看一下，我们的对 Form 组件的需求是什么。</p>
-<ol>
-<li>获取当前变动表单的状态<ul>
-<li>校验所有必填表单是否填写完成</li>
-<li>对外触发具体表单变化的方法 <code>formFieldChange</code></li>
-</ul>
-</li>
-<li>暴露对外提供整个表单状态的方法<ul>
-<li>提供整个表单最新状态的方法 $Form.data</li>
-</ul>
-</li>
-<li>提交方法<ul>
-<li>校验表单是否通过校验</li>
-<li>对外触发 <code>formSubmit</code> 方法</li>
-</ul>
-</li>
-</ol>
-<p>接着我们从重构前和重构后，看如何来解决这个问题。</p>
-<h1 id="Before"><a href="#Before" class="headerlink" title="Before"></a><strong>Before</strong></h1><h2 id="获取当前变动表单的状态"><a href="#获取当前变动表单的状态" class="headerlink" title="获取当前变动表单的状态"></a>获取当前变动表单的状态</h2><h3 id="如何获取变动的子表单"><a href="#如何获取变动的子表单" class="headerlink" title="如何获取变动的子表单"></a>如何获取变动的子表单</h3><p>React 父子通信需要通过 prop 传递方法，对于 Form 下面的类似与 Input 之类的子表单的变化想要通知到父级，如果不借助第三方的事件传递方法，那么就只能通过由父级通过 props 向 Input 传递 <code>formFieldChange</code>（假设就叫这个名字）方法，然后当子组件变化时去调用 <code>formFieldChange</code> 来实现。</p>
-<p>那么问题来了，什么时候去传递这个方法呢？</p>
-<p>不能在具体页面里面使用的时候再去每条表单里面注册这个方法，那每个用到表单组件的时候就都需要给子表单进行这样的事件绑定，这样太累了。</p>
-<p>所以一开始，我选择通过直接递归的遍历 Form 下面的 children，只要发现这个 children 是我想要的表单类型，那么就重新克隆一个带有 <code>formFieldChange</code> 的组件来替换掉原来的组件。<br>
+          <h1 id="曼谷"><a href="#曼谷" class="headerlink" title="曼谷"></a>曼谷</h1><h2 id="落地签"><a href="#落地签" class="headerlink" title="落地签"></a>落地签</h2><p>素万那普机场，下机后跟着人流直走，头上有指示牌，可以一路走到办理落地签的地方。<br>办理落地签有两个通道，一个普通通道，一个快速通道。快速通道 2200🐖，普通通道 2000🐖。<br>建议走快速通道，能省很多时间。<br><img src="/2018/06/09/thailand-travel-notes/1.jpg" title="机场"></p>
+<h2 id="机场大巴"><a href="#机场大巴" class="headerlink" title="机场大巴"></a>机场大巴</h2><p>从扶梯下来，好像是到一楼，然后会看到大巴售票点。<br><img src="/2018/06/09/thailand-travel-notes/2.png" title="机场"></p>
+<p>然后会看到大巴售票点，就长下图这个样子，有到芭堤雅和华欣的大巴，大概每小时一班车。<br><img src="/2018/06/09/thailand-travel-notes/3.jpg" title="大巴售票点"><br>然后面向大巴售票点左手边有吃饭的地方，在这个位置。<br><img src="/2018/06/09/thailand-travel-notes/4.jpg" title="机场饭厅"></p>
+<p>里面东西很便宜，进去要换票，一个人的话100🐖就够了。能吃很多东西，我当时吃了一碗面，一罐可乐，还剩了 15🐖。<br><img src="/2018/06/09/thailand-travel-notes/5.jpg" title="机场"><br><img src="/2018/06/09/thailand-travel-notes/6.jpg" title="机场"></p>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/17/react-form-rework-thinking/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/09/thailand-travel-notes/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -462,6 +499,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -474,38 +515,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/01/19/webpack2-migrating-v1-v2/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2018/03/28/2017-year-end-summary/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/19/webpack2-migrating-v1-v2/" itemprop="url">
-                  【翻译向】Webpack 1 到 2 升级指南
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/03/28/2017-year-end-summary/" itemprop="url">2017年终总结</a></h2>
         
 
         <div class="post-meta">
@@ -514,28 +548,46 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T17:00:33+08:00">
-                2017-01-19
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-28T14:03:41+08:00">
+                2018-03-28
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2018-06-09T15:56:32+08:00">
+                2018-06-09
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -549,25 +601,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/01/19/webpack2-migrating-v1-v2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/19/webpack2-migrating-v1-v2/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/28/2017-year-end-summary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/28/2017-year-end-summary/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2017/01/19/webpack2-migrating-v1-v2/" class="leancloud_visitors" data-flag-title="【翻译向】Webpack 1 到 2 升级指南">
+             <span id="/2018/03/28/2017-year-end-summary/" class="leancloud_visitors" data-flag-title="2017年终总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -578,41 +636,51 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <h2 id="resolve-root-resolve-fallback-resolve-modulesDirectories"><a href="#resolve-root-resolve-fallback-resolve-modulesDirectories" class="headerlink" title="resolve.root,resolve.fallback,resolve.modulesDirectories"></a><code>resolve.root</code>,<code>resolve.fallback</code>,<code>resolve.modulesDirectories</code></h2><p>这些配置项项都被一个单独的配置所替代 <code>resolve.modules</code>. 查看 <a href="https://webpack.js.org/configuration/resolve">resolving</a> 了解更多。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">-   root: path.join(__dirname, <span class="string">"src"</span>)</div><div class="line">+   modules: [</div><div class="line">+     path.join(__dirname, <span class="string">"src"</span>),</div><div class="line">+     <span class="string">"node_modules"</span></div><div class="line">+   ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="resolve-extensions"><a href="#resolve-extensions" class="headerlink" title="resolve.extensions"></a><code>resolve.extensions</code></h2><p>这个选项已经不在需要传一个空字符串了。它的行为已经被移动到了 <code>resolve.enforceExtension</code>. 查看 <a href="https://webpack.js.org/configuration/resolve">resolving</a> 了解更多。</p>
-<h2 id="resolve"><a href="#resolve" class="headerlink" title="resolve.*"></a><code>resolve.*</code></h2><p>这里修改了很多内容。因为被用到的不是很多，所以就不一一列举出来了。查看 <a href="https://webpack.js.org/configuration/resolve">resolving</a> 了解更多。</p>
-<h2 id="module-loaders-现在是-module-rules"><a href="#module-loaders-现在是-module-rules" class="headerlink" title="module.loaders 现在是 module.rules"></a><code>module.loaders</code> 现在是 <code>module.rules</code></h2><p>老的 loader 配置被一个更加强大的 rules 系统所取代了，允许配置 loader 和更多内容。为了保证一致性，旧的 <code>module.loaders</code> 语法依然可以合法且可以使用的。新的命名规范更加易于理解，这是一个使用 <code>module.rules</code> 去升级配置的很好的理由。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">-   loaders: [</div><div class="line">+   rules: [</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.css$/</span>,</div><div class="line">-       loaders: [</div><div class="line">+       use: [</div><div class="line">          &#123;</div><div class="line">            loader: <span class="string">"style-loader"</span></div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            loader: <span class="string">"css-loader"</span>,</div><div class="line">-           query: &#123;</div><div class="line">+           options: &#123;</div><div class="line">              modules: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.jsx$/</span>,</div><div class="line">        loader: <span class="string">"babel-loader"</span>, <span class="comment">// Do not use "use" here</span></div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+          <h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>年初，公司经历大的变动，整个理财业务线都干掉了，一大批人转岗的转岗、离职的离职。前端技术部这里，人也走了几个，六楼本来 5 个前端，最后只剩下了 3 个。原来的项目也都不做了，开始做的新的项目网易白条。风风火火做了将近一年，现在产品的数字还比较好看，年后就会上公开申请制对外正式开放，前景还是不错的。</p>
+<p>只是，现在楼上两个前端年后又要走一个人，流动性那么大，没有一点归属感。加上阿里很多部门给我打电话让我过去面试，想想网易比较低的工资，有时候都有点动心，但还是一一拒绝了。起码在网易待满三年，好好沉淀一下。也磨练一下自己的性子，否则天天换工作，也不利于长久的职业发展。只是最近新上的区块链项目，虽然我没参与，但能让我感觉整个部门非常的浮躁，又在犹豫呆下去是否是正确的。</p>
+<h1 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h1><p>今年整体上还是过的像一碗白开水，中间偶有放点糖，但很快也就没有味道。</p>
+<p>身体上已经明显能感觉到开始横向发展了，体重上了五六公斤，但是身体素质却下降了，引体向上只能做一个，我的天呐，大学的时候好歹也能轻松做十个的，这衰减的也太快了。说要锻炼身体，然而基本上只停留在嘴上，锻炼一次中间能间隔一个月，哈哈。</p>
+<p>有时候觉得无聊，就想给自己培养个爱好，想来想去最后决定学个口琴，投入小，见效快。然后就买琴网上找教程，刚开始的几个月，还比较上心，基本天天练习，到现在不复杂的曲子都可以吹，而且自我感觉还不错。就是因为学的是布鲁斯口琴，低音的 6 需要压音，到现在也不能很好的压出好听的声音，更别提融入到曲子中去了，还需要继续练习啊。现在最喜欢的吹的曲子有两个，一个是 《alone》 一个是 《you are my sunshine》，心情不好的时候就自己吹给自己听。</p>
+<h2 id="日本旅游"><a href="#日本旅游" class="headerlink" title="日本旅游"></a>日本旅游</h2><p>11 月左右，公司组织我们出国旅游，有三个地方可选：日本、塞班岛、澳洲。最后我选了日本，也是第一次出国，还是很开心。</p>
+<p>去了北海道，日本的大农村，第一天入住的小镇下午五点大街上就一个人都没有了，跟同事出逛了一圈最后发现酒店附近的居酒屋七点以后开门。一群人进去想去感受日本当地的居酒屋文化，只是老板就一个人，而且跟我们语言不通，完全照顾不过来，看起来有点不是很开心的样子，不过我们喝的倒是很开心。</p>
+<p>第二天去的第一个景点就是个动物园，这也是我第一次去动物园，看到了企鹅、狼、海豹、河马、长颈鹿，就是出来的时候差点掉队找不到组织。</p>
+<p>后来又去了北海道厅、洞爷湖、熊厂、地狱谷、当天晚上入住的洞爷湖酒店环境真好。</p>
+<img src="/2018/03/28/2017-year-end-summary/landscape.jpg" title="洞爷湖酒店">
+<p>中间还去了哪都忘了，最后落脚在札幌市区，然后第二天自由活动。白天逛街买东西，几个大商场同事们都买了好多东西，都是土豪啊，哈哈。</p>
+<p>期间有件很意思的事情，我想买个 SONY 1000x ，结果和售货员就这个耳机的输入电压是多少沟通了好久，用各种翻译软件都不行，说英语不行、说汉语也不行。<br>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/19/webpack2-migrating-v1-v2/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/28/2017-year-end-summary/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -622,6 +690,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -634,38 +706,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/01/18/webpack2-guide-3/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/12/06/step-into-indexdb/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/18/webpack2-guide-3/" itemprop="url">
-                  【翻译向】webpack2 指南（下）
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/06/step-into-indexdb/" itemprop="url">indexDB 不完全指南</a></h2>
         
 
         <div class="post-meta">
@@ -674,24 +739,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T17:14:35+08:00">
-                2017-01-18
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-06T14:49:52+08:00">
+                2017-12-06
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2018-01-07T19:52:48+08:00">
+                2018-01-07
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -709,192 +792,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/01/18/webpack2-guide-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/18/webpack2-guide-3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/18/webpack2-guide-3/" class="leancloud_visitors" data-flag-title="【翻译向】webpack2 指南（下）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="缓存（Caching）"><a href="#缓存（Caching）" class="headerlink" title="缓存（Caching）"></a>缓存（Caching）</h1><p>为了能够使 webpack 处理后的静态资源能够长期缓存下来，需要：</p>
-<ol>
-<li>使用 <code>[chunkhash]</code> 给每一个文件创建基于内容变化的缓存标识</li>
-<li>在 HTML 文件中引入文件时使用编译状态来拿到文件名称</li>
-<li>在载入资源之前生成 chunk-manifest JSON 文件并写入到 HTML 页面中</li>
-<li>确保包含启动代码的入口代码块的 hash 值不会被修改，当它的依赖没有变化的时候</li>
-</ol>
-<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><p>每当我们代码中有一些东西需要被更新的时候，它需要在服务上部署然后由客户端重新下载这些文件。当网络状状况不太好的时候，这是意见非常低效的事情。这也是为什么浏览器要缓存静态资源的原因。</p>
-<p>这会导致一个陷阱：当我们发布一个新的版本的时候不去更新的文件名，这会让浏览器认为文件没有变化，导致客户端拿不到最新的资源。</p>
-<p>一个简单解决问题的方式就是告诉浏览器一个新的文件名。在没有 webpack 的时候我们会使用构建版本来标识此次的更新：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">application.js?build=1</div><div class="line">application.css?build=1</div></pre></td></tr></table></figure>
-<p>在 webpack 中这样做也很简单：每一次 webpack 的构建都会生成一个可以用来构成文件名的独一无二的 hash 值。下面这个配置文件会生成两个带有 hash 值的文件名：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    vendor: <span class="string">'./src/vendor.js'</span>,</div><div class="line">    main: <span class="string">'./src/index.js'</span></div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: path.join(__dirname, <span class="string">'build'</span>),</div><div class="line">    filename: <span class="string">'[name].[hash].js'</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/18/webpack2-guide-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/01/18/webpack2-guide-2/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/18/webpack2-guide-2/" itemprop="url">
-                  【翻译向】webpack2 指南（中）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T11:49:14+08:00">
-                2017-01-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/18/webpack2-guide-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/18/webpack2-guide-2/" itemprop="commentCount"></span>
+                <a href="/2017/12/06/step-into-indexdb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/06/step-into-indexdb/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2017/01/18/webpack2-guide-2/" class="leancloud_visitors" data-flag-title="【翻译向】webpack2 指南（中）">
+             <span id="/2017/12/06/step-into-indexdb/" class="leancloud_visitors" data-flag-title="indexDB 不完全指南">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -905,211 +827,46 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="动态模块替换（Hot-Module-Repalcement-React）"><a href="#动态模块替换（Hot-Module-Repalcement-React）" class="headerlink" title="动态模块替换（Hot Module Repalcement -React）"></a>动态模块替换（Hot Module Repalcement -React）</h1><p>就像之前 <a href="https://webpack.js.org/concepts/hot-module-repalcement">理念页面</a> 中解析的细节那样，动态模块替换（HMR）会在应用运行时动态的替换、添加或者删除模块而不用重新刷新页面。 HMR 非常有用，当应用只有一个状态树（single state tree）时。</p>
-<p>下面介绍的方法描述中使用了 Babel 和 React ,但这并不是使用 HRM 所必须的工具。</p>
-<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><p>这里会指导你如何用 Babel， React 和 PostCss 一起使用 HMR 去演示一个项目。为了能够跟着下面走下去，需要把这些依赖添加到 <code>package.json</code> 中去。</p>
-<p>为了使用 HMR，你需要如下这些依赖：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install --save-dev babel@6.5.2 babel-core@6.13.2 babel-loader@6.2.4 babel-preset-es2015@6.13.2 babel-preset-react@6.11.1 babel-preset-stage-2@6.13.0 css-loader@0.23.1 postcss-loader@0.9.1 react-hot-loader@3.0.0-beta.6 style-loader@0.13.1 webpack@2.1.0-beta.25 webpack-dev-server@2.1.0-beta.0</div></pre></td></tr></table></figure>
-<p>同时，为了达到我们演示的目的，还需要：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install --save react@15.3.0 react-dom@15.3.0</div></pre></td></tr></table></figure>
-<h3 id="Babel-Config"><a href="#Babel-Config" class="headerlink" title="Babel Config"></a>Babel Config</h3><p><code>.babelrc</code> 文件应该如下：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [</div><div class="line">    [<span class="string">"es2015"</span>, &#123;<span class="attr">"modules"</span>: <span class="literal">false</span>&#125;],</div><div class="line">    // webpack understands the native import syntax, and uses it for tree shaking</div><div class="line"></div><div class="line">    <span class="string">"stage-2"</span>,</div><div class="line">    // Specifies what level of language features to activate.</div><div class="line">    // Stage <span class="number">2</span> is <span class="string">"draft"</span>, <span class="number">4</span> is finished, <span class="number">0</span> is strawman.</div><div class="line">    // See https://tc39.github.io/process-document/</div><div class="line"></div><div class="line">    <span class="string">"react"</span></div><div class="line">    // Transpile React components to JavaScript</div><div class="line">  ],</div><div class="line">  <span class="attr">"plugins"</span>: [</div><div class="line">    <span class="string">"react-hot-loader/babel"</span></div><div class="line">    // Enables React code to work with HMR.</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Webpack-Config"><a href="#Webpack-Config" class="headerlink" title="Webpack Config"></a>Webpack Config</h3>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/18/webpack2-guide-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2017/01/17/webpack2-guide-1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/17/webpack2-guide-1/" itemprop="url">
-                  【翻译向】webpack2 指南（上）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T13:49:35+08:00">
-                2017-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/17/webpack2-guide-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/17/webpack2-guide-1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/17/webpack2-guide-1/" class="leancloud_visitors" data-flag-title="【翻译向】webpack2 指南（上）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <h1 id="前置定义"><a href="#前置定义" class="headerlink" title="前置定义"></a>前置定义</h1><p>Bundle 代码包<br>Chunk 代码块</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>npm install webpack –save-dev</p>
-<h1 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h1><p>代码分割是 webpack 中最引人注目的功能之一。它允许你把代码分割成各种可以根据需求载入的代码包，就像一个用户浏览器去匹配路由一样，或者一个用户发出的事件。这允许你小的模块，允许你控制资源的载入优先级，如果使用得当的话，可以大大影响（降低）你应用的加载时间。</p>
-<h2 id="缓存和并行加载的资源分割"><a href="#缓存和并行加载的资源分割" class="headerlink" title="缓存和并行加载的资源分割"></a>缓存和并行加载的资源分割</h2><h3 id="第三方代码分割"><a href="#第三方代码分割" class="headerlink" title="第三方代码分割"></a>第三方代码分割</h3><p>一个典型的应用会依赖很多第三方的框架和库文件。不像应用代码本身，这些第三方代码的变更非常频繁。<br>如果我们保持这些库在它本身的代码包中，从应用代码本身分离出来，那么我们就可以使用浏览器的缓存策略去在一个长时间内把这些代码缓存到最终用户的机器上。</p>
-<p>为了达到这个效果，第三方代码的 verndor 包的 hash 部分必须保持不变，不管应用代码如何变化。学习 <a href="https://webpack.js.org/guids/code-splitting-libraries">如何通过 <code>CommonsChunkPlugin</code> 来分割 verndor/libray 代码</a>。</p>
-<h3 id="CSS-分割"><a href="#CSS-分割" class="headerlink" title="CSS 分割"></a>CSS 分割</h3><p>你可能也想把样式文件分割成为一个单独的包，从应用逻辑总独立出来。这可以增强样式文件的可缓存性，并且允许浏览器在加载应用代码时并行加载你的样式文件，因此也可以避免 FOUC （一个无样式内容的闪屏）。<br>学习 <a href="https//webpack.js.org/guides/code-splitting-css">如何去分割 CSS</a> 通过使用 <code>ExtractTextWebpackPlugin</code>.</p>
-<h2 id="按需代码分割"><a href="#按需代码分割" class="headerlink" title="按需代码分割"></a>按需代码分割</h2><p>虽然前面的资源分割需要用户在配置文件中预先指定分割点，但是也可以在应用代码中创建动态的分割点。</p>
-<p>这个功能在有很多细微颗粒代码块时会很有用，举个例子，每一个应用的路由或者按照用户的预测行为。这可以使用户按需加载需要的资源。</p>
-<h3 id="通过-require-ensure-来分割代码"><a href="#通过-require-ensure-来分割代码" class="headerlink" title="通过 require.ensure() 来分割代码"></a>通过 <code>require.ensure()</code> 来分割代码</h3><p><code>require.ensure</code> 是一个 CommonJS 风格的方式去异步加载资源。通过添加 <code>require.ensure([&lt;fileurl&gt;])</code> , 我们可以在代码中定义一个分割点。 Webpack 可以创建一个包含在这个分割点中的所有代码的代码包。学习 <a href="https://webpack.js.org/guides/code-splitting-require">如何分割代码</a> 通过使用 <code>require.ensure()</code>.</p>
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>引用 MDN 的介绍：</p>
 <blockquote>
-<p>TODO System.import()</p>
+<p>IndexedDB 是一个事务型数据库系统，类似于基于 SQL 的 RDBMS。 然而不同的是它使用固定列表，IndexedDB是一个基于JavaScript的面向对象的数据库。 IndexedDB允许您存储和检索用键索引的对象; 可以存储structured clone algorithm支持的任何对象。 您只需要指定数据库模式，打开与数据库的连接，然后检索和更新一系列事务中的数据。</p>
+<p>IndexedDB 是一种低级API，用于客户端存储大量结构化数据(包括, 文件/ blobs)。该API使用索引来实现对该数据的高性能搜索。虽然 Web Storage 对于存储较少量的数据很有用，但对于存储更大量的结构化数据来说，这种方法不太有用。IndexedDB 提供了一个解决方案。</p>
 </blockquote>
+<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><p>这是我整理的 WebStorage 和 indexDB 的之间区别，有问题的地方还请指出。<br><img src="/2017/12/06/step-into-indexdb/diff.png" title="indexDB和WebStorage的区别"></p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><h2 id="1-打开数据库"><a href="#1-打开数据库" class="headerlink" title="1. 打开数据库"></a>1. 打开数据库</h2>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/17/webpack2-guide-1/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/06/step-into-indexdb/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1119,6 +876,387 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/10/14/redux-source-code-read/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/14/redux-source-code-read/" itemprop="url">Redux 源码解读（长文慎入）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-14T15:27:47+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-10-14T15:27:47+08:00">
+                2017-10-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/14/redux-source-code-read/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/14/redux-source-code-read/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/14/redux-source-code-read/" class="leancloud_visitors" data-flag-title="Redux 源码解读（长文慎入）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Redux 的源码非常的精炼，短短几百行代码，去提供了强大的功能。今天，我们就来一探究竟。</p>
+<p>看源码最简单的方式，就是从入口文件来看，看它依赖哪些模块，然后在依次看这些模块的内容，最后也就对整个代码有个清晰的认识了。</p>
+<p>所以我们就从入口文件开始来看：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> createStore <span class="keyword">from</span> <span class="string">'./createStore'</span></div><div class="line"><span class="keyword">import</span> combineReducers <span class="keyword">from</span> <span class="string">'./combineReducers'</span></div><div class="line"><span class="keyword">import</span> bindActionCreators <span class="keyword">from</span> <span class="string">'./bindActionCreators'</span></div><div class="line"><span class="keyword">import</span> applyMiddleware <span class="keyword">from</span> <span class="string">'./applyMiddleware'</span></div><div class="line"><span class="keyword">import</span> compose <span class="keyword">from</span> <span class="string">'./compose'</span></div><div class="line"><span class="keyword">import</span> warning <span class="keyword">from</span> <span class="string">'./utils/warning'</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">* This is a dummy function to check if the function name has been altered by minification.</div><div class="line">* If the function has been minified and NODE_ENV !== 'production', warn the user.</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isCrushed</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">// 就是根据 isCrushed 是否被压缩了，来警告开发者正在非生产环境使用一个压缩过的代码。</span></div><div class="line"><span class="keyword">if</span> (</div><div class="line">  process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</div><div class="line">  <span class="keyword">typeof</span> isCrushed.name === <span class="string">'string'</span> &amp;&amp;</div><div class="line">  isCrushed.name !== <span class="string">'isCrushed'</span></div><div class="line">) &#123;</div><div class="line">  warning(</div><div class="line">    <span class="string">'You are currently using minified code outside of NODE_ENV === \'production\'. '</span> +</div><div class="line">    <span class="string">'This means that you are running a slower development build of Redux. '</span> +</div><div class="line">    <span class="string">'You can use looseenvify (https://github.com/zertosh/looseenvify) for browserify '</span> +</div><div class="line">    <span class="string">'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) '</span> +</div><div class="line">    <span class="string">'to ensure you have the correct code for your production build.'</span></div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;</div><div class="line">  createStore,</div><div class="line">  combineReducers,</div><div class="line">  bindActionCreators,</div><div class="line">  applyMiddleware,</div><div class="line">  compose</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到它依赖了下面这几个模块：</p>
+<ul>
+<li>createStore</li>
+<li>combineReducers</li>
+<li>bindActionCreators</li>
+<li>applyMiddleware</li>
+<li>compose</li>
+<li>warning</li>
+</ul>
+<p>其他没什么说的，就是把一些 API 暴露出去。那我们就先按照这个模块依赖顺序，依次进行解读。</p>
+<h2 id="createStore"><a href="#createStore" class="headerlink" title="createStore"></a>createStore</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/14/redux-source-code-read/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/09/20/how-react-render-component-to-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/how-react-render-component-to-dom/" itemprop="url">ReactDOM 是如何把组件渲染到 DOM 中的？</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-20T19:28:39+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-10-14T15:27:47+08:00">
+                2017-10-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/20/how-react-render-component-to-dom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/20/how-react-render-component-to-dom/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/20/how-react-render-component-to-dom/" class="leancloud_visitors" data-flag-title="ReactDOM 是如何把组件渲染到 DOM 中的？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>当我们在开发 React 项目中，第一次调用 <code>ReactDOM.render</code> 的时候都发生了什么呢？<br>今天就从源码角度来追踪一下这个问题（主要看流程， 而不纠结与细节）。</p>
+<h2 id="ReactDOMStackEntry"><a href="#ReactDOMStackEntry" class="headerlink" title="ReactDOMStackEntry"></a>ReactDOMStackEntry</h2><p>首先我们可以从 ReactDOM 的入口文件 ReactDOMStackEntry.js 中找到 render 方法。可以看到，<code>render</code> 方法是 ReactMount 组件提供的。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactDOMStack = &#123;</div><div class="line">  <span class="attr">findDOMNode</span>: findDOMNode,</div><div class="line">  <span class="attr">render</span>: ReactMount.render,</div><div class="line">  <span class="attr">unmountComponentAtNode</span>: ReactMount.unmountComponentAtNode,</div><div class="line">  <span class="attr">version</span>: ReactVersion,</div><div class="line"></div><div class="line">  <span class="comment">/* eslint-disable camelcase */</span></div><div class="line">  unstable_batchedUpdates: ReactGenericBatching.batchedUpdates,</div><div class="line">  <span class="attr">unstable_renderSubtreeIntoContainer</span>: ReactMount.renderSubtreeIntoContainer,</div><div class="line">  <span class="comment">/* eslint-enable camelcase */</span></div><div class="line"></div><div class="line">  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: &#123;</div><div class="line">    <span class="comment">// For TapEventPlugin which is popular in open source</span></div><div class="line">    EventPluginHub: <span class="built_in">require</span>(<span class="string">'EventPluginHub'</span>),</div><div class="line">    <span class="comment">// Used by test-utils</span></div><div class="line">    EventPluginRegistry: <span class="built_in">require</span>(<span class="string">'EventPluginRegistry'</span>),</div><div class="line">    <span class="attr">EventPropagators</span>: <span class="built_in">require</span>(<span class="string">'EventPropagators'</span>),</div><div class="line">    <span class="attr">ReactControlledComponent</span>: <span class="built_in">require</span>(<span class="string">'ReactControlledComponent'</span>),</div><div class="line">    ReactDOMComponentTree,</div><div class="line">    <span class="attr">ReactDOMEventListener</span>: <span class="built_in">require</span>(<span class="string">'ReactDOMEventListener'</span>),</div><div class="line">    <span class="attr">ReactUpdates</span>: ReactUpdates,</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="ReactMount-render"><a href="#ReactMount-render" class="headerlink" title="ReactMount.render"></a>ReactMount.render</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params">nextElement, container, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> ReactMount._renderSubtreeIntoContainer(</div><div class="line">    <span class="literal">null</span>,</div><div class="line">    nextElement,</div><div class="line">    container,</div><div class="line">    callback,</div><div class="line">  );</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>又调到了 <code>_renderSubtreeIntoContainer</code> 方法, 这个方法核心内容如下：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/20/how-react-render-component-to-dom/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1127,14 +1265,22 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
-          
-
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
           
 
@@ -1151,107 +1297,139 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -1264,38 +1442,52 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -1317,6 +1509,17 @@
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -1336,76 +1539,81 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = 'index.html';
-
-      var disqus_title = "";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
-
-    </script>
-  
-
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
 
 
   
   
 
-  
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -1512,9 +1720,43 @@
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>

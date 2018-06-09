@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
 
 
 
@@ -17,6 +35,10 @@
 
 
   <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
 
 
 
@@ -51,11 +73,17 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -65,7 +93,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="JavaScript,JS,Web Develop,Front end,前端开发,Kisnows" />
@@ -74,27 +117,23 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="抹桥杂货店" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="description" content="怕什么真理无穷">
 <meta property="og:type" content="website">
-<meta property="og:title" content="抹桥杂货店">
-<meta property="og:url" content="http://kisnows.com/page/6/index.html">
-<meta property="og:site_name" content="抹桥杂货店">
-<meta property="og:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta property="og:title" content="抹桥的博客">
+<meta property="og:url" content="https://blog.kisnows.com/page/6/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="怕什么真理无穷">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="抹桥杂货店">
-<meta name="twitter:description" content="怕什么真理无穷，进一步有进一步的好">
+<meta name="twitter:title" content="抹桥的博客">
+<meta name="twitter:description" content="怕什么真理无穷">
 
 
 
@@ -102,13 +141,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
-    motion: false,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -122,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://kisnows.com/page/6/"/>
+  <link rel="canonical" href="https://blog.kisnows.com/page/6/"/>
 
 
 
@@ -136,23 +177,23 @@
   });
 </script>
 
-  <title> 抹桥杂货店 </title>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>抹桥的博客</title>
   
 
 
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-58453734-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
 </script>
+
+
 
 
   <script type="text/javascript">
@@ -168,40 +209,43 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">抹桥杂货店</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Seize the day.</h1>
+      
   </div>
-  <p class="site-subtitle">Seize the day.</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -216,37 +260,47 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
+            Startseite
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
           </a>
         </li>
       
@@ -278,38 +332,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/08/21/Learning-ECMAScript6-One/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/03/10/Hexo部署到VPS并启用HTTPS/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/08/21/Learning-ECMAScript6-One/" itemprop="url">
-                  ECMAScript6学习简记（一）-变量声明·字符串扩展·数值扩展
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/03/10/Hexo部署到VPS并启用HTTPS/" itemprop="url">Hexo部署到VPS并启用HTTPS</a></h2>
         
 
         <div class="post-meta">
@@ -318,24 +365,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-21T10:19:59+08:00">
-                2015-08-21
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T21:12:49+08:00">
+                2016-03-10
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:20:31+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -353,25 +418,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2015/08/21/Learning-ECMAScript6-One/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/21/Learning-ECMAScript6-One/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/10/Hexo部署到VPS并启用HTTPS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/10/Hexo部署到VPS并启用HTTPS/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2015/08/21/Learning-ECMAScript6-One/" class="leancloud_visitors" data-flag-title="ECMAScript6学习简记（一）-变量声明·字符串扩展·数值扩展">
+             <span id="/2016/03/10/Hexo部署到VPS并启用HTTPS/" class="leancloud_visitors" data-flag-title="Hexo部署到VPS并启用HTTPS">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -382,40 +453,58 @@
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <h1 id="let-和-const-命令"><a href="#let-和-const-命令" class="headerlink" title="let 和 const 命令"></a>let 和 const 命令</h1><h2 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h2><p>let 声明的变量，只存在与所声明的代码块内。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">11</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a)      <span class="comment">//ReferenceError: a is not defined</span></div><div class="line"><span class="built_in">console</span>.log(b)      <span class="comment">//11</span></div></pre></td></tr></table></figure>
-<p>可以看到，在代码块外面，是不能访问到用 let 声明的变量，也就是说 let 声明的变量是基于块级作用域的。这样就可以避免一些变量声明的问题。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;arr.length;i++)&#123;&#125;</div><div class="line"><span class="built_in">console</span>.log(i)      <span class="comment">//ReferenceError: a is not defined</span></div></pre></td></tr></table></figure>
-<p>可见上面的的代码 for 循环外面是不能访问到变量 i 的。<br>
+          <p>上周买了个 VPS 玩 ，从板瓦工买的，一年的 19 刀。性价比还算合适，这是配置：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">10 GB SSD RAID-10 Disk Space</div><div class="line">256 MB RAM</div><div class="line">500 GB Transfer</div><div class="line">Gigabit port</div><div class="line">Multiple locations</div></pre></td></tr></table></figure></p>
+<p>这是<a href="https://bandwagonhost.com/aff.php?aff=7249" target="_blank" rel="noopener">购买链接</a>。</p>
+<p>买过来，先是搭了个 SS 解决科学上网的问题。然后想想要不要把博客也迁移过去算了,一个 ss 又用不了多少流量。于是说干就干，一番搜索查询后，达成成就。</p>
+<p>简单的记录下操作的步骤：</p>
+<h1 id="客户端："><a href="#客户端：" class="headerlink" title="客户端："></a>客户端：</h1><ol>
+<li>配置 ssh</li>
+<li>本地部署 hexo</li>
+</ol>
+<h1 id="服务器："><a href="#服务器：" class="headerlink" title="服务器："></a>服务器：</h1><ol>
+<li>安装所需软件<br> a. Git<br> b. Nginx</li>
+<li>为了安全与方便，新建专用与部署 hexo 的用户git，并给予相应权限。</li>
+<li>配置 ssh，与客户端达成通道</li>
+<li><p>配置 git hooks，这样本地在 hexo 部署到服务器 git 用户的对应仓库后就不用在把它复制到用以访问的网站的文件夹了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">GIT_REPO=/home/git/hexo.git <span class="comment">#git仓库</span></div><div class="line">TMP_GIT_CLONE=/tmp/hexo</div><div class="line">PUBLIC_WWW=/var/www/hexo <span class="comment">#网站目录</span></div><div class="line">rm -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span></div><div class="line">git <span class="built_in">clone</span> <span class="variable">$&#123;GIT_REPO&#125;</span> <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span></div><div class="line">rm -rf <span class="variable">$&#123;PUBLIC_WWW&#125;</span>/*</div><div class="line">cp -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="variable">$&#123;PUBLIC_WWW&#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>配置nginx，并启动nginx服务</p>
+</li>
+</ol>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/21/Learning-ECMAScript6-One/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/03/10/Hexo部署到VPS并启用HTTPS/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -425,6 +514,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -437,38 +530,31 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/08/16/project-termination/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/03/07/http-cache/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/08/16/project-termination/" itemprop="url">
-                  被终止的项目
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/03/07/http-cache/" itemprop="url">HTTP 缓存</a></h2>
         
 
         <div class="post-meta">
@@ -477,181 +563,42 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-16T22:00:00+08:00">
-                2015-08-16
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-07T20:57:46+08:00">
+                2016-03-07
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:20:27+08:00">
+                2017-03-17
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
+                <span class="post-meta-item-text">in</span>
               
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/08/16/project-termination/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/16/project-termination/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/08/16/project-termination/" class="leancloud_visitors" data-flag-title="被终止的项目">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在五月份公司接到一个客户的手机钱包项目，这个项目得到了公司很大的重视，因为这是公司手机端继其它俩个主要项目后开辟的一个新的产品线。<br>老大给了我机会，让我全权负责这个项目的前端部分。</p>
-<p>当时我的内心是很兴奋的，不敢怠慢，认认真真的把项目做了出来。开发过程中遇到了很多以前没有遇到过的问题，但也都被我一一克<br>服了，很有成就感。项目定格在1.2版本后，就交给了后台开发，然后自己就一直再期待这个项目的上线。</p>
-<p>大概在上个月下旬后台开发完毕，然后就上了测试环境进行测试。<br>上周二测试妹妹过来找我，说页面在低版本安卓上出现了一些兼容性问题，给我提了几个 issue 让我改。兼容性问题，在所难免嘛。然后我就哼哧<br>哼哧去改 issue 了，费了好大劲改好了。提交代码后，我去通知后台。</p>
-<p>然后就接到一个令人蛋疼的消息：<strong>项目被砍掉了</strong>。 </p>
-<p>这真是太突然了，前一秒我还在埋头改 bug ，下一秒就得知项目就被砍掉了，挂了。这意味我的工作也都付诸东流了，这感觉真是很不好。就好<br>像大家商量好周末要在你家聚餐，为此你准备了很丰盛的饭菜，结果突然聚餐取消了……</p>
-<p>而项目被砍的原因竟然是因为前段时间，证监会发布的一条新规定。</p>
-<p>我该说点什么好呢</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/07/04/asynchronous-javascript-ajax/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/04/asynchronous-javascript-ajax/" itemprop="url">
-                  JavaScript 异步编程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-04T20:16:56+08:00">
-                2015-07-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -669,227 +616,31 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2015/07/04/asynchronous-javascript-ajax/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/07/04/asynchronous-javascript-ajax/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/07/04/asynchronous-javascript-ajax/" class="leancloud_visitors" data-flag-title="JavaScript 异步编程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>工作中需要实现一个功能，简化一下大概是这么一个逻辑。</p>
-<pre><code>bills.getData = function (monthNow) {
-
-    //DONE Get data of monthNow.
-    //url = 通过 monthNow 来决定 url 地址
-    var url = &quot;api/data.json&quot;;
-
-    //noinspection JSUnusedGlobalSymbols
-    $.ajax({
-        url: url,
-        dataType: &quot;json&quot;,
-        type: &quot;GET&quot;,
-        success: function (d) {
-            Data = d;
-        },
-        error: function (d) {
-            window.console.log(&quot;error&quot;);
-        }
-    });
-    return Data
-};
-
-data = bills.getData(monthNow);
-</code></pre><p>结果测试的时候发现完全不对。<br>调试了一下发现，当 <code>bills.getData</code> 执行完毕将 Data <code>return</code> 出去并且跟着的赋值语句也执行完毕后，才触发了 <code>ajax</code> 中 <code>success</code> 事件。<br>这样明显是错误的，分析一下原因：由于 <code>ajax</code> 请求是异步的，所以实际的情况是， <code>bills.getDate()</code> 里的 <code>success</code> 还没有执行完毕， Data 就已经已经 <code>return</code> 了。<br>导致最后的赋值语句其实是错误的，它并没有被赋值为 <code>ajax</code> 请求成功结果，这没有达到我们的预期。<br>所以这里需要对代码结构进行改变，我们需要在确认 <code>ajax</code> 请求完毕成功后，再执行赋值语句。<br>这里有两种方法了达到效果，分别是 <code>callback</code> 和 <code>promise</code> 。<br>为了方便，我这里选择了 <code>callback</code> 的形式。那么代码就是下面这个样子</p>
-<pre><code>// Data 是全局变量
-bills.getData = function (monthNow, callback) {
-
-    //DONE Get data of monthNow.
-    //url = 通过 monthNow 来决定 url 地址
-    var url = &quot;api/data.json&quot;;
-
-    //noinspection JSUnusedGlobalSymbols
-    $.ajax({
-        url: url,
-        dataType: &quot;json&quot;,
-        type: &quot;GET&quot;,
-        success: function (d) {
-            Data = d;
-            if (typeof callback === &apos;function&apos;) {
-                callback();
-            }
-        },
-        error: function (d) {
-            window.console.log(&quot;error&quot;);
-        }
-    });
-};
-bills.getData(monthNow,doSomeThing);
-function doSomeThing(){
-    //doSomeThing with Data
-}
-</code></pre><p>这样就可以保证 <code>callback</code> 中的 <code>data</code> 是 <code>ajax</code> 请求成功后的结果。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/06/11/learnyounode/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/11/learnyounode/" itemprop="url">
-                  learnyounode
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-11T14:41:30+08:00">
-                2015-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2015/06/11/learnyounode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/06/11/learnyounode/" itemprop="commentCount"></span>
+                <a href="/2016/03/07/http-cache/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/07/http-cache/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2015/06/11/learnyounode/" class="leancloud_visitors" data-flag-title="learnyounode">
+             <span id="/2016/03/07/http-cache/" class="leancloud_visitors" data-flag-title="HTTP 缓存">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -900,36 +651,50 @@ function doSomeThing(){
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <p>Learn You The Node.js For Much Win!<br><img src="/imgs/learnyounode.png" alt="learnyounode"><br>花了几天业余时间做完这个 <code>Node.js</code> 入门的题目，梳理一下知识点。<br>
+          <p>下午意外的接到了阿里钉钉前端的面试，很是欣喜。<br>面试内容从做的项目，到使用的技术 Angular、React、Express 等，让我感觉到自己的理解还是不够深刻。<br>比如我说我喜欢 React，大项目中需要配合 Redux 来用处理数据，然后就问到 Redux 到底解决了哪些问题，我没能清楚的答上来。但是整体上，面试的前面部分，自我感觉还是很不错的。<br>但是到最后，面试官说问一个比较基础的问题：如何在HTTP协议中控制缓存？<br>我懵了，平时工作中根本接触不到。只能凭自己感觉说，从文件名的更改以及在 HTTP 的 header 中设置相应参数来设置，但具体怎样设置，设置的内容是什么，我完全答不上来。感觉肯定是要挂在这里。不过俗话说的好，人不能在同一个地方跌到两次，谨以此篇记录HTTP缓存的相应内容。</p>
+<h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>HTTP 控制缓存主要有一下几种方式：</p>
+<ol>
+<li>Expires</li>
+<li>Cache-Control</li>
+<li>Last-Modified/If-Modified-Since</li>
+<li>Etag/If-None-Match</li>
+</ol>
+<p>接下来，就一个一个来了解。</p>
+<h2 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h2><p>过期时间，有点类似于 cookies 里面的 Expires。可以在 header 中设置一个具体的过期时间，在这个过期时间内，浏览器都不会向服务器请求这个文件，会直接存本地的缓存中读取。<br><img src="/imgs/http-cache/headers.png" alt="1"><br>上图是我博客中一个 js 文件的 HTTP header，可以看到其中红框1 Expires 设置为当前 Date 的4个小时后，也就是说正常情况这个文件在 Expires 这个时间点以前的请求都会直接使用本地缓存，而不用从服务端重新获取。<br>需要注意的是，Expires 是 HTTP 1.0 的东西，现在绝大多数浏览器都默认使用 HTTP 1.1，所以用 Expires 控制缓存不是首选的方法。</p>
+<h2 id="Cache-control"><a href="#Cache-control" class="headerlink" title="Cache-control"></a>Cache-control</h2><p>Cache-control 与 Expires 作用基本相同，都是标志出当前资源的有效期，以此来控制浏览器是使用本地缓存还是从服务器重新获取资源。不过，不同的地方在于，Cache-control 能够控制的更加细致，当header中同时存在 Expires 时，Cache-control 的优先级要更高一些。<br>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/11/learnyounode/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/03/07/http-cache/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -939,6 +704,10 @@ function doSomeThing(){
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -951,38 +720,31 @@ function doSomeThing(){
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kisnows.com/2015/05/20/income-plan-animation/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/02/26/simple-use-of-postman/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="抹桥">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/imgs/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="抹桥杂货店">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="抹桥杂货店" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/05/20/income-plan-animation/" itemprop="url">
-                  CSS3 实现人物赛跑动画
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/02/26/simple-use-of-postman/" itemprop="url">Postman 的简单使用</a></h2>
         
 
         <div class="post-meta">
@@ -991,24 +753,42 @@ function doSomeThing(){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-20T21:32:53+08:00">
-                2015-05-20
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-26T21:51:47+08:00">
+                2016-02-26
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2016-04-02T11:37:51+08:00">
+                2016-04-02
+              </time>
             
           </span>
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">in</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术/" itemprop="url" rel="index">
@@ -1026,25 +806,31 @@ function doSomeThing(){
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2015/05/20/income-plan-animation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/20/income-plan-animation/" itemprop="commentCount"></span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/02/26/simple-use-of-postman/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/02/26/simple-use-of-postman/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
           
-          
-             <span id="/2015/05/20/income-plan-animation/" class="leancloud_visitors" data-flag-title="CSS3 实现人物赛跑动画">
+             <span id="/2016/02/26/simple-use-of-postman/" class="leancloud_visitors" data-flag-title="Postman 的简单使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
           
 
           
@@ -1055,72 +841,227 @@ function doSomeThing(){
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
         
-          <p>最近公司的一个手机项目里面有一个动画，就是一个人在跑道上跑步。为了能在手机端发挥更好的性能，选择了全部用CSS3来做一个动画。<br>因为是第一次做，碰到了很多问题，记录下来。<br><!-- moer --><br>效果图是这样的：<br><img src="/imgs/income-animation-all.png" alt="All"></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>拿到效果图先分析一下，可以看到动画分为一下四个部分：</p>
+          
+            <p>Postman 是一款用来测试 WEB 接口的工具，可以简单的发送 GET 、POST、PUT、DELETE 等请求，可以在 chrome 商店里面搜索安装。<br>为了介绍它的功能，首先本地起一个服务器：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</div><div class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.writeHead(<span class="number">200</span>, &#123; <span class="string">'content-type'</span>: <span class="string">'text/json'</span> &#125;);</div><div class="line">  <span class="keyword">if</span> (req.method === <span class="string">'GET'</span>) &#123;</div><div class="line">    <span class="keyword">var</span> params = url.parse(req.url, <span class="literal">true</span>).query;</div><div class="line">    res.write(params.name + <span class="string">' is '</span> + params.age + <span class="string">' years old'</span>);</div><div class="line">    res.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err);</div><div class="line">    &#125;)</div><div class="line">    res.end();</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">var</span> resDate = [];</div><div class="line">    req</div><div class="line">      .on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">chunk</span>) </span>&#123;</div><div class="line">        resDate.push(chunk);</div><div class="line">      &#125;)</div><div class="line">      .on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> params = querystring.parse(resDate.join(<span class="string">''</span>));</div><div class="line">        res.write(<span class="built_in">JSON</span>.stringify(params));</div><div class="line">        res.end();</div><div class="line">      &#125;)</div><div class="line">      .on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(e)</div><div class="line">      &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;).listen(<span class="number">8088</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Server listen at localhost:8088'</span>);</div></pre></td></tr></table></figure></p>
+<p>用来监听 POST 和 GET 请求，并返回相应的数据。<br>接下来打开 Postman ，界面很简洁，所有的功能都在图上标注了出来<br><img src="/imgs/simple-use-of-postman.png" alt="postman"><br>上图是模拟 post 请求，填好要发送的参数，点击 send ，就可以看到返回了正确的结果<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"moqiao"</span>,</div><div class="line">  <span class="string">"age"</span>: <span class="string">"23"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>GET 请求同理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/02/21/fullpage-js-es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/21/fullpage-js-es6/" itemprop="url">用ES6重构fullPage</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-21T22:18:09+08:00">
+                2016-02-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:20:46+08:00">
+                2017-03-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/02/21/fullpage-js-es6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/02/21/fullpage-js-es6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/02/21/fullpage-js-es6/" class="leancloud_visitors" data-flag-title="用ES6重构fullPage">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>用 ES6 重写了 <a href="https://github.com/kisnows/fullpage" target="_blank" rel="noopener">fullpage-light.js</a>。<br>主要做了一下修改：</p>
 <ul>
-<li>跑动的小人</li>
-<li>运动的路</li>
-<li>左边的路牌</li>
-<li>收益的牌子</li>
+<li>模块化：将整个文件问个成多个独立的模块，每个模块负责一个功能</li>
+<li>新语法：替换一些新的语法，比如变量声明的 let,const,Object.assign 等</li>
+<li>转码：因为目前浏览器还并不支持 ES2015,所以还需要用 Babel 做一下转码</li>
 </ul>
-<h3 id="小人"><a href="#小人" class="headerlink" title="小人"></a>小人</h3><p>小人很好解决，通过使用一张跑步的分解图片，<br><img src="/imgs/income-person.png" alt="person"><br>然后通过逐帧的变动它的`background-position’就可以了，真是简单啊。</p>
-<pre><code>.person {
-    width: 62px;
-    height: 110px;
-    background: url(../imgs/plan/person1.png) -7px 0 no-repeat;
-    background-size: auto 110px;
-    animation: run .5s infinite;            //要注意加上各种浏览器的前戳，尤其是-webkit-，在这我就不加了
-    position: absolute;
-    top: 40%;
-    left: 110*.84px;
-}
-@keyframes run {
-    0% {
-        background-position: -7px 0
-    }
-    25% {
-        background-position: -79px 0
-    }
-    50% {
-        background-position: -150px 0
-    }
-    75% {
-        background-position: -216px 0
-    }
-    100% {
-        background-position: -283px 0
-    }
-}
-</code></pre><p>然而小人就成这样了了，<br><img src="/imgs/income-person-wrong.gif" alt="person-wrong"><br>简直惨不忍睹，分析原因，原来是因为keyframes默认是有过渡的。也就是说，我的<code>background-position</code>是从-7线性的渐变到-283，这当然不是我想要的结果。想到这样该是动画时间函数的问题，就去查<code>animation-timing-funciton</code>的取值：<br>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>根据功能，将整个文件分割成为了五个模块。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-bootstrap.js   //方法和功能</div><div class="line">-constant.js    //一些常量</div><div class="line">-event.js       //绑定的事件</div><div class="line">-index.js       //入口</div><div class="line">-utils.js       //工具函数</div></pre></td></tr></table></figure></p>
+<p>这样原来一个很大文件就被分割成为了五个独立的模块，每个模块只负责自己的功能就好，维护起来会方便很多。</p>
+<h2 id="新语法"><a href="#新语法" class="headerlink" title="新语法"></a>新语法</h2><p>除了用了 let,const 这个声明变量的关键字外，最主要还用 Object.assign 这个方法替换了下面这个函数<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 扩展 Option 对象</div><div class="line"> * @param &#123;Object&#125; Default 默认设置</div><div class="line"> * @param &#123;Object&#125; Customize 自定义设置</div><div class="line"> * @returns &#123;Object&#125; Default 扩展后的设置</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">extendOption</span>(<span class="params">Default, Customize</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> Customize !== <span class="string">'object'</span>) &#123;</div><div class="line">        Customize = &#123;&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> Customize) &#123;</div><div class="line">        <span class="keyword">if</span> (Default.hasOwnProperty(i)) &#123;</div><div class="line">            Default[i] = Customize[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Default;</div><div class="line">&#125;</div><div class="line"></div><div class="line"> options = extendOption(defaults, Customize);</div><div class="line"> </div><div class="line"><span class="comment">//现在</span></div><div class="line">options = <span class="built_in">Object</span>.assign(&#123;&#125;, defaults, Customize);</div></pre></td></tr></table></figure></p>
+<p>既然用到了Object.assign，就来说说它吧。参考MDN上的定义：<br>
           <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/20/income-plan-animation/#more" rel="contents">
-              阅读全文 &raquo;
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/21/fullpage-js-es6/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1130,6 +1071,190 @@ function doSomeThing(){
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/01/12/解决手机键盘覆盖弹窗问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="url">手机上键盘弹出时的一些问题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-12T20:27:52+08:00">
+                2016-01-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-03-17T22:23:01+08:00">
+                2017-03-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/12/解决手机键盘覆盖弹窗问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/01/12/解决手机键盘覆盖弹窗问题/" class="leancloud_visitors" data-flag-title="手机上键盘弹出时的一些问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>做手机商城接到一个需求。<br>具体大概是这样子的，要求用户点击购买按钮后，直接显示输入密码的弹窗并弹出键盘。<br>拿到需求一想，这挺简单的。<br>就麻利的写了个模拟的密码输入框，然后在用户点击购买按钮的时候让他弹出来，并且让焦点 focus 在 input 框上。<br>Chrome 上一试，完全没问题，觉得自己简直太棒了有没有。可是拿出自己的手机一试，oh no ~,键盘直接把页面给推了上去，导致完全看不到弹窗弹的是个什么东西。<br><img src="/imgs/2016-01-12-1.png" alt="解决前"><br>但是在 Android 上是没有任何问题的。观察了下是因为 Android 和 ios 上键盘弹出的行为是不一样的，Android 上键盘弹出来，直接覆盖在原来的页面上，而 ios 上键盘弹出来的时候会直接把整个页面推上去。<br>怎么解决呢？其实也挺好解决，就是针对不同系统 hack 一下。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/01/12/解决手机键盘覆盖弹窗问题/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1138,14 +1263,22 @@ function doSomeThing(){
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
-          
-
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 测试 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="7083418264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
           
 
@@ -1162,107 +1295,139 @@ function doSomeThing(){
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/imgs/avatar.jpg"
-               alt="抹桥" />
-          <p class="site-author-name" itemprop="name">抹桥</p>
-          <p class="site-description motion-element" itemprop="description">怕什么真理无穷，进一步有进一步的好</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">50</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">37</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/kisnows" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
-        
-
-
       </section>
 
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -1275,38 +1440,52 @@ function doSomeThing(){
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
+    
+
   </div>
 
   
@@ -1328,6 +1507,17 @@ function doSomeThing(){
   
 
 
+  
+
+
+
+
+
+
+
+
+
+
 
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -1347,76 +1537,81 @@ function doSomeThing(){
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'kisnowsblog';
-      var disqus_identifier = 'page/6/index.html';
-
-      var disqus_title = "";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
-
-    </script>
-  
-
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
 
 
   
   
 
-  
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
   <script>
     function showTime(Counter) {
@@ -1523,9 +1718,43 @@ function doSomeThing(){
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
 
   
 
+  
+
+  
+
+  
 
 </body>
 </html>
