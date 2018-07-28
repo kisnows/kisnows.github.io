@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kisnows.com/2017/12/06/step-into-indexdb/</loc>
+    
+    <lastmod>2018-07-28T12:29:22.741Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.kisnows.com/2018/06/09/thailand-travel-notes/</loc>
     
     <lastmod>2018-06-15T14:02:09.096Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://blog.kisnows.com/2015/12/30/2015-year-end-summary/</loc>
     
     <lastmod>2018-03-28T13:00:48.374Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.kisnows.com/2017/12/06/step-into-indexdb/</loc>
-    
-    <lastmod>2018-01-07T11:52:48.817Z</lastmod>
     
   </url>
   
@@ -65,14 +65,14 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-2/</loc>
+    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-3/</loc>
     
     <lastmod>2017-10-14T07:27:47.606Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-3/</loc>
+    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-2/</loc>
     
     <lastmod>2017-10-14T07:27:47.606Z</lastmod>
     
