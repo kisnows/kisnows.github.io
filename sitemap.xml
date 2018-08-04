@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kisnows.com/404.html</loc>
+    
+    <lastmod>2018-08-04T05:35:31.853Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.kisnows.com/2017/12/06/step-into-indexdb/</loc>
     
     <lastmod>2018-07-28T12:29:22.741Z</lastmod>
@@ -44,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-5/</loc>
-    
-    <lastmod>2017-10-14T07:27:47.607Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.kisnows.com/2017/10/14/redux-source-code-read/</loc>
     
     <lastmod>2017-10-14T07:27:47.607Z</lastmod>
@@ -65,9 +65,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-2/</loc>
+    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-5/</loc>
     
-    <lastmod>2017-10-14T07:27:47.606Z</lastmod>
+    <lastmod>2017-10-14T07:27:47.607Z</lastmod>
     
   </url>
   
@@ -79,14 +79,21 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2015/10/08/react-router/</loc>
+    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-2/</loc>
+    
+    <lastmod>2017-10-14T07:27:47.606Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-1/</loc>
     
     <lastmod>2017-10-14T07:27:47.605Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-1/</loc>
+    <loc>https://blog.kisnows.com/2015/10/08/react-router/</loc>
     
     <lastmod>2017-10-14T07:27:47.605Z</lastmod>
     
@@ -474,13 +481,6 @@
     <loc>https://blog.kisnows.com/2016/02/26/simple-use-of-postman/</loc>
     
     <lastmod>2016-04-02T03:37:51.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.kisnows.com/404.html</loc>
-    
-    <lastmod>2016-04-02T03:37:51.299Z</lastmod>
     
   </url>
   
