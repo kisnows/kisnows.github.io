@@ -51,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/10/14/redux-source-code-read/</loc>
-    
-    <lastmod>2017-10-14T07:27:47.607Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-5/</loc>
     
     <lastmod>2017-10-14T07:27:47.607Z</lastmod>
@@ -66,6 +59,13 @@
   
   <url>
     <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-4/</loc>
+    
+    <lastmod>2017-10-14T07:27:47.607Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.kisnows.com/2017/10/14/redux-source-code-read/</loc>
     
     <lastmod>2017-10-14T07:27:47.607Z</lastmod>
     
@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2015/10/08/react-router/</loc>
+    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-1/</loc>
     
     <lastmod>2017-10-14T07:27:47.605Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2017/09/20/react-source-code-analyze-1/</loc>
+    <loc>https://blog.kisnows.com/2015/10/08/react-router/</loc>
     
     <lastmod>2017-10-14T07:27:47.605Z</lastmod>
     
@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2016/04/26/step-to-redux-1/</loc>
+    <loc>https://blog.kisnows.com/2016/05/21/step-to-redux-3/</loc>
     
     <lastmod>2017-03-17T14:26:44.107Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.kisnows.com/2016/05/21/step-to-redux-3/</loc>
+    <loc>https://blog.kisnows.com/2016/04/26/step-to-redux-1/</loc>
     
     <lastmod>2017-03-17T14:26:44.107Z</lastmod>
     

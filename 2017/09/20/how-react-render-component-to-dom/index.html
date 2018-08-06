@@ -138,13 +138,6 @@
   
 
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5680248525294797",
-          enable_page_level_ads: true
-     });
-</script>
 
 
   <meta name="description" content="当我们在开发 React 项目中，第一次调用 ReactDOM.render 的时候都发生了什么呢？今天就从源码角度来追踪一下这个问题（主要看流程， 而不纠结与细节）。 ReactDOMStackEntry首先我们可以从 ReactDOM 的入口文件 ReactDOMStackEntry.js 中找到 render 方法。可以看到，render 方法是 ReactMount 组件提供的。var R">
@@ -540,7 +533,7 @@
 <p>可以看到我们前面调用的 <code>ReactUpdates.batchUpdates</code> 实际上调用到了这里的 batchedUpdates, 里面的逻辑也很简单。</p>
 <p>这里面用到了一个 transaction 方法，这里我理解为“事务”。也就是说当如果当前正在进行一次更新，那么就通过事务的方式去调用这个 callback.</p>
 <h4 id="transaction"><a href="#transaction" class="headerlink" title="transaction"></a>transaction</h4><p>transaction 在 React 源码里面使用非常广泛，作用是通过事务的方式去调用一个方法。</p>
-<p>用一个或多个 wrapper 把方法包裹起来，在方法调用前和调用之后依次执行。事务会确保 wrapper 的 initialize 和 close 方法都会执行，无论要执行的方法执行成功或失败报错，看看它的源码解释就很明白了：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">* &lt;pre&gt;</span><br><span class="line">*                       wrappers (injected at creation time)</span><br><span class="line">*                                      +        +</span><br><span class="line">*                                      |        |</span><br><span class="line">*                    +-----------------|--------|--------------+</span><br><span class="line">*                    |                 v        |              |</span><br><span class="line">*                    |      +---------------+   |              |</span><br><span class="line">*                    |   +--|    wrapper1   |---|----+         |</span><br><span class="line">*                    |   |  +---------------+   v    |         |</span><br><span class="line">*                    |   |          +-------------+  |         |</span><br><span class="line">*                    |   |     +----|   wrapper2  |--------+   |</span><br><span class="line">*                    |   |     |    +-------------+  |     |   |</span><br><span class="line">*                    |   |     |                     |     |   |</span><br><span class="line">*                    |   v     v                     v     v   | wrapper</span><br><span class="line">*                    | +---+ +---+   +---------+   +---+ +---+ | invariants</span><br><span class="line">* perform(anyMethod) | |   | |   |   |         |   |   | |   | | maintained</span><br><span class="line">* +-----------------&gt;|-|---|-|---|--&gt;|anyMethod|---|---|-|---|-|--------&gt;</span><br><span class="line">*                    | |   | |   |   |         |   |   | |   | |</span><br><span class="line">*                    | |   | |   |   |         |   |   | |   | |</span><br><span class="line">*                    | |   | |   |   |         |   |   | |   | |</span><br><span class="line">*                    | +---+ +---+   +---------+   +---+ +---+ |</span><br><span class="line">*                    |  initialize                    close    |</span><br><span class="line">*                    +-----------------------------------------+</span><br><span class="line">* &lt;/pre&gt;</span><br></pre></td></tr></table></figure></p>
+<p>用一个或多个 wrapper 把方法包裹起来，在方法调用前和调用之后依次执行。事务会确保 wrapper 的 initialize 和 close 方法都会执行，无论要执行的方法执行成功或失败报错，看看它的源码解释就很明白了：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">* <span class="xml"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span></span><br><span class="line"><span class="xml">*                       wrappers (injected at creation time)</span></span><br><span class="line"><span class="xml">*                                      +        +</span></span><br><span class="line"><span class="xml">*                                      |        |</span></span><br><span class="line"><span class="xml">*                    +-----------------|--------|--------------+</span></span><br><span class="line"><span class="xml">*                    |                 v        |              |</span></span><br><span class="line"><span class="xml">*                    |      +---------------+   |              |</span></span><br><span class="line"><span class="xml">*                    |   +--|    wrapper1   |---|----+         |</span></span><br><span class="line"><span class="xml">*                    |   |  +---------------+   v    |         |</span></span><br><span class="line"><span class="xml">*                    |   |          +-------------+  |         |</span></span><br><span class="line"><span class="xml">*                    |   |     +----|   wrapper2  |--------+   |</span></span><br><span class="line"><span class="xml">*                    |   |     |    +-------------+  |     |   |</span></span><br><span class="line"><span class="xml">*                    |   |     |                     |     |   |</span></span><br><span class="line"><span class="xml">*                    |   v     v                     v     v   | wrapper</span></span><br><span class="line"><span class="xml">*                    | +---+ +---+   +---------+   +---+ +---+ | invariants</span></span><br><span class="line"><span class="xml">* perform(anyMethod) | |   | |   |   |         |   |   | |   | | maintained</span></span><br><span class="line"><span class="xml">* +-----------------&gt;|-|---|-|---|--&gt;|anyMethod|---|---|-|---|-|--------&gt;</span></span><br><span class="line"><span class="xml">*                    | |   | |   |   |         |   |   | |   | |</span></span><br><span class="line"><span class="xml">*                    | |   | |   |   |         |   |   | |   | |</span></span><br><span class="line"><span class="xml">*                    | |   | |   |   |         |   |   | |   | |</span></span><br><span class="line"><span class="xml">*                    | +---+ +---+   +---------+   +---+ +---+ |</span></span><br><span class="line"><span class="xml">*                    |  initialize                    close    |</span></span><br><span class="line"><span class="xml">*                    +-----------------------------------------+</span></span><br><span class="line"><span class="xml">* <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>这里我们再回到刚才的 ReactDefaultBatchingStrategy, 代码里面有两个 wrapper.<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> RESET_BATCHED_UPDATES = &#123;</span><br><span class="line">  initialize: emptyFunction,</span><br><span class="line">  close: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ReactDefaultBatchingStrategy.isBatchingUpdates = <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> FLUSH_BATCHED_UPDATES = &#123;</span><br><span class="line">  initialize: emptyFunction,</span><br><span class="line">  close: ReactUpdates.flushBatchedUpdates.bind(ReactUpdates),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>它们的 initialize 方法都是一个空函数，close 方法分别是：</p>
 <ol>
@@ -664,16 +657,7 @@
 
       
       
-            <!-- Article -->
-      <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-5680248525294797"
-          data-ad-slot="7083418264"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+
       
 
       
@@ -939,19 +923,6 @@
           
           
 
-          
-            
-          
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 永远可见 -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:200px;height:200px"
-     data-ad-client="ca-pub-5680248525294797"
-     data-ad-slot="4151801469"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
         </div>
       </section>
 
@@ -974,8 +945,20 @@
       
 
       
+        
+      
+      
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-
+      
 
     </div>
   </aside>
@@ -1296,5 +1279,15 @@
 
   
 
+  <!-- Article -->
+<ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-5680248525294797"
+    data-ad-slot="7083418264"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body>
 </html>
