@@ -1,1 +1,1225 @@
-<!DOCTYPE html><html class="theme-next gemini" lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5.1.3"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5.1.3"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5.1.3"><link rel="mask-icon" href="/favicon.png?v=5.1.3" color="#222"><meta name="keywords" content="JavaScript,JS,Web Develop,Front end,前端开发,Kisnows"><link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml"><meta name="description" content="做了哪些事情说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧：1. 改造发布流程刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本地打"><meta property="og:type" content="article"><meta property="og:title" content="网易一年工作总结"><meta property="og:url" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/index.html"><meta property="og:site_name" content="抹桥的博客"><meta property="og:description" content="做了哪些事情说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧：1. 改造发布流程刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本地打"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/release1.png"><meta property="og:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/release2.png"><meta property="og:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/environment.png"><meta property="og:updated_time" content="2017-10-14T07:27:47.596Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="网易一年工作总结"><meta name="twitter:description" content="做了哪些事情说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧：1. 改造发布流程刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本地打"><meta name="twitter:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/release1.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"5.1.3",sidebar:{position:"left",display:"post",offset:12,b2t:!0,scrollpercent:!0,onmobile:!0},fancybox:!0,tabs:!0,motion:{enable:!1,async:!0,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/"><title>网易一年工作总结 | 抹桥的博客</title><script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-58453734-1")</script></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">抹桥的博客</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Seize the day.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="抹桥"><meta itemprop="description" content=""><meta itemprop="image" content="/imgs/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="抹桥的博客"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">网易一年工作总结</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-11T15:46:49+08:00">2017-08-11 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2017-10-14T15:27:47+08:00">2017-10-14 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span> </a></span></span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><a href="/2017/08/11/first-year-summary-for-netease-work-experience/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/11/first-year-summary-for-netease-work-experience/" itemprop="commentCount"></span> </a></span><span id="/2017/08/11/first-year-summary-for-netease-work-experience/" class="leancloud_visitors" data-flag-title="网易一年工作总结"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">阅读次数&#58;</span> <span class="leancloud-visitors-count"></span></span></div></header><div class="post-body han-init-context" itemprop="articleBody"><h1 id="做了哪些事情"><a href="#做了哪些事情" class="headerlink" title="做了哪些事情"></a>做了哪些事情</h1><p>说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧：</p><h2 id="1-改造发布流程"><a href="#1-改造发布流程" class="headerlink" title="1. 改造发布流程"></a>1. 改造发布流程</h2><p>刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。</p><p>所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本地打包，然后上线。</p><p>这个流程非常的不合理，因为源代码和编译打包后的代码放到一块管理，本身就不合理。经常会出现，你一打包测试，我这边代码推上去就一堆冲突。所以我就想怎么来改进这个流程。</p><h3 id="改进方案一"><a href="#改进方案一" class="headerlink" title="改进方案一"></a>改进方案一</h3><p>网易内部是有一个 omad 系统（自动部署平台）的，想着说看能不能借助这个平台干点事情。因为初来乍到，对这个部署平台不是很熟悉，就问了和这个平台接触最多的测试同学，测试同学告诉我说 omad 没有提供任何对外的接口，所以我想的可能没法实现。</p><p>这样就尴尬了，没法做线上打包发布，那么打包这个过程就必然得放在本地来做。所以我就搞了一套现在看来很蠢的方案。那就是，用两个仓库来分别管理源代码和打包后的代码。</p><p>那么，如果需要发布的话，就需要在源代码仓库先进行打包编译，然后把打包编译的结果复制到管理要发布的代码的仓库。</p><p>一张示意图：</p><img src="/2017/08/11/first-year-summary-for-netease-work-experience/release1.png" title="改进方案一"><p>很明显，上面这种方式也只是临时解决方案，需要两个仓库来管理一份代码。每次提交代码都需要额外执行一个 run build 命令。</p><h3 id="改进方案二："><a href="#改进方案二：" class="headerlink" title="改进方案二："></a>改进方案二：</h3><p>由于上面的方案太蠢了，所以有了改进方案二，也是我们现在一直在用的方案：那就是直接线上打包。具体如下：<br><a id="more"></a><br>本地代码开发 -&gt; 提交 -&gt; 推送到远端 -&gt; omad 部署 -&gt; omad 专用打包机执行一段脚本来进行打包编译操作 -&gt; 把打包编译后的结果拷贝到目标机器。</p><p>一张示意图：</p><img src="/2017/08/11/first-year-summary-for-netease-work-experience/release2.png" title="改进方案二"><p>其实，本来第一次改造就应该改成这样的。但是因为一开始对内部的部署平台 omad 并不熟悉，所以不知道 omad 部署到目标机器前还可以执行一段脚本的。以至于有了第一种非常蠢的解决方案。</p><p>现在这套方案就比较完善了， 我们只关注源代码就可以了，发布的时候又 omad 去做构建和打包部署的事情。非常舒心，这套方案也一直用到了现在。</p><h2 id="2-搭建了一套完善的开发环境"><a href="#2-搭建了一套完善的开发环境" class="headerlink" title="2. 搭建了一套完善的开发环境"></a>2. 搭建了一套完善的开发环境</h2><p>原有的白领贷开发环境是基于 express 和 webpack 配合搭建起来的，但是功能比较简陋，只支持开发和打包两个命令，而且打包的配置文件是完全服务于多页面的工程。</p><p>后来我们开发来钱系统的时候，我就在原有的基础上重新搭建了一套完善的开发环境。从开发、联调、测试、打包到上线，该有的功能都有了。放一张图，具体可以 <a href="https://github.com/kisnows/spart" target="_blank" rel="noopener">看这里</a></p><img src="/2017/08/11/first-year-summary-for-netease-work-experience/environment.png" title="开发环境"><h2 id="3-主导并推动了移动端组件-ne-rc-的开发"><a href="#3-主导并推动了移动端组件-ne-rc-的开发" class="headerlink" title="3. 主导并推动了移动端组件 ne-rc 的开发"></a>3. 主导并推动了移动端组件 ne-rc 的开发</h2><p>再开发来钱的时候，积累了一套 react 的基础组件，但是跟业务耦合度比较高。考虑到以后可能还要做其他项目，就和一伙伴一起商量着把基础组件从业务中抽离出来，作为一个第三方组件库在接入到项目中。</p><p>于是就有了: <strong><a href="https://github.com/NE-LOAN-FED/NE-Component" target="_blank" rel="noopener">ne-rc</a></strong>,我们的移动端组件库，索然还在为 1.0 版本的发布继续努力，但已经成功接入了三个内部的项目。</p><p>效果显著，大大降低了重复开发成本，同时也降低了未来维护的成本。由此可见，一个稳定发展的团队，还是需要一套自己的内部组件库的。</p><h2 id="4-团队工作改进"><a href="#4-团队工作改进" class="headerlink" title="4. 团队工作改进"></a>4. 团队工作改进</h2><p>由于原有业务线前端负责人在我入职后不久就离职了， 前端技术部派我临时挑大梁。我深知自己经验不足，但也知道这是一个锻炼的机会，这里非常感谢我的老大信任我。</p><p>所以我非常努力，和业务线团队的小伙伴就如何提高我们的团队技术实力和业务支持能力讨论了很多，最后做了一下事情:</p><ul><li>开发框架优化</li><li>遗留项目改造</li><li>项目规范</li><li>技术规划</li></ul><h3 id="开发框架优化"><a href="#开发框架优化" class="headerlink" title="开发框架优化"></a>开发框架优化</h3><p>最终的成果就是上面说的搭建了一套完整的开发环境。并不断进行优化。从一开始白领贷项目开发时每次 rebuild 需要 30s , 打包上线需要 4~5 min 到后来去花项目 rebuild 600ms, 打包只需要 1min .这中间既有针对 webpack 的优化，也有项目开放交付方式的改变。</p><p>在这些优化的过程中，积累了很多经验。</p><h3 id="遗留项目改造"><a href="#遗留项目改造" class="headerlink" title="遗留项目改造"></a>遗留项目改造</h3><p>有几个遗留项目，虽然整体处于维护状态，但偶尔还是有很多运营需求。而原有的开发方式和发布方式都比较麻烦，我们也尽可能在不需要多的重构的基础上，进行了逐步升级。主要是构建和发布上。<br>改写原有的 webpack 配置文件方式，并从本地打包发布升级到了线上打包发布。减轻了这些项目的维护成本。</p><h3 id="项目规范"><a href="#项目规范" class="headerlink" title="项目规范"></a>项目规范</h3><p>业务线上人员来越多，在需要合作的情况下，规范是必不可少。我们从项目文档、代码风格检查、Git 分支管理、代码 review 等各个方面制订了完善又尽可能不繁琐的规范。</p><h3 id="技术规划"><a href="#技术规划" class="headerlink" title="技术规划"></a>技术规划</h3><p>我们组的项目大多应用 react ，所以需要持续关注 react 生态群的技术动向。但同时也关注其他技术和解决方案，包括 Nodejs , Angular 等。前端技术部也让我们多看看 Vue . 然而到现在我都没看过 Vue ，哈哈，可能是提不起兴趣吧。</p><h2 id="5-业务支持"><a href="#5-业务支持" class="headerlink" title="5. 业务支持"></a>5. 业务支持</h2><p>虽然我们前端技术部属于职能部门，但支持业务仍然是我们工作的最主要构成部分，毕竟公司要赚钱。除了一些小的以及一些后台项目，我主要参与维护和开发一下项目：</p><p>a. 白领贷项目维护<br>b. 来钱项目开发并上线<br>c. 去花项目开发并上线</p><p>去花最近就要上线了，我们已经开始内测了。这是一个提供分期的项目，目前只接入了考拉，马上也要对外了，不久大家就在考拉上购物时就可以有分期的支付选项了。</p><p>看到项目上线，还是很高兴的😄。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>时间还是蛮快的， 都来网易一年多了。</p><p>这段时间成长了许多，无论时工作技能、沟通技能还是工作流程和规范，都让我学会了很多东西。</p><p>也认识了很多优秀的同事，能跟这些优秀的同事一起做事情，也是一件很开心的事情。也许以后不会一直在网易，但在网易的这段经历还是很值得的。</p></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong> 抹桥</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/" title="网易一年工作总结">https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2017/08/03/react-redux-source-code-read/" rel="next" title="React-Redux 源码粗读"><i class="fa fa-chevron-left"></i> React-Redux 源码粗读</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2017/09/20/react-source-code-analyze-1/" rel="prev" title="React 源码浅析之 - 入口文件">React 源码浅析之 - 入口文件 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5680248525294797" data-ad-slot="7083418264" data-ad-format="auto"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script><div class="comments" id="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/imgs/avatar.jpg" alt="抹桥"><p class="site-author-name" itemprop="name">抹桥</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">64</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">39</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/kisnows" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a> </span><span class="links-of-author-item"><a href="https://twitter.com/_moqiao" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a> </span><span class="links-of-author-item"><a href="http://www.weibo.com/q912654" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a></span></div><div class="cc-license motion-element" itemprop="license"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#做了哪些事情"><span class="nav-number">1.</span> <span class="nav-text">做了哪些事情</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-改造发布流程"><span class="nav-number">1.1.</span> <span class="nav-text">1. 改造发布流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进方案一"><span class="nav-number">1.1.1.</span> <span class="nav-text">改进方案一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改进方案二："><span class="nav-number">1.1.2.</span> <span class="nav-text">改进方案二：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-搭建了一套完善的开发环境"><span class="nav-number">1.2.</span> <span class="nav-text">2. 搭建了一套完善的开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主导并推动了移动端组件-ne-rc-的开发"><span class="nav-number">1.3.</span> <span class="nav-text">3. 主导并推动了移动端组件 ne-rc 的开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-团队工作改进"><span class="nav-number">1.4.</span> <span class="nav-text">4. 团队工作改进</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发框架优化"><span class="nav-number">1.4.1.</span> <span class="nav-text">开发框架优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遗留项目改造"><span class="nav-number">1.4.2.</span> <span class="nav-text">遗留项目改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目规范"><span class="nav-number">1.4.3.</span> <span class="nav-text">项目规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术规划"><span class="nav-number">1.4.4.</span> <span class="nav-text">技术规划</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-业务支持"><span class="nav-number">1.5.</span> <span class="nav-text">5. 业务支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div></div></section><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-5680248525294797" data-ad-slot="4151801469"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2018</span> <span class="with-love"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">抹桥</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count"></span></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div><span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"></div></footer></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5680248525294797",enable_page_level_ads:!0})</script><script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script><script type="text/javascript">var disqus_config=function(){this.page.url="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/",this.page.identifier="2017/08/11/first-year-summary-for-netease-work-experience/",this.page.title="网易一年工作总结"},d=document,s=d.createElement("script");s.src="https://kisnowsblog.disqus.com/embed.js",s.setAttribute("data-timestamp",""+ +new Date),(d.head||d.body).appendChild(s)</script><script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script><script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz","qaPHXx9ykQRH0XhF1DawhWN1")</script><script>function showTime(e){var t=new AV.Query(e),c=[],u=$(".leancloud_visitors");u.each(function(){c.push($(this).attr("id").trim())}),t.containedIn("url",c),t.find().done(function(e){var t=".leancloud-visitors-count";if(0!==e.length){for(var n=0;n<e.length;n++){var o=e[n],i=o.get("url"),s=o.get("time"),r=document.getElementById(i);$(r).find(t).text(s)}for(n=0;n<c.length;n++){i=c[n],r=document.getElementById(i);var l=$(r).find(t);""==l.text()&&l.text(0)}}else u.find(t).text(0)}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(i){var e=$(".leancloud_visitors"),s=e.attr("id").trim(),r=e.attr("data-flag-title").trim(),t=new AV.Query(i);t.equalTo("url",s),t.find({success:function(e){if(0<e.length){var t=e[0];t.fetchWhenSave(!0),t.increment("time"),t.save(null,{success:function(e){$(document.getElementById(s)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var n=new i,o=new AV.ACL;o.setPublicReadAccess(!0),o.setPublicWriteAccess(!0),n.setACL(o),n.set("title",r),n.set("url",s),n.set("time",1),n.save(null,{success:function(e){$(document.getElementById(s)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):1<$(".post-title-link").length&&showTime(e)})</script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css"><script src="/lib/needsharebutton/needsharebutton.js"></script><script></script></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ALjLGbNNO4kwWmxb3-Af6cyUejHJjNhwNQ" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5680248525294797",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+  <meta name="description" content="做了哪些事情说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧： 1. 改造发布流程刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。 所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网易一年工作总结">
+<meta property="og:url" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/index.html">
+<meta property="og:site_name" content="抹桥的博客">
+<meta property="og:description" content="做了哪些事情说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧： 1. 改造发布流程刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。 所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/release1.png">
+<meta property="og:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/release2.png">
+<meta property="og:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/environment.png">
+<meta property="og:updated_time" content="2017-10-14T07:27:47.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网易一年工作总结">
+<meta name="twitter:description" content="做了哪些事情说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧： 1. 改造发布流程刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。 所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本">
+<meta name="twitter:image" content="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/release1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="抹桥的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>网易一年工作总结 | 抹桥的博客</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58453734-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58453734-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抹桥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Seize the day.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-5680248525294797", enable_page_level_ads: true }); </script>
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="怕什么真理无穷">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网易一年工作总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-11 15:46:49" itemprop="dateCreated datePublished" datetime="2017-08-11T15:46:49+08:00">2017-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-10-14 15:27:47" itemprop="dateModified" datetime="2017-10-14T15:27:47+08:00">2017-10-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/11/first-year-summary-for-netease-work-experience/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/11/first-year-summary-for-netease-work-experience/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/11/first-year-summary-for-netease-work-experience/" class="leancloud_visitors" data-flag-title="网易一年工作总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="做了哪些事情"><a href="#做了哪些事情" class="headerlink" title="做了哪些事情"></a>做了哪些事情</h1><p>说是一年，其实也一年多了，不过这倒不重要。主要看看做了哪些事吧：</p>
+<h2 id="1-改造发布流程"><a href="#1-改造发布流程" class="headerlink" title="1. 改造发布流程"></a>1. 改造发布流程</h2><p>刚来公司的时候，白领贷的前端是基于 Riot 框架开发的系统。语言层面，使用 ES6 和 Less 开发，发布到线上是需要一个构建打包和编译的过程，不能直接部署到线上服务器。</p>
+<p>所以项目的开发流程就是，功能开发，提交代码，本地打包，打包后的代码跟源代码一起提交测试，而后合并代码到 master 然后再在本地打包，然后上线。</p>
+<p>这个流程非常的不合理，因为源代码和编译打包后的代码放到一块管理，本身就不合理。经常会出现，你一打包测试，我这边代码推上去就一堆冲突。所以我就想怎么来改进这个流程。</p>
+<h3 id="改进方案一"><a href="#改进方案一" class="headerlink" title="改进方案一"></a>改进方案一</h3><p>网易内部是有一个 omad 系统（自动部署平台）的，想着说看能不能借助这个平台干点事情。因为初来乍到，对这个部署平台不是很熟悉，就问了和这个平台接触最多的测试同学，测试同学告诉我说 omad 没有提供任何对外的接口，所以我想的可能没法实现。</p>
+<p>这样就尴尬了，没法做线上打包发布，那么打包这个过程就必然得放在本地来做。所以我就搞了一套现在看来很蠢的方案。那就是，用两个仓库来分别管理源代码和打包后的代码。</p>
+<p>那么，如果需要发布的话，就需要在源代码仓库先进行打包编译，然后把打包编译的结果复制到管理要发布的代码的仓库。</p>
+<p>一张示意图：</p>
+<img src="/2017/08/11/first-year-summary-for-netease-work-experience/release1.png" title="改进方案一">
+<p>很明显，上面这种方式也只是临时解决方案，需要两个仓库来管理一份代码。每次提交代码都需要额外执行一个 run build 命令。</p>
+<h3 id="改进方案二："><a href="#改进方案二：" class="headerlink" title="改进方案二："></a>改进方案二：</h3><p>由于上面的方案太蠢了，所以有了改进方案二，也是我们现在一直在用的方案：那就是直接线上打包。具体如下：<br><a id="more"></a><br>本地代码开发 -&gt; 提交 -&gt; 推送到远端 -&gt; omad 部署 -&gt; omad 专用打包机执行一段脚本来进行打包编译操作 -&gt; 把打包编译后的结果拷贝到目标机器。</p>
+<p>一张示意图：</p>
+<img src="/2017/08/11/first-year-summary-for-netease-work-experience/release2.png" title="改进方案二">
+<p>其实，本来第一次改造就应该改成这样的。但是因为一开始对内部的部署平台 omad 并不熟悉，所以不知道 omad 部署到目标机器前还可以执行一段脚本的。以至于有了第一种非常蠢的解决方案。</p>
+<p>现在这套方案就比较完善了， 我们只关注源代码就可以了，发布的时候又 omad 去做构建和打包部署的事情。非常舒心，这套方案也一直用到了现在。</p>
+<h2 id="2-搭建了一套完善的开发环境"><a href="#2-搭建了一套完善的开发环境" class="headerlink" title="2. 搭建了一套完善的开发环境"></a>2. 搭建了一套完善的开发环境</h2><p>原有的白领贷开发环境是基于 express 和 webpack 配合搭建起来的，但是功能比较简陋，只支持开发和打包两个命令，而且打包的配置文件是完全服务于多页面的工程。</p>
+<p>后来我们开发来钱系统的时候，我就在原有的基础上重新搭建了一套完善的开发环境。从开发、联调、测试、打包到上线，该有的功能都有了。放一张图，具体可以 <a href="https://github.com/kisnows/spart" target="_blank" rel="noopener">看这里</a></p>
+<img src="/2017/08/11/first-year-summary-for-netease-work-experience/environment.png" title="开发环境">
+<h2 id="3-主导并推动了移动端组件-ne-rc-的开发"><a href="#3-主导并推动了移动端组件-ne-rc-的开发" class="headerlink" title="3. 主导并推动了移动端组件 ne-rc 的开发"></a>3. 主导并推动了移动端组件 ne-rc 的开发</h2><p>再开发来钱的时候，积累了一套 react 的基础组件，但是跟业务耦合度比较高。考虑到以后可能还要做其他项目，就和一伙伴一起商量着把基础组件从业务中抽离出来，作为一个第三方组件库在接入到项目中。</p>
+<p>于是就有了: <strong><a href="https://github.com/NE-LOAN-FED/NE-Component" target="_blank" rel="noopener">ne-rc</a></strong>,我们的移动端组件库，索然还在为 1.0 版本的发布继续努力，但已经成功接入了三个内部的项目。</p>
+<p>效果显著，大大降低了重复开发成本，同时也降低了未来维护的成本。由此可见，一个稳定发展的团队，还是需要一套自己的内部组件库的。</p>
+<h2 id="4-团队工作改进"><a href="#4-团队工作改进" class="headerlink" title="4. 团队工作改进"></a>4. 团队工作改进</h2><p>由于原有业务线前端负责人在我入职后不久就离职了， 前端技术部派我临时挑大梁。我深知自己经验不足，但也知道这是一个锻炼的机会，这里非常感谢我的老大信任我。</p>
+<p>所以我非常努力，和业务线团队的小伙伴就如何提高我们的团队技术实力和业务支持能力讨论了很多，最后做了一下事情:</p>
+<ul>
+<li>开发框架优化</li>
+<li>遗留项目改造</li>
+<li>项目规范</li>
+<li>技术规划</li>
+</ul>
+<h3 id="开发框架优化"><a href="#开发框架优化" class="headerlink" title="开发框架优化"></a>开发框架优化</h3><p>最终的成果就是上面说的搭建了一套完整的开发环境。并不断进行优化。从一开始白领贷项目开发时每次 rebuild 需要 30s , 打包上线需要 4~5 min 到后来去花项目 rebuild 600ms, 打包只需要 1min .这中间既有针对 webpack 的优化，也有项目开放交付方式的改变。</p>
+<p>在这些优化的过程中，积累了很多经验。</p>
+<h3 id="遗留项目改造"><a href="#遗留项目改造" class="headerlink" title="遗留项目改造"></a>遗留项目改造</h3><p>有几个遗留项目，虽然整体处于维护状态，但偶尔还是有很多运营需求。而原有的开发方式和发布方式都比较麻烦，我们也尽可能在不需要多的重构的基础上，进行了逐步升级。主要是构建和发布上。<br>改写原有的 webpack 配置文件方式，并从本地打包发布升级到了线上打包发布。减轻了这些项目的维护成本。</p>
+<h3 id="项目规范"><a href="#项目规范" class="headerlink" title="项目规范"></a>项目规范</h3><p>业务线上人员来越多，在需要合作的情况下，规范是必不可少。我们从项目文档、代码风格检查、Git 分支管理、代码 review 等各个方面制订了完善又尽可能不繁琐的规范。</p>
+<h3 id="技术规划"><a href="#技术规划" class="headerlink" title="技术规划"></a>技术规划</h3><p>我们组的项目大多应用 react ，所以需要持续关注 react 生态群的技术动向。但同时也关注其他技术和解决方案，包括 Nodejs , Angular 等。前端技术部也让我们多看看 Vue . 然而到现在我都没看过 Vue ，哈哈，可能是提不起兴趣吧。</p>
+<h2 id="5-业务支持"><a href="#5-业务支持" class="headerlink" title="5. 业务支持"></a>5. 业务支持</h2><p>虽然我们前端技术部属于职能部门，但支持业务仍然是我们工作的最主要构成部分，毕竟公司要赚钱。除了一些小的以及一些后台项目，我主要参与维护和开发一下项目：</p>
+<p>a. 白领贷项目维护<br>b. 来钱项目开发并上线<br>c. 去花项目开发并上线</p>
+<p>去花最近就要上线了，我们已经开始内测了。这是一个提供分期的项目，目前只接入了考拉，马上也要对外了，不久大家就在考拉上购物时就可以有分期的支付选项了。</p>
+<p>看到项目上线，还是很高兴的😄。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>时间还是蛮快的， 都来网易一年多了。</p>
+<p>这段时间成长了许多，无论时工作技能、沟通技能还是工作流程和规范，都让我学会了很多东西。</p>
+<p>也认识了很多优秀的同事，能跟这些优秀的同事一起做事情，也是一件很开心的事情。也许以后不会一直在网易，但在网易的这段经历还是很值得的。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得此文章对你有帮助，可以请我喝咖啡O(∩_∩)O</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/imgs/alipay.jpg" alt="抹桥 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>抹桥</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/" title="网易一年工作总结">https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+            <!-- Article -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-5680248525294797"
+          data-ad-slot="7083418264"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/03/react-redux-source-code-read/" rel="next" title="React-Redux 源码粗读">
+                <i class="fa fa-chevron-left"></i> React-Redux 源码粗读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/20/react-source-code-analyze-1/" rel="prev" title="React 源码浅析之 - 入口文件">
+                React 源码浅析之 - 入口文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/imgs/avatar.jpg"
+                alt="抹桥" />
+            
+              <p class="site-author-name" itemprop="name">抹桥</p>
+              <p class="site-description motion-element" itemprop="description">怕什么真理无穷</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kisnows" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yq12315@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_moqiao" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.weibo.com/q912654" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 永远可见 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-5680248525294797"
+     data-ad-slot="4151801469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#做了哪些事情"><span class="nav-number">1.</span> <span class="nav-text">做了哪些事情</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-改造发布流程"><span class="nav-number">1.1.</span> <span class="nav-text">1. 改造发布流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进方案一"><span class="nav-number">1.1.1.</span> <span class="nav-text">改进方案一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改进方案二："><span class="nav-number">1.1.2.</span> <span class="nav-text">改进方案二：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-搭建了一套完善的开发环境"><span class="nav-number">1.2.</span> <span class="nav-text">2. 搭建了一套完善的开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主导并推动了移动端组件-ne-rc-的开发"><span class="nav-number">1.3.</span> <span class="nav-text">3. 主导并推动了移动端组件 ne-rc 的开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-团队工作改进"><span class="nav-number">1.4.</span> <span class="nav-text">4. 团队工作改进</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发框架优化"><span class="nav-number">1.4.1.</span> <span class="nav-text">开发框架优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遗留项目改造"><span class="nav-number">1.4.2.</span> <span class="nav-text">遗留项目改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目规范"><span class="nav-number">1.4.3.</span> <span class="nav-text">项目规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术规划"><span class="nav-number">1.4.4.</span> <span class="nav-text">技术规划</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-业务支持"><span class="nav-number">1.5.</span> <span class="nav-text">5. 业务支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">抹桥</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://kisnowsblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/';
+        this.page.identifier = '2017/08/11/first-year-summary-for-netease-work-experience/';
+        this.page.title = '网易一年工作总结';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kisnowsblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("i94Fztq8fCCVeVdaAsj5QJFA-gzGzoHsz", "qaPHXx9ykQRH0XhF1DawhWN1");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
