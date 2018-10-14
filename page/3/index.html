@@ -345,6 +345,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/09/20/react-source-code-analyze-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="怕什么真理无穷">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/react-source-code-analyze-1/" itemprop="url">
+                  React 源码浅析之 - 入口文件
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-20 16:10:41" itemprop="dateCreated datePublished" datetime="2017-09-20T16:10:41+08:00">2017-09-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-10-14 15:27:47" itemprop="dateModified" datetime="2017-10-14T15:27:47+08:00">2017-10-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/20/react-source-code-analyze-1/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/20/react-source-code-analyze-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/20/react-source-code-analyze-1/" class="leancloud_visitors" data-flag-title="React 源码浅析之 - 入口文件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本系列文章以 react 最新的版本： 16.0.0-beta.5 为准。<br>首先我们入口文件 ReactEntry.js 来看，<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ReactBaseClasses = <span class="built_in">require</span>(<span class="string">'ReactBaseClasses'</span>);</span><br><span class="line"><span class="keyword">var</span> ReactChildren = <span class="built_in">require</span>(<span class="string">'ReactChildren'</span>);</span><br><span class="line"><span class="keyword">var</span> ReactElement = <span class="built_in">require</span>(<span class="string">'ReactElement'</span>);</span><br><span class="line"><span class="keyword">var</span> ReactVersion = <span class="built_in">require</span>(<span class="string">'ReactVersion'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> onlyChild = <span class="built_in">require</span>(<span class="string">'onlyChild'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>依赖模块：<br>    • ReactBaseClasses<br>    • ReactChildren<br>    • ReactElement<br>    • onlyChild<br>    • ReactElementValidator<br>接着:<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/20/react-source-code-analyze-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/08/11/first-year-summary-for-netease-work-experience/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1163,232 +1361,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/03/17/react-form-rework-thinking/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="抹桥">
-      <meta itemprop="description" content="怕什么真理无穷">
-      <meta itemprop="image" content="/imgs/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抹桥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/17/react-form-rework-thinking/" itemprop="url">
-                  一个 React Form 组件的重构思路
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-03-17 21:31:31 / 修改时间：22:24:07" itemprop="dateCreated datePublished" datetime="2017-03-17T21:31:31+08:00">2017-03-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/17/react-form-rework-thinking/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/17/react-form-rework-thinking/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/17/react-form-rework-thinking/" class="leancloud_visitors" data-flag-title="一个 React Form 组件的重构思路">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近对团队内部 React 组件库（<a href="https://github.com/NE-LOAN-FED/NE-Component" target="_blank" rel="noopener"><strong>ne-rc</strong></a>）中的 Form 组件进行了重构，记录一下思考的过程。</p>
-<p>一些前置定义：</p>
-<table>
-<thead>
-<tr>
-<th>名词</th>
-<th>定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>表单</td>
-<td>Form 组件</td>
-</tr>
-<tr>
-<td>子表单</td>
-<td>嵌套在 Form 下面的类似 Input, Select 这样的子组件</td>
-</tr>
-</tbody>
-</table>
-<p>首先我们看一下，我们的对 Form 组件的需求是什么。</p>
-<ol>
-<li>获取当前变动表单的状态<ul>
-<li>校验所有必填表单是否填写完成</li>
-<li>对外触发具体表单变化的方法 <code>formFieldChange</code></li>
-</ul>
-</li>
-<li>暴露对外提供整个表单状态的方法<ul>
-<li>提供整个表单最新状态的方法 $Form.data</li>
-</ul>
-</li>
-<li>提交方法<ul>
-<li>校验表单是否通过校验</li>
-<li>对外触发 <code>formSubmit</code> 方法</li>
-</ul>
-</li>
-</ol>
-<p>接着我们从重构前和重构后，看如何来解决这个问题。</p>
-<h1 id="Before"><a href="#Before" class="headerlink" title="Before"></a><strong>Before</strong></h1><h2 id="获取当前变动表单的状态"><a href="#获取当前变动表单的状态" class="headerlink" title="获取当前变动表单的状态"></a>获取当前变动表单的状态</h2><h3 id="如何获取变动的子表单"><a href="#如何获取变动的子表单" class="headerlink" title="如何获取变动的子表单"></a>如何获取变动的子表单</h3><p>React 父子通信需要通过 prop 传递方法，对于 Form 下面的类似与 Input 之类的子表单的变化想要通知到父级，如果不借助第三方的事件传递方法，那么就只能通过由父级通过 props 向 Input 传递 <code>formFieldChange</code>（假设就叫这个名字）方法，然后当子组件变化时去调用 <code>formFieldChange</code> 来实现。</p>
-<p>那么问题来了，什么时候去传递这个方法呢？</p>
-<p>不能在具体页面里面使用的时候再去每条表单里面注册这个方法，那每个用到表单组件的时候就都需要给子表单进行这样的事件绑定，这样太累了。</p>
-<p>所以一开始，我选择通过直接递归的遍历 Form 下面的 children，只要发现这个 children 是我想要的表单类型，那么就重新克隆一个带有 <code>formFieldChange</code> 的组件来替换掉原来的组件。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/17/react-form-rework-thinking/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1440,7 +1412,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

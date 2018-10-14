@@ -345,6 +345,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/03/21/class and inherit in JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="怕什么真理无穷">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/21/class and inherit in JavaScript/" itemprop="url">
+                  JavaScript 中的类和继承
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-21 19:38:13" itemprop="dateCreated datePublished" datetime="2016-03-21T19:38:13+08:00">2016-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-03-17 22:21:34" itemprop="dateModified" datetime="2017-03-17T22:21:34+08:00">2017-03-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/21/class and inherit in JavaScript/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/21/class and inherit in JavaScript/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/03/21/class and inherit in JavaScript/" class="leancloud_visitors" data-flag-title="JavaScript 中的类和继承">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>我们都知道 JavaScript 是一门基于原型的语言。当我们调用一个对象本身没有的属性时，JavaScript 就会从对象的原型对象上去找该属性，如果原型上也没有该属性，那就去找原型的原型，一直找原型链的末端也就是 <code>Object.prototype</code> 的原型 <code>null</code>。这种属性查找的方式我们称之为原型链。</p>
+<h1 id="类的实现"><a href="#类的实现" class="headerlink" title="类的实现"></a>类的实现</h1><p>由于 JavaScript 本身是没有的类的感念的。所以我们如果要实现一个类，一般是通过构造函数来模拟类的实现：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;  <span class="comment">//实现一个类</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>,<span class="number">23</span>); <span class="comment">//通过 new 来新建实例</span></span><br></pre></td></tr></table></figure></p>
+<p>首先新建一个 <code>Person</code> 的构造函数，为了和一般的函数区别，我们会使用 CamelCase 方式来命名构造函数。<br>然后通过 <code>new</code> 操作符来创建实例，<code>new</code> 操作符其实干了这么几件事：</p>
+<ol>
+<li>创建一个继承自 <code>Person.prototype</code> 的新对象</li>
+<li>构造函数 <code>Person</code> 执行时，相应的参数传入，同时上下文被指定为这个新建的对象。</li>
+<li>如果构造函数返回了一个对象，那么这个对象会取代 <code>new</code> 的结果。如果构造函数返回的不是对象，则会忽略这个返回值。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">返回值不是对象</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'person'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>);</span><br><span class="line"><span class="comment">//  you 的值: Person &#123;name: "you"&#125;</span></span><br><span class="line">返回值是对象</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>);</span><br><span class="line"><span class="comment">//  you的值: [1,2,3]</span></span><br></pre></td></tr></table></figure>
+<p>如果类的实例需要共享类的方法，那么就需要给构造函数的 <code>prototype</code> 属性添加方法了。因为 <code>new</code> 操作符创建的对象都继承自构造函数的 <code>prototype</code> 属性。他们可以共享定义在类 <code>prototype</code> 上的方法和属性。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'My name is'</span>,<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> you = <span class="keyword">new</span> Person(<span class="string">'you'</span>,<span class="number">23</span>);</span><br><span class="line"><span class="keyword">var</span> me = <span class="keyword">new</span> Person(<span class="string">'me'</span>,<span class="number">23</span>);</span><br><span class="line">you.sayName()   <span class="comment">// My name is you.</span></span><br><span class="line">me.sayName()    <span class="comment">// My name is me.</span></span><br></pre></td></tr></table></figure>
+<h1 id="继承的实现"><a href="#继承的实现" class="headerlink" title="继承的实现"></a>继承的实现</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/03/21/class and inherit in JavaScript/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/03/10/Hexo部署到VPS并启用HTTPS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1153,203 +1361,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/01/12/解决手机键盘覆盖弹窗问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="抹桥">
-      <meta itemprop="description" content="怕什么真理无穷">
-      <meta itemprop="image" content="/imgs/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抹桥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="url">
-                  手机上键盘弹出时的一些问题
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-01-12 20:27:52" itemprop="dateCreated datePublished" datetime="2016-01-12T20:27:52+08:00">2016-01-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-03-17 22:23:01" itemprop="dateModified" datetime="2017-03-17T22:23:01+08:00">2017-03-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/01/12/解决手机键盘覆盖弹窗问题/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/01/12/解决手机键盘覆盖弹窗问题/" class="leancloud_visitors" data-flag-title="手机上键盘弹出时的一些问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>做手机商城接到一个需求。<br>具体大概是这样子的，要求用户点击购买按钮后，直接显示输入密码的弹窗并弹出键盘。<br>拿到需求一想，这挺简单的。<br>就麻利的写了个模拟的密码输入框，然后在用户点击购买按钮的时候让他弹出来，并且让焦点 focus 在 input 框上。<br>Chrome 上一试，完全没问题，觉得自己简直太棒了有没有。可是拿出自己的手机一试，oh no ~,键盘直接把页面给推了上去，导致完全看不到弹窗弹的是个什么东西。<br><img src="/imgs/2016-01-12-1.png" alt="解决前"><br>但是在 Android 上是没有任何问题的。观察了下是因为 Android 和 ios 上键盘弹出的行为是不一样的，Android 上键盘弹出来，直接覆盖在原来的页面上，而 ios 上键盘弹出来的时候会直接把整个页面推上去。<br>怎么解决呢？其实也挺好解决，就是针对不同系统 hack 一下。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/01/12/解决手机键盘覆盖弹窗问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1401,7 +1412,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
