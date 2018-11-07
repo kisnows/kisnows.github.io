@@ -345,232 +345,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/03/17/react-form-rework-thinking/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="抹桥">
-      <meta itemprop="description" content="怕什么真理无穷">
-      <meta itemprop="image" content="/imgs/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抹桥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/17/react-form-rework-thinking/" itemprop="url">
-                  一个 React Form 组件的重构思路
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-03-17 21:31:31 / 修改时间：22:24:07" itemprop="dateCreated datePublished" datetime="2017-03-17T21:31:31+08:00">2017-03-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/17/react-form-rework-thinking/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/17/react-form-rework-thinking/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/17/react-form-rework-thinking/" class="leancloud_visitors" data-flag-title="一个 React Form 组件的重构思路">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近对团队内部 React 组件库（<a href="https://github.com/NE-LOAN-FED/NE-Component" target="_blank" rel="noopener"><strong>ne-rc</strong></a>）中的 Form 组件进行了重构，记录一下思考的过程。</p>
-<p>一些前置定义：</p>
-<table>
-<thead>
-<tr>
-<th>名词</th>
-<th>定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>表单</td>
-<td>Form 组件</td>
-</tr>
-<tr>
-<td>子表单</td>
-<td>嵌套在 Form 下面的类似 Input, Select 这样的子组件</td>
-</tr>
-</tbody>
-</table>
-<p>首先我们看一下，我们的对 Form 组件的需求是什么。</p>
-<ol>
-<li>获取当前变动表单的状态<ul>
-<li>校验所有必填表单是否填写完成</li>
-<li>对外触发具体表单变化的方法 <code>formFieldChange</code></li>
-</ul>
-</li>
-<li>暴露对外提供整个表单状态的方法<ul>
-<li>提供整个表单最新状态的方法 $Form.data</li>
-</ul>
-</li>
-<li>提交方法<ul>
-<li>校验表单是否通过校验</li>
-<li>对外触发 <code>formSubmit</code> 方法</li>
-</ul>
-</li>
-</ol>
-<p>接着我们从重构前和重构后，看如何来解决这个问题。</p>
-<h1 id="Before"><a href="#Before" class="headerlink" title="Before"></a><strong>Before</strong></h1><h2 id="获取当前变动表单的状态"><a href="#获取当前变动表单的状态" class="headerlink" title="获取当前变动表单的状态"></a>获取当前变动表单的状态</h2><h3 id="如何获取变动的子表单"><a href="#如何获取变动的子表单" class="headerlink" title="如何获取变动的子表单"></a>如何获取变动的子表单</h3><p>React 父子通信需要通过 prop 传递方法，对于 Form 下面的类似与 Input 之类的子表单的变化想要通知到父级，如果不借助第三方的事件传递方法，那么就只能通过由父级通过 props 向 Input 传递 <code>formFieldChange</code>（假设就叫这个名字）方法，然后当子组件变化时去调用 <code>formFieldChange</code> 来实现。</p>
-<p>那么问题来了，什么时候去传递这个方法呢？</p>
-<p>不能在具体页面里面使用的时候再去每条表单里面注册这个方法，那每个用到表单组件的时候就都需要给子表单进行这样的事件绑定，这样太累了。</p>
-<p>所以一开始，我选择通过直接递归的遍历 Form 下面的 children，只要发现这个 children 是我想要的表单类型，那么就重新克隆一个带有 <code>formFieldChange</code> 的组件来替换掉原来的组件。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/17/react-form-rework-thinking/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2017/01/19/webpack2-migrating-v1-v2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1381,6 +1155,216 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/12/09/2016-year-end-summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="怕什么真理无穷">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/09/2016-year-end-summary/" itemprop="url">
+                  2016年终总结
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-09 22:03:10" itemprop="dateCreated datePublished" datetime="2016-12-09T22:03:10+08:00">2016-12-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-09 15:56:32" itemprop="dateModified" datetime="2018-06-09T15:56:32+08:00">2018-06-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/09/2016-year-end-summary/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/09/2016-year-end-summary/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/09/2016-year-end-summary/" class="leancloud_visitors" data-flag-title="2016年终总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>时间也真是快，从 15 年到现在算来我做前端开发也将近两年了，没想到这一路走过来这么顺利，运气真是挺好的。</p>
+<p>当初自学三个月，然后投简历面试，就拿到了好几个 offer，一切都太顺利了。然后去了一家做互联网金融的公司，老大对我很好，然而待了一年多还是在今年五月份选择了离职。原因很简单，公司的开发模式过于保守，一直待下去真的不会有任何长进了， 整天干的活都像是美工干的活，公司很不重视前端，而且前后端不分离，同一份文件前后端两个人一起改，想想真是痛苦。</p>
+<p>那离职了就要找工作，不得不说，找工作的经历真有意思。</p>
+<h2 id="找工作"><a href="#找工作" class="headerlink" title="找工作"></a>找工作</h2><p>有一家创业公司，人家对我还比较满意，但就是薪资没谈妥，就算了，谁知道后来我都拿到另一家公司的 offer 了又说那个薪资可以接受了。</p>
+<p>有一家外企，面试的时候对他们的工作环境非常满意，然而面试发挥太差，连 sass 的循环都写不出来，结果可想而知。面试官还很和蔼，说回去等消息吧，然后我出门不到五分钟就收到了短信，‘您不适合本公司的要求’，嗯，效率真高，挺喜欢这点。</p>
+<p>有一家在滨江的大公司，面试通过了，薪资都谈妥了， Hr 说回去等 offer 吧，一般三天内就会发出来。我很高兴，第二天回原公司就提了离职。结果等了一星期还没收到 offer ，就打电话问，对方很不好意思的回答说，部门公司架构重组，我面试的那个事业部已经没了,,Ծ ㅂ Ծ,,，我也不好说什么了。</p>
+<p>中途还有一堆不靠谱的公司，当然也有我能力不足没通过面试的。</p>
+<p>有一个最直接就是蘑菇街的人问你能接受加班吗，我说偶尔可以，经常不行，然后人家来了一句，那不行，我们这边加班还是很严重的，几乎每天 11 点。然后，就没有然后了。后来小伙伴给内推了阿里，面天猫挂在了三面，又面了滨江的 B2B 部门。</p>
+<p>到二面的时候，接到了网易的面试，面网易的时候谈的很高兴，双方都很满意，最后 hr 问说有没有在面其他公司，我说当然， 比如阿里也在面，现在已经到了二面。然后就有了下面的对话：</p>
+<pre><code>Hr ：“那如果阿里和网易同时给你发 offer 你去哪个？“
+我当时随口一说，“哪个先发 offer 就去哪个”
+</code></pre><p>然后当天晚上就电话通知我面试通过了，第二天就发了 offer。现在想想，我真是机智啊，O(∩_∩)O</p>
+<h2 id="网易"><a href="#网易" class="headerlink" title="网易"></a>网易</h2><p>找工作的事情就告一段落，来到网易。首先网易给我的第一印象就是，食堂真好（虽然已经吃腻了），仿佛回到了大学时候一样，然后妹子真多，嗯，真的。</p>
+<p>不得不说大公司跟小公司还是有很多差别的。首先，流程上就很规范，不会出现说之前公司那种产品经理过来一会要这样一会要那样的事情，但同时也有弊端，就是会议太多。想想那些会议有没有必要开，还是有必要的，但是会议的整体效率，真是低啊。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/09/2016-year-end-summary/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1432,7 +1416,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

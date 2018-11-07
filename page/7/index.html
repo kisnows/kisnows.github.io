@@ -345,203 +345,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2016/01/12/解决手机键盘覆盖弹窗问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="抹桥">
-      <meta itemprop="description" content="怕什么真理无穷">
-      <meta itemprop="image" content="/imgs/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抹桥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="url">
-                  手机上键盘弹出时的一些问题
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-01-12 20:27:52" itemprop="dateCreated datePublished" datetime="2016-01-12T20:27:52+08:00">2016-01-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-03-17 22:23:01" itemprop="dateModified" datetime="2017-03-17T22:23:01+08:00">2017-03-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/01/12/解决手机键盘覆盖弹窗问题/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/01/12/解决手机键盘覆盖弹窗问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/01/12/解决手机键盘覆盖弹窗问题/" class="leancloud_visitors" data-flag-title="手机上键盘弹出时的一些问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>做手机商城接到一个需求。<br>具体大概是这样子的，要求用户点击购买按钮后，直接显示输入密码的弹窗并弹出键盘。<br>拿到需求一想，这挺简单的。<br>就麻利的写了个模拟的密码输入框，然后在用户点击购买按钮的时候让他弹出来，并且让焦点 focus 在 input 框上。<br>Chrome 上一试，完全没问题，觉得自己简直太棒了有没有。可是拿出自己的手机一试，oh no ~,键盘直接把页面给推了上去，导致完全看不到弹窗弹的是个什么东西。<br><img src="/imgs/2016-01-12-1.png" alt="解决前"><br>但是在 Android 上是没有任何问题的。观察了下是因为 Android 和 ios 上键盘弹出的行为是不一样的，Android 上键盘弹出来，直接覆盖在原来的页面上，而 ios 上键盘弹出来的时候会直接把整个页面推上去。<br>怎么解决呢？其实也挺好解决，就是针对不同系统 hack 一下。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/01/12/解决手机键盘覆盖弹窗问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2015/12/30/2015-year-end-summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1340,6 +1143,226 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.kisnows.com/2015/10/13/fullpage-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="抹桥">
+      <meta itemprop="description" content="怕什么真理无穷">
+      <meta itemprop="image" content="/imgs/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抹桥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/10/13/fullpage-js/" itemprop="url">
+                  轻量级fullPage整屏滚动框架V1.3发布
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-10-13 20:23:40" itemprop="dateCreated datePublished" datetime="2015-10-13T20:23:40+08:00">2015-10-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-03-17 22:20:42" itemprop="dateModified" datetime="2017-03-17T22:20:42+08:00">2017-03-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/10/13/fullpage-js/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/10/13/fullpage-js/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/10/13/fullpage-js/" class="leancloud_visitors" data-flag-title="轻量级fullPage整屏滚动框架V1.3发布">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="项目初衷"><a href="#项目初衷" class="headerlink" title="项目初衷"></a>项目初衷</h1><p>前段时间接到一个新的项目，是一个整屏滚动的单页应用。</p>
+<p>本来打算完全自己写的，但是由于项目时间吃紧，就用了<a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="noopener">fullpage</a>这个框架。这个框架确实很强大，几乎你想要的API它都有，所以用起来也很方便。</p>
+<p>但是它也有几个缺点，第一它必须依赖 <code>jQuery</code>,而且文件体积也比较庞大，对于移动端来说不是很友好。于是自己就抽出业余时间，写了这个项目。</p>
+<p><a href="https://github.com/kisnows/fullpage-light.js" target="_blank" rel="noopener">项目地址</a></p>
+<p><a href="http://kisnows.com/fullpage-light.js/" target="_blank" rel="noopener">一个简单的DEMO</a></p>
+<h1 id="changeList"><a href="#changeList" class="headerlink" title="changeList"></a>changeList</h1><p>V1.3.0</p>
+<ul>
+<li>修复对firefox的支持</li>
+<li>添加页面导航控制</li>
+<li>解决一些bug</li>
+</ul>
+<p>V1.1.0 </p>
+<ul>
+<li>添加自动播放 </li>
+<li>添加循环播放</li>
+</ul>
+<p>V1.0.0</p>
+<ul>
+<li>支持移动端触摸控制</li>
+<li>添加slide水平滑动</li>
+<li>添加PC端键盘控制和鼠标滚轮控制</li>
+<li>提供实用的API方便开发</li>
+</ul>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一个轻巧的<code>fullpage</code>框架，不依赖其他任何库，主要针对移动端设备（同时也支持桌面端），压缩后不到4kb。<br>轻松创建炫酷的单页滑动网站。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/13/fullpage-js/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1391,7 +1414,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
